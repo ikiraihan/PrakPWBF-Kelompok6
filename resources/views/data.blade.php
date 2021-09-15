@@ -7,6 +7,6 @@
     <title>DATA</title>
 </head>
 <body>
- <h2>INI HALAMAN DATA</h2>   
+ <h2>INI HALAMAN DATA TAPI DIUBAH</h2>   
 </body>
 </html>
