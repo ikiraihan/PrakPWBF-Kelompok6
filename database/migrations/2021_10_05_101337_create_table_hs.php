@@ -15,10 +15,12 @@ class CreateTableHs extends Migration
     {
         Schema::create('table_hs', function (Blueprint $table) {
             $table->char('id_hs', 5);
+            $table->char('kode_bar', 5);
             $table->date('tgl_hs');
             $table->integer('update_stok_hs');
             $table->boolean('status');
-            $table->primary('id_hs');
+            $table->primary(['id_hs', 'kode_bar']);
+            $table->foreign('kode_bar')->references('kode_bar')->on('table_barang');
         });
     }
 
