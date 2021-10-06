@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableWarna extends Migration
+class CreateTabelRole extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableWarna extends Migration
      */
     public function up()
     {
-        Schema::create('table_warna', function (Blueprint $table) {
-            $table->char('id_warna', 5);
-            $table->string('warna', 15);
-            $table->primary('id_warna');
+        Schema::create('tabel_role', function (Blueprint $table) {
+            $table->id();
+            $table->string('jenis_role', 20);
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateTableWarna extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_warna');
+        Schema::dropIfExists('tabel_role');
     }
 }

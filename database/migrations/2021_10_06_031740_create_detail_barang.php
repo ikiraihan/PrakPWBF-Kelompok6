@@ -14,16 +14,15 @@ class CreateDetailBarang extends Migration
     public function up()
     {
         Schema::create('detail_barang', function (Blueprint $table) {
-            $table->char('kode_bar', 5);
-            $table->char('id_ukuran', 5);
-            $table->char('id_warna', 5);
-
-            $table->primary(['kode_bar','id_ukuran','id_warna']);
-            $table->foreign('kode_bar')->references('kode_bar')->on('table_barang');
-            $table->foreign('id_ukuran')->references('id_ukuran')->on('table_ukuran');
-            $table->foreign('id_warna')->references('id_warna')->on('table_warna');
-
+            
+            $table->timestamps();
         });
+            Schema::table('detail_barang', function (Blueprint $table) {
+                $table->foreignId('kode_bar')->constrained('tabel_barang');
+                $table->foreignId('id_ukuran')->constrained('tabel_ukuran');
+                $table->foreignId('id_warna')->constrained('tabel_warna');
+            });
+
     }
 
     /**

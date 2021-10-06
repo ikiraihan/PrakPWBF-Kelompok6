@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableHs extends Migration
+class CreateTabelHs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateTableHs extends Migration
      */
     public function up()
     {
-        Schema::create('table_hs', function (Blueprint $table) {
-            $table->char('id_hs', 5);
-            $table->char('kode_bar', 5);
+        Schema::create('tabel_hs', function (Blueprint $table) {
+            $table->id();
             $table->date('tgl_hs');
             $table->integer('update_stok_hs');
             $table->boolean('status');
-            $table->primary(['id_hs', 'kode_bar']);
-            $table->foreign('kode_bar')->references('kode_bar')->on('table_barang');
+            $table->timestamps();
         });
+
+        Schema::table('tabel_hs', function (Blueprint $table) {
+            $table->foreignId('kode_bar')->constrained('tabel_barang');
+        });
+        
     }
 
     /**
@@ -31,6 +34,6 @@ class CreateTableHs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_hs');
+        Schema::dropIfExists('tabel_hs');
     }
 }

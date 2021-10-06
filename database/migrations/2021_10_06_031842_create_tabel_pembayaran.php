@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePembayaran extends Migration
+class CreateTabelPembayaran extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateTablePembayaran extends Migration
      */
     public function up()
     {
-        Schema::create('table_pembayaran', function (Blueprint $table) {
-            $table->char('id_bayar', 5);
-            $table->char('id_terima', 5);
+        Schema::create('tabel_pembayaran', function (Blueprint $table) {
+            $table->id();
             $table->date('tgl_bayar');
             $table->string('total_bayar');
-            $table->primary(['id_bayar', 'id_terima']);
-            $table->foreign('id_terima')->references('id_terima')->on('table_penerimaan');
+            $table->timestamps();
+        });
+
+        Schema::table('tabel_pembayaran', function (Blueprint $table) {
+            $table->foreignId('id_penerimaan')->constrained('tabel_penerimaan');
         });
     }
 
@@ -30,6 +32,6 @@ class CreateTablePembayaran extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_pembayaran');
+        Schema::dropIfExists('tabel_pembayaran');
     }
 }

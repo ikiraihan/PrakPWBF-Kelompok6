@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableJb extends Migration
+class CreateTabelUkuran extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableJb extends Migration
      */
     public function up()
     {
-        Schema::create('table_jb', function (Blueprint $table) {
-            $table->char('id_jb', 5);
-            $table->string('jenis_barang', 20);
-            $table->primary('id_jb');
+        Schema::create('tabel_ukuran', function (Blueprint $table) {
+            $table->id();
+            $table->string('ukuran', 3);
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateTableJb extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_jb');
+        Schema::dropIfExists('tabel_ukuran');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableUkuran extends Migration
+class CreateTabelKota extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableUkuran extends Migration
      */
     public function up()
     {
-        Schema::create('table_ukuran', function (Blueprint $table) {
-            $table->char('id_ukuran', 5);
-            $table->string('ukuran', 3);
-            $table->primary('id_ukuran');
+        Schema::create('tabel_kota', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_kota', 30);
+            $table->timestamps();
         });
     }
 
@@ -27,6 +27,6 @@ class CreateTableUkuran extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_ukuran');
+        Schema::dropIfExists('tabel_kota');
     }
 }
