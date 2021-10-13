@@ -14,7 +14,7 @@ class Kota extends Model
 	return $this->hasMany('App\Models\Tabel_user','id_kota','id');
     }
 
-public function Suppliers()
+    public function Suppliers()
     {
 	return $this->hasMany('App\Models\Supplier','id_kota','id');
     }
