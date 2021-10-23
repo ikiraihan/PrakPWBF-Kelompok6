@@ -11,7 +11,7 @@ class DetailPenerimaan extends Model
 
     public function Barang()
     {
-	return $this->belongsTo('App\Models\Barang','id_barang','id');
+	return $this->belongsTo('App\Models\Barang','kode_barang','id');
     }
     public function Penerimaan()
     {

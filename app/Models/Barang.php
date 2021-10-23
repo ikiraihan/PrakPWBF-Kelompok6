@@ -11,27 +11,27 @@ class Barang extends Model
 
     public function jenisBarang()
     {
-	return $this->belongsTo('App\Models\jenisBarang','id_jb','id');
+	return $this->belongsTo('App\Models\JenisBarang','id_jb','id');
     }
 
     public function hss()
     {
-	return $this->hasMany('App\Models\Hs','id_barang','id');
+	return $this->hasMany('App\Models\Hs','kode_bar','id');
     }
 
     public function detailBarangs()
     {
-	return $this->hasMany('App\Models\detailBarang','id_barang','id');
+	return $this->hasMany('App\Models\DetailBarang','kode_bar','id');
     }
 
     public function detailPenerimaans()
     {
-	return $this->hasMany('App\Models\detailPenerimaan','id_barang','id');
+	return $this->hasMany('App\Models\detailPenerimaan','kode_barang','id');
     }
 
     public function detailPemesanans()
     {
-	return $this->hasMany('App\Models\detailPemesanan','id_barang','id');
+	return $this->hasMany('App\Models\detailPemesanan','kode_barang','id');
     }
 
 }

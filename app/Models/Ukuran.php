@@ -11,6 +11,6 @@ class Ukuran extends Model
 
     public function detailBarangs()
     {
-	return $this->hasMany('App\Models\detailBarang','id_ukuran','id');
+	return $this->hasMany('App\Models\DetailBarang','id_ukuran','id');
     }
 }

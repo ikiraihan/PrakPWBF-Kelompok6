@@ -11,7 +11,7 @@ class Pemesanan extends Model
 
     public function User()
     {
-	return $this->belongsTo('App\Models\Tabel_user','id_user','id');
+	return $this->belongsTo('App\Models\TabelUser','id_user','id');
     }
     public function Supplier()
     {
@@ -20,7 +20,7 @@ class Pemesanan extends Model
 
     public function detailPemesanans()
     {
-	return $this->hasMany('App\Models\detailPemesanan','id_pesan','id');
+	return $this->hasMany('App\Models\DetailPemesanan','id_pesan','id');
     }
 
 }

@@ -21,7 +21,7 @@ class CreateTabelSupplier extends Migration
             $table->timestamps();
         });
 
-        Schema::table('tabel_user', function (Blueprint $table) {
+        Schema::table('tabel_supplier', function (Blueprint $table) {
             $table->foreignId('kode_kota')->constrained('tabel_kota');
         });
         

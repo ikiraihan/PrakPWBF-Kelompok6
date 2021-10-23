@@ -11,12 +11,12 @@ class Kota extends Model
 
     public function Users()
     {
-	return $this->hasMany('App\Models\Tabel_user','id_kota','id');
+	return $this->hasMany('App\Models\TabelUser','id_kota','id');
     }
 
     public function Suppliers()
     {
-	return $this->hasMany('App\Models\Supplier','id_kota','id');
+	return $this->hasMany('App\Models\Supplier','kode_kota','id');
     }
 
 }

@@ -11,6 +11,6 @@ class Warna extends Model
 
     public function detailBarangs()
     {
-	return $this->hasMany('App\Models\detailBarang','id_warna','id');
+	return $this->hasMany('App\Models\DetailBarang','id_warna','id');
     }
 }

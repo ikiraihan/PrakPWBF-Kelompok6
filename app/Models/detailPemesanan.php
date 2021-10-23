@@ -11,7 +11,7 @@ class DetailPemesanan extends Model
 
     public function Barang()
     {
-	return $this->belongsTo('App\Models\Barang','id_barang','id');
+	return $this->belongsTo('App\Models\Barang','kode_bar','id');
     }
 
     public function Pemesanan()

@@ -11,7 +11,7 @@ class Penerimaan extends Model
 
     public function User()
     {
-	return $this->belongsTo('App\Models\Tabel_user','id_user','id');
+	return $this->belongsTo('App\Models\TabelUser','id_user','id');
     }
 
     public function Supplier()
