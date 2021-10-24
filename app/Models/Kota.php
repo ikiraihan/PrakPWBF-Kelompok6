@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kota extends Model
 {
+    use HasFactory;
     protected $table = 'tabel_kota';
 
     public function Users()
