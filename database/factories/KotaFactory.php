@@ -22,7 +22,7 @@ class KotaFactory extends Factory
     public function definition()
     {
         return [
-            'nama_kota' =>$this->faker->city,
+            'nama_kota' =>$this->faker->unique()->city,
         ];
     }
 }
