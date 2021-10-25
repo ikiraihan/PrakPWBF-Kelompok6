@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 class KotaController extends Controller
 {
-    public function kota() {
+    public function kota(){
         $kota = Kota::all();
+
+        return view('dashboard.tabelkota', ['kota' => $kota]);
     }
 }

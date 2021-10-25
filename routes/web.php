@@ -1,6 +1,12 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\home;
+use App\Http\Controllers\KotaController;
+use App\Http\Controllers\login;
+use App\Http\Controllers\dashboard;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,38 +19,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home',[
-        "title"=>"Home"
-    ]);
-});
+Route::get('/home', [home::class, 'home']);
 
-Route::get('/data', function () {
-    return view('data', [
-        "title"=> "Data"
-    ]);
-});
+Route::get('/dashboard', [dashboard::class, 'dashboard']);
 
-Route::get('/order', function () {
-    return view('order',[
-        "title"=>"Order"
-    ]);
-});
+Route::get('/', [login::class, 'login']);
 
-Route::get('/terima', function () {
-    return view('terima', [
-        "title"=>"Penerimaan"
-    ]);
-});
+Route::get('/kota', [KotaController::class, 'kota']);
 
-Route::get('/bayar', function () {
-    return view('bayar',[
-        "title"=>"Pembayaran"
-    ]);
-});
+// Route::get('/', function () {
+//     return view('home',[
+//         "title"=>"Home"
+//     ]);
+// });
 
-Route::get('/login', function () {
-    return view('login',[
-        "title"=>"Login"
-    ]);
-});
+// Route::get('/data', function () {
+//     return view('data', [
+//         "title"=> "Data"
+//     ]);
+// });
+
+// Route::get('/order', function () {
+//     return view('order',[
+//         "title"=>"Order"
+//    ]);
+// });
+
+// //Route::get('/order', [Pemesanan::class, 'Pemesanan']);
+
+
+
+// Route::get('/terima', function () {
+//     return view('terima', [
+//         "title"=>"Penerimaan"
+//     ]);
+// });
+
+// Route::get('/bayar', function () {
+//     return view('bayar',[
+//         "title"=>"Pembayaran"
+//     ]);
+// });
+
+// Route::get('/login', function () {
+//     return view('login',[
+//         "title"=>"Login"
+//     ]);
+// });
