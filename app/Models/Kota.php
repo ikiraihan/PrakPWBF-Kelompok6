@@ -9,6 +9,7 @@ class Kota extends Model
 {
     use HasFactory;
     protected $table = 'tabel_kota';
+    protected $fillable = ['nama_kota'];
 
     public function Users()
     {

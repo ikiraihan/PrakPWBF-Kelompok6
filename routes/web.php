@@ -6,6 +6,7 @@ use App\Http\Controllers\home;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\login;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\BarangController;
 
 
 /*
@@ -25,7 +26,14 @@ Route::get('/dashboard', [dashboard::class, 'dashboard']);
 
 Route::get('/', [login::class, 'login']);
 
-Route::get('/kota', [KotaController::class, 'kota']);
+
+// CRUD KOTA //
+Route::get('/kota', [KotaController::class, 'index']);
+Route::get('/kota/tambah', [KotaController::class, 'create']);
+Route::post('/kota/store', [KotaController::class, 'store']);
+
+// CRUD BARANG //
+Route::get('/barang', [BarangController::class, 'index']);
 
 // Route::get('/', function () {
 //     return view('home',[

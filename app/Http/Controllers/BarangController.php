@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
-    public function barang() { 
+    public function index() { 
         $barang = Barang::all();
+
+        return view('barang.tabelbarang', ['barang' => $barang]);
     }
 }
