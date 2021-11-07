@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pemesanan extends Model
 {
+    use HasFactory;
     protected $table = 'tabel_pemesanan';
 
     public function User()

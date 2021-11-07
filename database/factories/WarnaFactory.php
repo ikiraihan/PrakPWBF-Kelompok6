@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\jenisBarang;
+use App\Models\Warna;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class JenisBarangFactory extends Factory
+class WarnaFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = jenisBarang::class;
+    protected $model = Warna::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class JenisBarangFactory extends Factory
     public function definition()
     {
         return [
-            'jenis_barang' => $this->faker->unique()->word()
+            'warna'=> $this->faker->unique()->safeColorName(),
         ];
     }
 }

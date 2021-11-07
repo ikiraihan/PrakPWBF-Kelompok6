@@ -16,8 +16,8 @@ class CreateTabelSupplier extends Migration
         Schema::create('tabel_supplier', function (Blueprint $table) {
             $table->id();
             $table->string('nama_sup', 40);
-            $table->string('alamat_sup', 50);
-            $table->string('telp_sup', 13);
+            $table->string('alamat_sup', 75);
+            $table->string('telp_sup', 20);
             $table->timestamps();
         });
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
+    use HasFactory;
     protected $table = 'tabel_supplier';
 
     public function Penerimaans()
@@ -20,7 +21,7 @@ class Supplier extends Model
 
     public function Kota()
     {
-	return $this->belongsTo('App\Models\Kota','id_kota','id');
+	return $this->belongsTo('App\Models\Kota','kode_kota','id');
     }
 
 }

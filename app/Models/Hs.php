@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hs extends Model
 {   
+    use HasFactory;
     protected $table = 'tabel_hs';
 
     public function Barang()

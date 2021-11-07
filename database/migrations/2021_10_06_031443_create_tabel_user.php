@@ -15,11 +15,11 @@ class CreateTabelUser extends Migration
     {
         Schema::create('tabel_user', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_user', 40);
-            $table->string('alamat_user', 50);
-            $table->string('telp_user', 13);
-            $table->string('username_user', 20)->unique();
-            $table->string('password_user', 20);
+            $table->string('nama_user', 50);
+            $table->string('alamat_user', 75);
+            $table->string('telp_user', 20);
+            $table->string('username_user', 50)->unique();
+            $table->string('password_user', 100);
             $table->timestamps();
         });
 

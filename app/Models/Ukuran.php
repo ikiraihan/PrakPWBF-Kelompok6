@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ukuran extends Model
 {
+    use HasFactory;
     protected $table = 'tabel_ukuran';
 
     public function detailBarangs()

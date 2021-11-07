@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pembayaran extends Model
 {
+    use HasFactory;
     protected $table = 'tabel_pembayaran';
     
     public function Penerimaan()

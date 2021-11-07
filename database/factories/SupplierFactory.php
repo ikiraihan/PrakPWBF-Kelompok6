@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\jenisBarang;
+use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class JenisBarangFactory extends Factory
+class SupplierFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = jenisBarang::class;
+    protected $model = Supplier::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,10 @@ class JenisBarangFactory extends Factory
     public function definition()
     {
         return [
-            'jenis_barang' => $this->faker->unique()->word()
+            'nama_sup'=>$this->faker->company,
+            'alamat_sup'=>$this->faker->address,
+            'telp_sup'=>$this->faker->phoneNumber,
+            'kode_kota'=>$this->faker->numberBetween(1, 50),
         ];
     }
 }
