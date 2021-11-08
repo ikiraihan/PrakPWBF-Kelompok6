@@ -11,7 +11,7 @@ class KotaController extends Controller
 
         $kota = Kota::all();
 
-        return view('kota.tabelkota', ['kota' => $kota]);
+        return view('kota/index', ['kota' => $kota]);
     }
 
     public function create()

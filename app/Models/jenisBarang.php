@@ -9,6 +9,7 @@ class JenisBarang extends Model
 {
     use HasFactory;
     protected $table = 'tabel_jb';
+    protected $fillable = ['jenis_barang'];
     
     public function Barangs()
     {

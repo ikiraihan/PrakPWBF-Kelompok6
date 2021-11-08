@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Boutique Sembarang Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +34,7 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Boutique Sembarang <br> Log in <br> </h1>
+                                        <h1 class="h4 text-gray-900 mb-4">RK Boutique<br> Log in <br> </h1>
                                     </div>
                                     <form class="user">
                                         <div class="form-group">

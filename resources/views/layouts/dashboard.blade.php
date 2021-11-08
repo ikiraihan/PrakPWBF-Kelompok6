@@ -140,6 +140,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tables</h6>
                         <a class="collapse-item" href="/kota">Kota</a>
+                        <a class="collapse-item" href="/jenisbarang">Jenis Barang</a>
                     </div>
                 </div>
             </li>

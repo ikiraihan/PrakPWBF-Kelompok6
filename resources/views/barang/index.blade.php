@@ -12,22 +12,28 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th style="width: 1%;">No</th>
+                                        {{-- <th>ID</th> --}}
                                         <th>Nama Barang</th>
                                         <th>Jenis Barang</th>
-                                        <th>Stok Barang</th>
+                                        <th>Stok</th>
                                         <th>Harga Beli</th>
                                         <th>Harga Jual</th>
+                                        <th style="width: 1%;">Edit</th>
+				                        <th style="width: 1%;">Hapus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($barang as $dataBarang)
+                                    @foreach ($barang as $dataBarang => $b)
                                     <tr>
-                                        <td>{{ $dataBarang -> id }}</td>
-                                        <td>{{ $dataBarang -> nama_barang }}</td>
-                                        <td>{{ $dataBarang -> jenis_barang }}</td>
-                                        <td>{{ $dataBarang -> harga_beli_barang }}</td>   
-                                        <td>{{ $dataBarang -> harga_jual_barang }}</td>                                           
+                                        <td class="text-wrap text-center">{{ $dataBarang + 1 }}</td>
+                                        <td>{{ $b -> id }}</td>
+                                        <td>{{ $b -> nama_barang }}</td>
+                                        <td>{{ $b -> stok}}</td>
+                                        <td>{{ $b -> harga_beli_barang }}</td>   
+                                        <td>{{ $b -> harga_jual_barang }}</td>   
+                                        <td class="text-wrap"><a href="/barang/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
+				                        <td class="text-wrap"><a href="/barang/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

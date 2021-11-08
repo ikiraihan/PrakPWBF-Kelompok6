@@ -7,6 +7,7 @@ use App\Http\Controllers\KotaController;
 use App\Http\Controllers\login;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\JenisBarangController;
 
 
 /*
@@ -35,6 +36,8 @@ Route::post('/kota/store', [KotaController::class, 'store']);
 // CRUD BARANG //
 Route::get('/barang', [BarangController::class, 'index']);
 
+
+
 // Route::get('/', function () {
 //     return view('home',[
 //         "title"=>"Home"
@@ -53,10 +56,6 @@ Route::get('/barang', [BarangController::class, 'index']);
 //    ]);
 // });
 
-// //Route::get('/order', [Pemesanan::class, 'Pemesanan']);
-
-
-
 // Route::get('/terima', function () {
 //     return view('terima', [
 //         "title"=>"Penerimaan"
@@ -74,3 +73,7 @@ Route::get('/barang', [BarangController::class, 'index']);
 //         "title"=>"Login"
 //     ]);
 // });
+
+Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
+Route::get('/jenisbarang/tambah', [JenisBarangController::class, 'create']);
+Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
