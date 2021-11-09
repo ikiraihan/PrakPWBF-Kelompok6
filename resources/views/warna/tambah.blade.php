@@ -7,7 +7,7 @@
             <meta name="description" content="">
             <meta name="author" content="">
         
-            <title>Input Data Kota Supplier</title>
+            <title>Tambah Warna Baru</title>
         
             <!-- Custom fonts for this template-->
             <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,37 +30,12 @@
                             <div class="col-md-12">
                                 <div class="card shadow mb-4">
                                     <div class="card-body">
-                                        <form action="/barang/store" method="post">
+                                        <form action="/warna/store" method="post">
                                             {{ csrf_field() }}
                                             <div class="form-group">
-                                                <label for="nama_barang">Nama Barang</label>
-                                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
-                                            </div>
-                                            <br/>
-                                            <div class="form-group">
-                                                <label for="jenis_barang">Jenis Barang &nbsp</label>
-                                                <select class="form-control" id="jenis_barang" name="jenis_barang">
-                                                    @if($jenisbarang->count())
-                                                        @foreach($jenisbarang as $v)
-                                                            <option value="{{ $v->id_jb }}">{{ $v->jenis_barang }}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
-                                            </div>
-                                            <br/>
-                                            <div class="form-group">
-                                                <label for="stok_barang">Stok Barang &nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="stok_barang" name="stok_barang" placeholder="Stok Barang">
-                                            </div>
-                                            <br/>
-                                            <div class="form-group">
-                                                <label for="harga_beli_barang">Harga Beli &nbsp&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="harga_beli_barang" name="harga_beli_barang" placeholder="Harga Beli">
-                                            </div>
-                                            <br/>
-                                            <div class="form-group">
-                                                <label for="harga_jual_barang">Harga Jual &nbsp&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="harga_jual_barang" name="harga_jual_barang" placeholder="Harga Jual">
+                                                <label for="warna">Warna</label>
+                                                <input type="text" class="form-control" id="warna" 
+                                                name="warna" placeholder="Warna">
                                             </div>
                                             <br/>
                                             <div class="col-md-12";>

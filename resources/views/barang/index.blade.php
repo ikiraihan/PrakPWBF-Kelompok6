@@ -27,13 +27,14 @@
                                     @foreach ($barang as $dataBarang => $b)
                                     <tr>
                                         <td class="text-wrap text-center">{{ $dataBarang + 1 }}</td>
-                                        <td>{{ $b -> id }}</td>
+                                        {{-- <td>{{ $b -> id }}</td> --}}
                                         <td>{{ $b -> nama_barang }}</td>
-                                        <td>{{ $b -> stok}}</td>
+                                        <td>{{ $b -> jenisBarang -> jenis_barang }}</td>
+                                        <td>{{ $b -> stok_barang}}</td>
                                         <td>{{ $b -> harga_beli_barang }}</td>   
                                         <td>{{ $b -> harga_jual_barang }}</td>   
-                                        <td class="text-wrap"><a href="/barang/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
-				                        <td class="text-wrap"><a href="/barang/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                        
+                                        <td class="text-wrap"><a href="/barang/edit/{{ $b->id }}" class="btn btn-primary">Edit</a></td>
+				                        <td class="text-wrap"><a href="/barang/destroy/{{ $b->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

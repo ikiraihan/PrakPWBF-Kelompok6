@@ -2,14 +2,13 @@
 	<html lang="en">
 	
 	<head>
-	
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
-		<title>Tambah Kota Baru</title>
+		<title>Update Jenis Barang</title>
 	
 		<!-- Custom fonts for this template-->
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +22,7 @@
 	</head>
 		<body class="bg-gradient-primary">
 			<div class="container">
-			<h2 class="h3 mb-2 text-gray-800">Input Kota Supplier Baru</h2>
+			<h2 class="h3 mb-2 text-gray-800">Update Jenis Barang</h2>
 			<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<!-- Main Content-->
@@ -32,15 +31,15 @@
 							<div class="col-md-12">
 								<div class="card shadow mb-4">
 									<div class="card-body">
-										<form action="/kota/store" method="post">
+										<form action="/jenisbarang/update/{{ $jenis_barang->id }}" method="post">
 											{{ csrf_field() }}
 											<div class="form-group">
-												<label for="nama_kota">Nama Kota</label>
-												<input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota">
+												<label for="jenis_barang">Jenis Barang</label>
+												<input type="text" class="form-control" id="jenis_barang" name="jenis_barang" placeholder="Jenis Barang" value="{{ $jenis_barang->jenis_barang }}">
 											</div>
-										<br/>
-											<div class="col-md-12";>
-												<input type="submit" class="btn btn-success" value="Simpan Data">
+											<br/>
+											<div class="col-md-12">
+												<input type="submit" class="btn btn-success" value="Update and Save">
 											</div>
 										</form>
 									</div>

@@ -8,7 +8,8 @@ use App\Http\Controllers\login;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JenisBarangController;
-
+use App\Http\Controllers\UkuranController;
+use App\Http\Controllers\WarnaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +33,37 @@ Route::get('/', [login::class, 'login']);
 Route::get('/kota', [KotaController::class, 'index']);
 Route::get('/kota/tambah', [KotaController::class, 'create']);
 Route::post('/kota/store', [KotaController::class, 'store']);
+Route::get('/kota/edit/{id}', [KotaController::class,'edit']);
+Route::post('/kota/update/{id}', [KotaController::class,'update']);
+Route::get('/kota/destroy/{id}', [KotaController::class,'destroy']);
+
+
+// CRUD JENIS BARANG //
+Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
+Route::get('/jenisbarang/tambah', [JenisBarangController::class, 'create']);
+Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
+Route::get('/jenisbarang/edit/{id}', [JenisBarangController::class,'edit']);
+Route::post('/jenisbarang/update/{id}', [JenisBarangController::class,'update']);
+Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class,'destroy']);
+
+
 
 // CRUD BARANG //
 Route::get('/barang', [BarangController::class, 'index']);
+Route::get('/barang/tambah', [BarangController::class, 'create']);
+Route::post('/barang/store', [BarangController::class, 'store']);
 
 
+// CRUD UKURAN // 
+Route::get('/ukuran', [UkuranController::class, 'index']);
+Route::get('/ukuran/tambah', [UkuranController::class, 'create']);
+Route::post('/ukuran/store', [UkuranController::class, 'store']);
+
+
+// CRUD WARNA //
+Route::get('/warna', [WarnaController::class, 'index']);
+Route::get('/warna/tambah', [WarnaController::class, 'create']);
+Route::post('/warna/store', [WarnaController::class, 'store']);
 
 // Route::get('/', function () {
 //     return view('home',[
@@ -73,7 +100,3 @@ Route::get('/barang', [BarangController::class, 'index']);
 //         "title"=>"Login"
 //     ]);
 // });
-
-Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
-Route::get('/jenisbarang/tambah', [JenisBarangController::class, 'create']);
-Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);

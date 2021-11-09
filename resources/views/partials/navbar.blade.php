@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+{{-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Boutique Sembarang</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "Home") ? 'active' : ''}}" aria-current="page" href="/">Home</a>
+          <a class="nav-link {{ ($title === "Home") ? 'active' : ''}}" href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ ($title === "Data") ? 'active' : ''}}" href="/data">Pendataan</a>
@@ -28,4 +28,4 @@
       </ul>
     </div>
   </div>
-</nav>
+</nav> --}}

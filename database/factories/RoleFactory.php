@@ -22,7 +22,7 @@ class RoleFactory extends Factory
     public function definition()
     {
         return [
-            'jenis_role'=> $this->faker->unique()->word()
+            'jenis_role'=> $this->faker->unique()->randomElement(['Pemilik', 'Pegawai'])
         ];
 
     }

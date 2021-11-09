@@ -20,7 +20,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($jenisbarang as $datajb=>$jb)
+                                    @foreach ($jenis_barang as $datajb=>$jb)
                                     <tr>
                                         <td class="text-wrap text-center">{{ $datajb + 1 }}</td>
                                         {{-- <td>{{ $v -> id }}</td> --}}

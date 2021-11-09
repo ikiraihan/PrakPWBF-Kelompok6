@@ -11,12 +11,17 @@ class KotaController extends Controller
 
         $kota = Kota::all();
 
-        return view('kota/index', ['kota' => $kota]);
+        return view('kota/index', [
+            'title' => 'Kota Supplier',
+            'kota' => $kota
+        ]);
     }
 
     public function create()
     {
-        return view('kota/tambah');
+        return view('kota/tambah', [
+            'title' => 'Tambah Kota'
+        ]);
     }
 
     public function store(Request $request)
@@ -34,29 +39,30 @@ class KotaController extends Controller
     }
 
 
-    // public function edit($id)
-    // {
-    //     $kota = Kota::find($id);
+    public function edit($id)
+    {
+        $kota = Kota::find($id);
         
-    //     return view('kota/edit',[
-    //         'title' => 'Edit Kota',
-    //         'kota' => $kota
-    //     ]);
-    // }
+        return view('kota/edit',[
+            'title' => 'Edit Kota',
+            'kota' => $kota
+        ]);
+    }
 
-    // public function update(Request $request, $id)
-    // {
-    //     Kota::where('id', $id)->update([
-    //         'nama_kota' => $request->nama_kota,
-    //         'updated_at' => date("Y-m-d H:i:s")
-    //     ]);
+    public function update(Request $request, $id)
+    {
+        Kota::where('id', $id)->update([
+            'nama_kota' => $request->nama_kota,
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
         
-    //     return redirect('/kota');
-    // }
+        return redirect('/kota');
+    }
 
-    // {
-    //     Kota::destroy($id);
+    public function destroy($id)
+    {
+        Kota::destroy($id);
 		
-    //     return redirect('/kota');
-    // }
+        return redirect('/kota');
+    }
 }

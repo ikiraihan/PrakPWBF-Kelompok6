@@ -9,6 +9,7 @@ class Warna extends Model
 {
     use HasFactory;
     protected $table = 'tabel_warna';
+    protected $fillable = ['warna'];
 
     public function detailBarangs()
     {

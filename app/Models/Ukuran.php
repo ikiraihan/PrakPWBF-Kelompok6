@@ -9,6 +9,7 @@ class Ukuran extends Model
 {
     use HasFactory;
     protected $table = 'tabel_ukuran';
+    protected $fillable = ['ukuran'];
 
     public function detailBarangs()
     {

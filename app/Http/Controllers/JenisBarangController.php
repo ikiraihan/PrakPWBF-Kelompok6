@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 class JenisBarangController extends Controller
 {
     public function index(){
-        $jenisBarang = JenisBarang::all();
+        $jenis_barang = JenisBarang::all();
 
-        return view('jenisbarang/index', ['jenisbarang' => $jenisBarang]);
+        return view('jenisbarang/index', [
+            'title' => 'Jenis Barang',
+            'jenis_barang' => $jenis_barang
+        ]);
     }
 
     public function create()
@@ -30,5 +33,32 @@ class JenisBarangController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function edit($id)
+    {
+        $jenis_barang = JenisBarang::find($id);
+        
+        return view('jenisbarang/edit',[
+            'title' => 'Edit Jenis Barang',
+            'jenis_barang' => $jenis_barang
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        JenisBarang::where('id', $id)->update([
+            'jenis_barang' => $request->jenis_barang,
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
+        
+        return redirect('/jenisbarang');
+    }
+
+    public function destroy($id)
+    {
+        JenisBarang::destroy($id);
+		
+        return redirect('/jenisbarang');
     }
 }
