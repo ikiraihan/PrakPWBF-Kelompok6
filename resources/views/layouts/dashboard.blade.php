@@ -68,6 +68,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tables</h6>
+                        <a class="collapse-item" href="/role">Role</a>
+                        <a class="collapse-item" href="/user">User</a>
                         <a class="collapse-item" href="/supplier">Supplier</a>
                         <a class="collapse-item" href="/kota">Kota</a>
                         <a class="collapse-item" href="/jenisbarang">Jenis Barang</a>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class BarangController extends Controller
 {
     public function index() { 
-        $barang = Barang::all();
+        $barang = Barang::with('jenisBarang')->get();
 
         return view('barang/index', [
             'title' => 'Data Barang',
@@ -21,7 +21,7 @@ class BarangController extends Controller
     {
         $jenisbarang = JenisBarang::all();
 
-        return view('barang/tambah', [
+        return view('barang/create', [
             'title' => 'Tambah Jenis Barang',
             'jenisbarang' => $jenisbarang
         ]);
@@ -31,6 +31,7 @@ class BarangController extends Controller
     {
         Barang::create([
             'nama_barang' => $request->nama_barang,
+            'id_jb'       => $request->id_jb,
             'stok_barang' => $request->stok_barang,
             'harga_beli_barang' => $request->harga_beli_barang,
             'harga_jual_barang' => $request->harga_jual_barang,
@@ -42,5 +43,38 @@ class BarangController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function edit($id)
+    {
+        $jenisbarang = JenisBarang::all();
+        $barang = Barang::find($id);
+        
+        return view('barang/edit',[
+            'title' => 'Edit Data Barang',
+            'barang' => $barang,
+            'jenisbarang' => $jenisbarang
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        Barang::where('id', $id)->update([
+            'nama_barang' => $request->nama_barang,
+            'id_jb' => $request->id_jb,
+            'stok_barang' => $request->stok_barang,
+            'harga_beli_barang' => $request->harga_beli_barang,
+            'harga_jual_barang' => $request->harga_jual_barang,
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
+        
+        return redirect('/barang');
+    }
+
+    public function destroy($id)
+    {
+        Barang::destroy($id);
+		
+        return redirect('/barang');
     }
 }

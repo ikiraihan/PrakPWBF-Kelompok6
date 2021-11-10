@@ -18,7 +18,9 @@ class JenisBarangController extends Controller
 
     public function create()
     {
-        return view('jenisbarang/tambah');
+        return view('jenisbarang/create',[
+            'title' => 'Tambah Jenis Barang'
+        ]);
     }
 
     public function store(Request $request)

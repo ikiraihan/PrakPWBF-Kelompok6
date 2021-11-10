@@ -9,7 +9,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
-		<title>Tambah Kota Baru</title>
+		<title>Edit Ukuran Barang</title>
 	
 		<!-- Custom fonts for this template-->
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
 	</head>
 		<body class="bg-gradient-primary">
 			<div class="container">
-			<h2 class="h3 mb-2 text-gray-800">Input Kota Supplier Baru</h2>
+			<h2 class="h3 mb-2 text-gray-800">Edit Data Ukuran</h2>
 			<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<!-- Main Content-->
@@ -32,14 +32,14 @@
 							<div class="col-md-12">
 								<div class="card shadow mb-4">
 									<div class="card-body">
-										<form action="/kota/store" method="post">
+										<form action="/ukuran/update/{{ $ukuran->id }}" method="post">
 											{{ csrf_field() }}
 											<div class="form-group">
-												<label for="nama_kota">Nama Kota</label>
-												<input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota">
+												<label for="ukuran">Ukuran</label>
+												<input type="text" class="form-control" id="ukuran" name="ukuran" placeholder="Besar Ukuran" value="{{ $ukuran->ukuran }}">
 											</div>
-										<br/>
-											<div class="col-md-12";>
+											<br/>
+											<div class="col-md-12">
 												<input type="submit" class="btn btn-success" value="Simpan Data">
 											</div>
 										</form>

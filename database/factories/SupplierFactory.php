@@ -24,7 +24,7 @@ class SupplierFactory extends Factory
         return [
             'nama_sup'=>$this->faker->company,
             'alamat_sup'=>$this->faker->address,
-            'telp_sup'=>$this->faker->phoneNumber,
+            'telp_sup'=>'+628'.mt_rand(1111111111,9999999999),
             'kode_kota'=>$this->faker->numberBetween(1, 50),
         ];
     }

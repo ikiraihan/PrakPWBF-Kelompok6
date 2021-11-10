@@ -24,11 +24,12 @@ class TabelUserFactory extends Factory
         return [
             'nama_user' => $this->faker->name,
             'alamat_user'=> $this->faker->address,
-            'telp_user'=> $this->faker->phoneNumber,
+            'telp_user'=> '+628'.mt_rand(1111111111,9999999999),
+            'email_user'=>$this->faker->unique->safeEmail(),
             'username_user'=> $this->faker->unique->userName,
             'password_user' => $this->faker->password(8, 32),
             'id_kota' => $this->faker->numberBetween(1, 50),
-            'id_role' => '1',
+            'id_role' => $this->faker->randomElement(['1', '2']),
         ];
     }
 }

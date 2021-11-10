@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class WarnaController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $warna = Warna::all();
+
         return view('warna/index', [
             'title' => 'Warna Barang',
             'warna' => $warna
@@ -17,7 +19,7 @@ class WarnaController extends Controller
 
     public function create()
     {
-        return view('warna/tambah', [
+        return view('warna/create', [
             'title' => 'Tambah Warna'
         ]);
     }
@@ -34,5 +36,32 @@ class WarnaController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function edit($id)
+    {
+        $warna = Warna::find($id);
+        
+        return view('warna/edit',[
+            'title' => 'Edit Warna Barang',
+            'warna' => $warna
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        Warna::where('id', $id)->update([
+            'warna' => $request->warna,
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
+        
+        return redirect('/warna');
+    }
+
+    public function destroy($id)
+    {
+        Warna::destroy($id);
+		
+        return redirect('/warna');
     }
 }

@@ -9,7 +9,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
-		<title>Edit Kota</title>
+		<title>Edit Warna Barang</title>
 	
 		<!-- Custom fonts for this template-->
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
 	</head>
 		<body class="bg-gradient-primary">
 			<div class="container">
-			<h2 class="h3 mb-2 text-gray-800">Edit Kota Supplier</h2>
+			<h2 class="h3 mb-2 text-gray-800">Edit Data Warna</h2>
 			<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<!-- Main Content-->
@@ -32,11 +32,11 @@
 							<div class="col-md-12">
 								<div class="card shadow mb-4">
 									<div class="card-body">
-										<form action="/kota/update/{{ $kota->id }}" method="post">
+										<form action="/warna/update/{{ $warna->id }}" method="post">
 											{{ csrf_field() }}
 											<div class="form-group">
-												<label for="nama_kota">Nama Kota</label>
-												<input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota" value="{{ $kota->nama_kota }}">
+												<label for="warna">Warna </label>
+												<input type="text" class="form-control" id="warna" name="warna" placeholder="warna" value="{{ $warna->warna }}">
 											</div>
 											<br/>
 											<div class="col-md-12">

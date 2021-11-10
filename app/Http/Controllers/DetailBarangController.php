@@ -9,6 +9,6 @@ class DetailBarangController extends Controller
 {
     public function detailBarang()
     {
-        $detailBarang = DetailBarang::all();
+        $detailBarang = DetailBarang::with('Barang', 'Warna', 'Ukuran')->get();
     }
 }

@@ -9,7 +9,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 	
-		<title>Edit Kota</title>
+		<title>Tambah Role Baru</title>
 	
 		<!-- Custom fonts for this template-->
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,11 +19,11 @@
 	
 		<!-- Custom styles for this template-->
 		<link href="css/sb-admin-2.min.css" rel="stylesheet">
-	
+
 	</head>
 		<body class="bg-gradient-primary">
 			<div class="container">
-			<h2 class="h3 mb-2 text-gray-800">Edit Kota Supplier</h2>
+			<h2 class="h3 mb-2 text-gray-800">Input Role Baru</h2>
 			<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<!-- Main Content-->
@@ -32,14 +32,14 @@
 							<div class="col-md-12">
 								<div class="card shadow mb-4">
 									<div class="card-body">
-										<form action="/kota/update/{{ $kota->id }}" method="post">
+										<form action="/role/store" method="post">
 											{{ csrf_field() }}
 											<div class="form-group">
-												<label for="nama_kota">Nama Kota</label>
-												<input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota" value="{{ $kota->nama_kota }}">
+												<label for="jenis_role">Nama Role</label>
+												<input type="text" class="form-control" id="jenis_role" name="jenis_role" placeholder="Jenis Role">
 											</div>
-											<br/>
-											<div class="col-md-12">
+										<br/>
+											<div class="col-md-12";>
 												<input type="submit" class="btn btn-success" value="Simpan Data">
 											</div>
 										</form>

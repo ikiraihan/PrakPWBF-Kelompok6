@@ -7,7 +7,7 @@
             <meta name="description" content="">
             <meta name="author" content="">
         
-            <title>Tambah Supplier Baru</title>
+            <title>Tambah Barang Baru</title>
         
             <!-- Custom fonts for this template-->
             <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
 
         <body class="bg-gradient-primary">
             <div class="container">
-            <h2 class="h3 mb-2 text-gray-800">Input Supplier Baru</h2>
+            <h2 class="h3 mb-2 text-gray-800">Input Barang Baru</h2>
             <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <!-- Main Content-->
@@ -30,43 +30,37 @@
                             <div class="col-md-12">
                                 <div class="card shadow mb-4">
                                     <div class="card-body">
-                                        <form action="/supplier/store" method="post">
+                                        <form action="/barang/store" method="post">
                                             {{ csrf_field() }}
                                             <div class="form-group">
-                                                <label for="nama_sup">Nama Supplier &nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="nama_sup" name="nama_sup" placeholder="Nama Supplier">
+                                                <label for="nama_barang">Nama Barang</label>
+                                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
                                             </div>
                                             <br/>
-                                            {{-- <div class="form-group">
-                                                <label for="nama_kota">Kota Supplier &nbsp&nbsp&nbsp&nbsp</label>
-                                                <select class="form-control" id="nama_kota" name="nama_kota">
-                                                    @if($kota->count())
-                                                        @foreach($kota as $v)
-                                                            <option value="{{ $v->kode_kota }}">{{ $v->nama_kota }}</option>
+                                            <div class="form-group">
+                                                <label for="id_jb">Jenis Barang &nbsp</label>
+                                                <select class="form-control" id="id_jb" name="id_jb">
+                                                    @if($jenisbarang->count())
+                                                        @foreach($jenisbarang as $v)
+                                                            <option value="{{ $v->id }}">{{ $v->jenis_barang }}</option>
                                                         @endforeach
                                                     @endif
                                                 </select>
                                             </div>
-                                            <br/> --}}
+                                            <br/>
                                             <div class="form-group">
-                                                <label for="alamat_sup">Alamat Supplier&nbsp</label>
-                                                <input type="text" class="form-control" id="alamat_sup" name="alamat_sup" placeholder="Alamat Supplier">
+                                                <label for="stok_barang">Stok Barang &nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="stok_barang" name="stok_barang" placeholder="Jumlah Stok">
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="telp_sup">No. Telepon &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="telp_sup" name="telp_sup" placeholder="No. Telepon">
+                                                <label for="harga_beli_barang">Harga Beli &nbsp&nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="harga_beli_barang" name="harga_beli_barang" placeholder="Harga Beli">
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="nama_kota">Kota Supplier &nbsp&nbsp&nbsp&nbsp</label>
-                                                <select class="form-control" id="nama_kota" name="nama_kota">
-                                                    @if($kota->count())
-                                                        @foreach($kota as $v)
-                                                            <option value="{{ $v->kode_kota }}">{{ $v->nama_kota }}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
+                                                <label for="harga_jual_barang">Harga Jual &nbsp&nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="harga_jual_barang" name="harga_jual_barang" placeholder="Harga Jual">
                                             </div>
                                             <br/>
                                             <div class="col-md-12";>

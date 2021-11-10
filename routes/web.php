@@ -11,6 +11,9 @@ use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\UkuranController;
 use App\Http\Controllers\WarnaController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TabelUserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +32,27 @@ Route::get('/dashboard', [dashboard::class, 'dashboard']);
 
 Route::get('/', [login::class, 'login']);
 
+// CRUD ROLE //
+Route::get('/role', [RoleController::class, 'index']);
+Route::get('/role/create', [RoleController::class, 'create']);
+Route::post('/role/store', [RoleController::class, 'store']);
+Route::get('/role/edit/{id}', [RoleController::class,'edit']);
+Route::post('/role/update/{id}', [RoleController::class,'update']);
+Route::get('/role/destroy/{id}', [RoleController::class,'destroy']);
+
+
+// CRUD USERS //
+Route::get('/user', [TabelUserController::class, 'index']);
+Route::get('/user/create', [TabelUserController::class, 'create']);
+Route::post('/user/store', [TabelUserController::class, 'store']);
+Route::get('/user/edit/{id}', [TabelUserController::class,'edit']);
+Route::post('/user/update/{id}', [TabelUserController::class,'update']);
+Route::get('/user/destroy/{id}', [TabelUserController::class,'destroy']);
+
 
 // CRUD KOTA //
 Route::get('/kota', [KotaController::class, 'index']);
-Route::get('/kota/tambah', [KotaController::class, 'create']);
+Route::get('/kota/create', [KotaController::class, 'create']);
 Route::post('/kota/store', [KotaController::class, 'store']);
 Route::get('/kota/edit/{id}', [KotaController::class,'edit']);
 Route::post('/kota/update/{id}', [KotaController::class,'update']);
@@ -41,7 +61,7 @@ Route::get('/kota/destroy/{id}', [KotaController::class,'destroy']);
 
 // CRUD JENIS BARANG //
 Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
-Route::get('/jenisbarang/tambah', [JenisBarangController::class, 'create']);
+Route::get('/jenisbarang/create', [JenisBarangController::class, 'create']);
 Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
 Route::get('/jenisbarang/edit/{id}', [JenisBarangController::class,'edit']);
 Route::post('/jenisbarang/update/{id}', [JenisBarangController::class,'update']);
@@ -50,25 +70,35 @@ Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class,'destroy']
 
 // CRUD BARANG //
 Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/barang/tambah', [BarangController::class, 'create']);
+Route::get('/barang/create', [BarangController::class, 'create']);
 Route::post('/barang/store', [BarangController::class, 'store']);
+Route::get('/barang/edit/{id}', [BarangController::class,'edit']);
+Route::post('/barang/update/{id}', [BarangController::class,'update']);
+Route::get('/barang/destroy/{id}', [BarangController::class,'destroy']);
 
 
 // CRUD UKURAN // 
 Route::get('/ukuran', [UkuranController::class, 'index']);
-Route::get('/ukuran/tambah', [UkuranController::class, 'create']);
+Route::get('/ukuran/create', [UkuranController::class, 'create']);
 Route::post('/ukuran/store', [UkuranController::class, 'store']);
+Route::get('/ukuran/edit/{id}', [UkuranController::class,'edit']);
+Route::post('/ukuran/update/{id}', [UkuranController::class,'update']);
+Route::get('/ukuran/destroy/{id}', [UkuranController::class,'destroy']);
+
 
 
 // CRUD WARNA //
 Route::get('/warna', [WarnaController::class, 'index']);
-Route::get('/warna/tambah', [WarnaController::class, 'create']);
+Route::get('/warna/create', [WarnaController::class, 'create']);
 Route::post('/warna/store', [WarnaController::class, 'store']);
+Route::get('/warna/edit/{id}', [WarnaController::class,'edit']);
+Route::post('/warna/update/{id}', [WarnaController::class,'update']);
+Route::get('/warna/destroy/{id}', [WarnaController::class,'destroy']);
 
 
 // CRUD SUPPLIER //
 Route::get('/supplier', [SupplierController::class, 'index']);
-Route::get('/supplier/tambah', [SupplierController::class, 'create']);
+Route::get('/supplier/create', [SupplierController::class, 'create']);
 Route::post('/supplier/store', [SupplierController::class, 'store']);
 Route::get('/supplier/edit/{id}', [SupplierController::class,'edit']);
 Route::post('/supplier/update/{id}', [SupplierController::class,'update']);

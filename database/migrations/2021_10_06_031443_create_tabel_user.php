@@ -18,6 +18,7 @@ class CreateTabelUser extends Migration
             $table->string('nama_user', 50);
             $table->string('alamat_user', 75);
             $table->string('telp_user', 20);
+            $table->string('email_user', 40);
             $table->string('username_user', 50)->unique();
             $table->string('password_user', 100);
             $table->timestamps();

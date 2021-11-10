@@ -16,7 +16,7 @@ class UkuranController extends Controller
 
     public function create()
     {
-        return view('ukuran/tambah', [
+        return view('ukuran/create', [
             'title' => 'Tambah Ukuran'
         ]);
     }
@@ -33,5 +33,32 @@ class UkuranController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function edit($id)
+    {
+        $ukuran = Ukuran::find($id);
+        
+        return view('ukuran/edit',[
+            'title' => 'Edit Ukuran Barang',
+            'ukuran' => $ukuran
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        Ukuran::where('id', $id)->update([
+            'ukuran' => $request->ukuran,
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
+        
+        return redirect('/ukuran');
+    }
+
+    public function destroy($id)
+    {
+        Ukuran::destroy($id);
+		
+        return redirect('/ukuran');
     }
 }

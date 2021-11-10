@@ -19,7 +19,7 @@ class KotaController extends Controller
 
     public function create()
     {
-        return view('kota/tambah', [
+        return view('kota/create', [
             'title' => 'Tambah Kota'
         ]);
     }

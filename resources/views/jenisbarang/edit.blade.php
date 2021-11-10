@@ -39,7 +39,7 @@
 											</div>
 											<br/>
 											<div class="col-md-12">
-												<input type="submit" class="btn btn-success" value="Update and Save">
+												<input type="submit" class="btn btn-success" value="Simpan Data">
 											</div>
 										</form>
 									</div>

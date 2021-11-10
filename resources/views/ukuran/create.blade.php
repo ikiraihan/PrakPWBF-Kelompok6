@@ -23,7 +23,7 @@
 	</head>
 		<body class="bg-gradient-primary">
 			<div class="container">
-			<h2 class="h3 mb-2 text-gray-800">Input Ukuran Baru</h2>
+			<h2 class="h3 mb-2 text-gray-800">Input Data Ukuran Baru</h2>
 			<!-- DataTales Example -->
 				<div class="card shadow mb-4">
 					<!-- Main Content-->

@@ -1,21 +1,19 @@
 @extends('layouts.dashboard')
 
 @section('container')
-    <h1 class="h3 mb-2 text-gray-800">Data Kota Supplier</h1>
+    <h1 class="h3 mb-2 text-gray-800">Kota Supplier</h1>
         <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                {{-- <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tabel Kota Supplier</h6>
-                </div> --}}
+                <div class="card-header py-3">
+                    <a href="/kota/create" class="btn btn-success"> + &nbspTambah Kota</a>
+                </div>
                 <div class="card-body">
-                    <a href="/kota/tambah" class="btn btn-success"> + Tambah Kota Baru</a>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th style="width: 1%;">No</th>
-                                    <br/>
-                                    {{-- <th style="width: 13%;">ID Kota</th> --}}
+                                    {{-- <th style="width: 13%;">ID</th> --}}
                                     <th>Nama Kota</th>
                                     <th style="width: 1%;">Edit</th>
 				                    <th style="width: 1%;">Hapus</th>

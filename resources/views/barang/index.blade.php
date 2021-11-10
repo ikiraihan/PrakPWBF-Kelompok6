@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('container')
-    <h1 class="h3 mb-2 text-gray-800">Tabel Barang</h1>
+    <h1 class="h3 mb-2 text-gray-800">Barang</h1>
         <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <a href="/barang/tambah" class="btn btn-success"> + Tambah Barang Baru</a>
+                    <a href="/barang/create" class="btn btn-success"> + &nbspTambah Barang</a>
                 </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -29,7 +29,7 @@
                                         <td class="text-wrap text-center">{{ $dataBarang + 1 }}</td>
                                         {{-- <td>{{ $b -> id }}</td> --}}
                                         <td>{{ $b -> nama_barang }}</td>
-                                        <td>{{ $b -> jenisBarang -> jenis_barang }}</td>
+                                        <td>{{ $b -> JenisBarang -> jenis_barang }}</td>
                                         <td>{{ $b -> stok_barang}}</td>
                                         <td>{{ $b -> harga_beli_barang }}</td>   
                                         <td>{{ $b -> harga_jual_barang }}</td>   
