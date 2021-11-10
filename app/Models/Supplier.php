@@ -9,6 +9,7 @@ class Supplier extends Model
 {
     use HasFactory;
     protected $table = 'tabel_supplier';
+    protected $fillable = ['nama_sup', 'alamat_sup', 'telp_sup'];
 
     public function Penerimaans()
     {

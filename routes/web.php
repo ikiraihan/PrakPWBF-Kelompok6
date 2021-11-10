@@ -10,6 +10,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\UkuranController;
 use App\Http\Controllers\WarnaController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,6 @@ Route::post('/jenisbarang/update/{id}', [JenisBarangController::class,'update'])
 Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class,'destroy']);
 
 
-
 // CRUD BARANG //
 Route::get('/barang', [BarangController::class, 'index']);
 Route::get('/barang/tambah', [BarangController::class, 'create']);
@@ -64,6 +64,15 @@ Route::post('/ukuran/store', [UkuranController::class, 'store']);
 Route::get('/warna', [WarnaController::class, 'index']);
 Route::get('/warna/tambah', [WarnaController::class, 'create']);
 Route::post('/warna/store', [WarnaController::class, 'store']);
+
+
+// CRUD SUPPLIER //
+Route::get('/supplier', [SupplierController::class, 'index']);
+Route::get('/supplier/tambah', [SupplierController::class, 'create']);
+Route::post('/supplier/store', [SupplierController::class, 'store']);
+Route::get('/supplier/edit/{id}', [SupplierController::class,'edit']);
+Route::post('/supplier/update/{id}', [SupplierController::class,'update']);
+Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 
 // Route::get('/', function () {
 //     return view('home',[

@@ -38,7 +38,7 @@
                 {{-- <div>
                     <img src="img/logo.png" alt="Beautique Sembarang" width="50">
                 </div> --}}
-                <div class="sidebar-brand-text mx-3">RK Beautique</div>
+                <div class="sidebar-brand-text mx-3">RK Boutique</div>
             </a>
 
             <!-- Divider -->
@@ -68,6 +68,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tables</h6>
+                        <a class="collapse-item" href="/supplier">Supplier</a>
                         <a class="collapse-item" href="/kota">Kota</a>
                         <a class="collapse-item" href="/jenisbarang">Jenis Barang</a>
                         <a class="collapse-item" href="/ukuran">Ukuran</a>
