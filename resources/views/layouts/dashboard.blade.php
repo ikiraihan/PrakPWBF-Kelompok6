@@ -58,6 +58,8 @@
             <div class="sidebar-heading">
                 Master
             </div>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -70,8 +72,8 @@
                         <h6 class="collapse-header">Tables</h6>
                         <a class="collapse-item" href="/role">Role</a>
                         <a class="collapse-item" href="/user">User</a>
-                        <a class="collapse-item" href="/supplier">Supplier</a>
                         <a class="collapse-item" href="/kota">Kota</a>
+                        <a class="collapse-item" href="/supplier">Supplier</a>
                         <a class="collapse-item" href="/jenisbarang">Jenis Barang</a>
                         <a class="collapse-item" href="/ukuran">Ukuran</a>
                         <a class="collapse-item" href="/warna">Warna</a>
@@ -127,7 +129,7 @@
                 <div id="collapsePemesanan" class="collapse" aria-labelledby="headingPemesanan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Form</h6>
-                        <a class="collapse-item" href="buttons.html">Order</a>
+                        <a class="collapse-item" href="/pemesanan">Order</a>
                     </div>
                 </div>
             </li>
@@ -374,10 +376,10 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
+                                </a> --}}
                                 {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
@@ -405,13 +407,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            {{-- <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; RK Boutique 2021</span>
                     </div>
                 </div>
-            </footer> --}}
+            </footer>
             <!-- End of Footer -->
 
         </div>

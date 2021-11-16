@@ -11,7 +11,7 @@ class KotaController extends Controller
 
         $kota = Kota::all();
 
-        return view('kota/index', [
+        return view('kota.index', [
             'title' => 'Kota Supplier',
             'kota' => $kota
         ]);
@@ -19,17 +19,20 @@ class KotaController extends Controller
 
     public function create()
     {
-        return view('kota/create', [
+        return view('kota.create', [
             'title' => 'Tambah Kota'
         ]);
     }
 
     public function store(Request $request)
     {
-        Kota::create([
-            'nama_kota' => $request->nama_kota,
+        $validatedData = $request->validate([
+            'nama_kota'  => 'required|max:30',
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        Kota::create($validatedData);
+
         return redirect('/kota');
     }
 

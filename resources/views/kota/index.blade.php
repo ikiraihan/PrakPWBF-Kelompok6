@@ -25,8 +25,16 @@
                                         <td class="text-wrap text-center">{{ $dataKota + 1 }}</td>
                                         {{-- <td>{{ $v -> id }}</td> --}}
                                         <td>{{ $v -> nama_kota }}</td>
-                                        <td class="text-wrap"><a href="/kota/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
-				                        <td class="text-wrap"><a href="/kota/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
+                                        <td class="text-wrap">
+                                            <a href="/kota/edit/{{ $v->id }}" class="btn btn-primary">
+                                                Edit
+                                            </a>
+                                        </td>
+				                        <td class="text-wrap">
+                                            <a href="/kota/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">
+                                                Hapus
+                                            </a>
+                                        </td>                                            
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -34,12 +42,4 @@
                     </div>
                 </div>
             </div>
-@endsection
-
-@section('script')
-	<script>
-		$(function () {
-			$('#example1').DataTable();
-		});
-  </script>
 @endsection

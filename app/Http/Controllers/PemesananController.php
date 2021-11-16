@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class PemesananController extends Controller
 {
-    public function pemesanan(){
+    public function index(){
         $pemesanan = Pemesanan::all();
+
+        return view('pemesanan/index', [
+            'title' => 'Pemesanan Barang',
+            'pemesanan' => $pemesanan,
+        ]);
     }
 }

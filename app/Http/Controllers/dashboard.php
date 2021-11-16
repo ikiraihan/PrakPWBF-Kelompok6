@@ -8,7 +8,7 @@ class dashboard extends Controller
 {
     public function dashboard(){
         return view('dashboard/index', [
-            'title' => 'RK Boutique'
+            'title' => 'Dashboard'
         ]);
     }
 }
