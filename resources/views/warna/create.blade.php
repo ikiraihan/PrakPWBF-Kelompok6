@@ -31,26 +31,27 @@
 
     </head>
     <body>
-        <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-12 col-md-9 mt-5">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3 bg-primary d-flex align-items-center justify-content-between mt-0 mb-0">
-                        <h1 class="h3 mt-2 mb-2 text-light">Warna Baru</h1>
-                        <a href="/warna" class="btn btn-warning">Kembali</a>
-                    </div>
-                    <div class="card-body">
-                        <form action="/warna/store" method="post">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <label for="warna">Warna</label>
-                                <input type="text" class="form-control" id="warna" 
-                                name="warna" placeholder="Warna">
-                            </div>
-                            <br/>
-                            <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-3 ">
-                                <input type="submit" class="btn btn-danger" value="Simpan Data">
-                            </div>
-                        </form>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-12 col-md-9 mt-5">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 bg-primary d-flex align-items-center justify-content-between mt-0 mb-0">
+                            <h1 class="h3 mt-2 mb-2 text-light">Warna Baru</h1>
+                            <a href="/warna" class="btn btn-warning">Kembali</a>
+                        </div>
+                        <div class="card-body">
+                            <form action="/warna/store" method="post">
+                                {{ csrf_field() }}
+                                <div class="form-group mb-3">
+                                    <label for="warna">Warna</label>
+                                    <input type="text" class="form-control" id="warna" 
+                                    name="warna" placeholder="Warna">
+                                </div>
+                                <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-4">
+                                    <input type="submit" class="btn btn-danger" value="Simpan Data">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

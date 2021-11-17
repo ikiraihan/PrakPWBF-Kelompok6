@@ -30,28 +30,27 @@
 
 
 	</head>
-	<body c>
-		<div class="row justify-content-center">
-			<div class="col-xl-8 col-lg-12 col-md-9 mt-5">
-				<div class="card shadow mb-4">
-					<div class="card-header py-3 bg-primary">
-						<h1 class="h3 text-light">Jenis Barang Baru</h1>
-					</div>
-					<div class="card-body">
-						<form action="/jenisbarang/store" method="post">
-							{{ csrf_field() }}
-							<div class="form-group">
-								<label for="jenis_barang">Jenis Barang</label>
-								<input type="text" class="form-control" id="jenis_barang" name="jenis_barang" placeholder="Jenis Barang">
-							</div>
-						<br/>
-							<div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-3 ">
-								<input type="submit" class="btn btn-danger" value="Simpan Data">
-							</div>
-						</form>
-					</div>
-					<div class="card-footer ">
-						<a href="/jenisbarang" class="btn btn-warning mt-2 mt-2">Kembali</a>
+	<body>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-xl-8 col-lg-12 col-md-9 mt-5">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3 bg-primary d-flex align-items-center justify-content-between mt-0 mb-0">
+							<h1 class="h3 text-light">Jenis Barang Baru</h1>
+							<a href="/barang" class="btn btn-warning">Kembali</a>
+						</div>
+						<div class="card-body">
+							<form action="/jenisbarang/store" method="post">
+								{{ csrf_field() }}
+								<div class="form-group mb-3">
+									<label for="jenis_barang">Jenis Barang</label>
+									<input type="text" class="form-control" id="jenis_barang" name="jenis_barang" placeholder="Jenis Barang">
+								</div>
+								<div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-4">
+									<input type="submit" class="btn btn-danger" value="Simpan Data">
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
