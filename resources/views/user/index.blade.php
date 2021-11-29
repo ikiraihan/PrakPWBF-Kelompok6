@@ -30,13 +30,13 @@
                                 <tr>
                                     <td class="text-wrap text-center">{{ $dataUser + 1 }}</td>
                                     {{-- <td>{{ $b -> id }}</td> --}}
-                                    <td>{{ $v -> username_user }}</td>
+                                    <td>{{ $v -> username }}</td>
                                     <td>{{ $v -> role -> jenis_role }}</td>
-                                    <td>{{ $v -> nama_user }}</td>
-                                    <td>{{ $v -> alamat_user }}</td>
+                                    <td>{{ $v -> name }}</td>
+                                    <td>{{ $v -> alamat }}</td>
                                     {{-- <td>{{ $v -> kota -> nama_kota }}</td>  --}}
-                                    {{-- <td>{{ $v -> email_user }}</td> --}}
-                                    <td>{{ $v -> telp_user }}</td>   
+                                    {{-- <td>{{ $v -> email }}</td> --}}
+                                    <td>{{ $v -> telp }}</td>   
                                     <td class="text-wrap"><a href="/user/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
                                     <td class="text-wrap"><a href="/user/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                        
                                 </tr>

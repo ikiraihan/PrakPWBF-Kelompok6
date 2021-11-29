@@ -11,17 +11,19 @@ class TabelUser extends Model
     protected $table = 'tabel_user';
 
     protected $fillable = [
-        'nama_user',
-        'alamat_user',
+        'name',
+        'alamat',
         'id_kota',
-        'email_user',
-        'telp_user',
-        'username_user',
-        'password_user',
+        'email',
+        'telp',
+        'username',
+        'password',
         'id_role',
     ];
 
-    protected $hidden = ['password_user',];
+    protected $guarded = ['id'];
+
+    protected $hidden = ['password',];
 
     public function Pemesanans()
     {

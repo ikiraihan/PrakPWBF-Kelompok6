@@ -33,13 +33,13 @@ class TabelUserController extends Controller
     public function store(Request $request)
     {
         TabelUser::create([
-            'nama_user' => $request->nama_user,
-            'alamat_user' => $request->alamat_user,
+            'name' => $request->name,
+            'alamat' => $request->alamat,
             'id_kota' => $request->id_kota,
-            'telp_user' => $request->telp_user,
-            'email_user' => $request->email_user,
-            'username_user' => $request->username_user,
-            'password_user' => $request->password_user,
+            'telp' => $request->telp,
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => $request->password,
             'id_role' => $request->id_role,
             'created_at' => date("Y-m-d H:i:s")
         ]);
@@ -68,13 +68,13 @@ class TabelUserController extends Controller
     public function update(Request $request, $id)
     {
         TabelUser::where('id', $id)->update([
-            'nama_user' => $request->nama_user,
-            'alamat_user' => $request->alamat_user,
+            'name' => $request->nama,
+            'alamat' => $request->alamat,
             'id_kota' => $request->id_kota,
-            'telp_user' => $request->telp_user,
-            'email_user' => $request->email_user,
-            'username_user' => $request->username_user,
-            'password_user' => $request->password_user,
+            'telp' => $request->telp,
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => $request->password,
             'id_role' => $request->id_role,
             'updated_at' => date("Y-m-d H:i:s")
         ]);

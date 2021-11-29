@@ -43,8 +43,8 @@
                                 {{ csrf_field() }}
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="nama_user">Nama</label>
-                                        <input type="text" class="form-control" id="nama_user" name="nama_user" placeholder="Nama">
+                                        <label for="name">Nama</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nama">
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                         <label for="id_role">Role</label>
@@ -59,8 +59,8 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="alamat_user">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat_user" name="alamat_user" placeholder="Alamat">
+                                        <label for="alamat">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat">
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                         <label for="id_kota">Kota Tinggal</label>
@@ -75,22 +75,22 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="telp_user">No. Telepon</label>
-                                        <input type="text" class="form-control" id="telp_user" name="telp_user" placeholder="No. Telepon">
+                                        <label for="telp">No. Telepon</label>
+                                        <input type="text" class="form-control" id="telp" name="telp" placeholder="No. Telepon">
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <label for="email_user">Email</label>
-                                        <input type="text" class="form-control" id="email_user" name="email_user" placeholder="Email">
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <label for="username_user">Username</label>
-                                        <input type="text" class="form-control" id="username_user" name="username_user" placeholder="Username">
+                                        <label for="username">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                                     </div>
                                     <div class="col-sm-6 mb-3">
-                                        <label for="password_user">Password</label>
-                                    <input type="text" class="form-control" id="password_user" name="password_user" placeholder="Password">
+                                        <label for="password">Password</label>
+                                    <input type="text" class="form-control" id="password" name="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-4">

@@ -26,50 +26,23 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5">
-                <!-- Basic login form-->
-                @if(session()->has('success'))
-                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-
-                @if(session()->has('loginError'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        {{ session('loginError') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-body p-5">
                         <!-- Login form-->
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mt-2 mb-4">Please Login</h1>
+                            <h1 class="h3 text-gray-900 mt-2 mb-4">Please Login</h1>
                         </div>
-                        <form class="user" action="/login" method="post">
+                        <form class="tabel_user" action="/login" method="post">
+                            @csrf
                             <div class="form-group">
-                                <input type="username" class="form-control form-control-user @error('username') is-invalid @enderror" id="username" 
-                                    aria-describedby="username" placeholder="Username" autofocus required value="{{ old('username') }}">
-                                @error('username')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <input type="email" name="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" 
+                                    aria-describedby="email" placeholder="email" autofocus required value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-user" id="password" placeholder="Password">
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mt-2 mb-4">
-                                <div class="custom-control custom-checkbox small">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck">
-                                    <label class="custom-control-label" for="customCheck">Remember Me</label>
-                                </div>
-                                <div class="text-right">
-                                    <a class="small" href="#">Forgot Password?</a>
-                                </div>
+                                <input type="password" name="password" class="form-control form-control-user " id="password" placeholder="Password" required>
                             </div>
                             <div class="form-group mb-0">
-                                <a href="/dashboard" class="btn btn-primary btn-user btn-block" type="submit">Login</a>
+                                <button class="btn btn-primary btn-user btn-block"  type="submit">Login</button>
                             </div>
                         </form>
                     </div>

@@ -2,9 +2,10 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\home;
+use App\Http\Controllers\homeController;
 use App\Http\Controllers\KotaController;
-use App\Http\Controllers\login;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JenisBarangController;
@@ -26,12 +27,19 @@ use App\Http\Controllers\TabelUserController;
 |
 */
 
-Route::get('/home', [home::class, 'home']);
+Route::get('/home', [homeController::class, 'home']);
 
+// sign up //
+Route::get('/signup', [SignUpController::class, 'index']);
+Route::post('/signup', [SignUpController::class, 'store']);
+
+// login //
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+//Route::group(['middleware'=>'auth'],function() {
+// DASHBOARD //
 Route::get('/dashboard', [dashboard::class, 'dashboard']);
-
-Route::get('/', [login::class, 'login']);
-
 // CRUD ROLE //
 Route::get('/role', [RoleController::class, 'index']);
 Route::get('/role/create', [RoleController::class, 'create']);
@@ -139,3 +147,5 @@ Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 //         "title"=>"Login"
 //     ]);
 // });
+//}
+//);

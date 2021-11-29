@@ -35,13 +35,13 @@
                                         <form action="/user/update/{{ $user->id }}" method="post">
                                             {{ csrf_field() }}
                                             <div class="form-group">
-                                                <label for="nama_user">Nama User &nbsp&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="nama_user" name="nama_user" placeholder="Nama" value="{{ $user->nama_user }}">
+                                                <label for="name">Nama User &nbsp&nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Nama" value="{{ $user->name }}">
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="alamat_user">Alamat User&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="alamat_user" name="alamat_user" placeholder="Alamat" value="{{ $user->alamat_user}}">
+                                                <label for="alamat">Alamat User&nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="{{ $user->alamat}}">
                                             </div>
                                             <br/>
                                             <div class="form-group">
@@ -56,23 +56,23 @@
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="telp_user">No. Telepon &nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="telp_user" name="telp_user" placeholder="No. Telepon" value="{{ $user->telp_user }}">
+                                                <label for="telp">No. Telepon &nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="telp" name="telp" placeholder="No. Telepon" value="{{ $user->telp }}">
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="email_user">Email User &nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="email_user" name="email_user" placeholder="Email" value="{{ $user->email_user }}">
+                                                <label for="email">Email User &nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="username_user">Username &nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="username_user" name="username_user" placeholder="Username" value="{{ $user->username_user }}">
+                                                <label for="username">Username &nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ $user->username }}">
                                             </div>
                                             <br/>
                                             <div class="form-group">
-                                                <label for="password_user">Password &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                                                <input type="text" class="form-control" id="password_user" name="password_user" placeholder="Password" value="{{ $user->password_user }}">
+                                                <label for="password">Password &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" value="{{ $user->password }}">
                                             </div>
                                             <br/>
                                             <div class="form-group">

@@ -22,14 +22,14 @@ class TabelUserFactory extends Factory
     public function definition()
     {
         return [
-            'nama_user' => $this->faker->name,
-            'alamat_user'=> $this->faker->address,
-            'telp_user'=> '+628'.mt_rand(1111111111,9999999999),
-            'email_user'=>$this->faker->unique->safeEmail(),
-            'username_user'=> $this->faker->unique->userName,
-            'password_user' => $this->faker->password(8, 32),
+            'name' => $this->faker->name,
+            'alamat'=> $this->faker->address,
+            'telp'=> '+628'.mt_rand(1111111111,9999999999),
+            'email'=>$this->faker->unique->safeEmail(),
+            'username'=> $this->faker->unique->userName,
+            'password' => $this->faker->password(8, 32),
             'id_kota' => $this->faker->numberBetween(1, 50),
-            'id_role' => $this->faker->randomElement(['1', '2']),
+            'id_role' => $this->faker->randomElement(['1']),
         ];
     }
 }
