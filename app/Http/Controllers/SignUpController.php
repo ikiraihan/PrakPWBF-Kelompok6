@@ -19,7 +19,7 @@ class SignUpController extends Controller
             'id_kota'       => 'required',
             'id_role'       => 'required',
             'email'         => 'required|email:dns|unique:tabel_user',
-            'telp'            => 'required|max:20',
+            'telp'          => 'required|max:20',
             'username'      => 'required|min:3|max:50|unique:tabel_user',
             'password'      => 'required||min:8|max:32'
         ]);

@@ -2,11 +2,11 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\homeController;
-use App\Http\Controllers\KotaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignUpController;
-use App\Http\Controllers\dashboard;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KotaController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\UkuranController;
@@ -14,7 +14,7 @@ use App\Http\Controllers\WarnaController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TabelUserController;
-
+use App\Http\Controllers\PemesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ use App\Http\Controllers\TabelUserController;
 |
 */
 
-Route::get('/home', [homeController::class, 'home']);
+Route::get('/home', [HomeController::class, 'home']);
 
 // sign up //
 Route::get('/signup', [SignUpController::class, 'index']);
@@ -39,7 +39,8 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 //Route::group(['middleware'=>'auth'],function() {
 // DASHBOARD //
-Route::get('/dashboard', [dashboard::class, 'dashboard']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+
 // CRUD ROLE //
 Route::get('/role', [RoleController::class, 'index']);
 Route::get('/role/create', [RoleController::class, 'create']);
@@ -112,6 +113,10 @@ Route::get('/supplier/edit/{id}', [SupplierController::class,'edit']);
 Route::post('/supplier/update/{id}', [SupplierController::class,'update']);
 Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 
+
+
+// Route::get('/pemesanan', [PemesananController::class, 'index']);
+
 // Route::get('/', function () {
 //     return view('home',[
 //         "title"=>"Home"
@@ -147,5 +152,3 @@ Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 //         "title"=>"Login"
 //     ]);
 // });
-//}
-//);
