@@ -26,9 +26,12 @@
 
 <body class="bg-gradient-primary">
     <div class="container">
+        <div class="text-center">
+            <h1 class="h3 text-gray-100 mt-5 mb-0">Welcome to RK Boutique!</h1>
+        </div>
         <div class="row justify-content-center">
-            <div class="col-lg-5 mt-5">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="col-lg-5 mb-0 mt-0">
+                <div class="card shadow-lg border-0 rounded-lg mt-4">
                     <div class="card-body p-5">
                         <!-- Login form-->
                         <div class="text-center">
@@ -38,7 +41,7 @@
                             @csrf
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" 
-                                    aria-describedby="email" placeholder="email" autofocus required value="{{ old('email') }}">
+                                    aria-describedby="email" placeholder="Email" autofocus required value="{{ old('email') }}">
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control form-control-user " id="password" placeholder="Password" required>

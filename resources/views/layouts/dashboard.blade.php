@@ -149,7 +149,7 @@
                 <div id="collapsePenerimaan" class="collapse" aria-labelledby="headingPenerimaan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Form</h6>
-                        <a class="collapse-item" href="buttons.html">Barang diterima</a>
+                        <a class="collapse-item" href="/penerimaan">Barang diterima</a>
                     </div>
                 </div>
             </li>
@@ -162,7 +162,7 @@
                 <div id="collapsePembayaran" class="collapse" aria-labelledby="headingPembayaran" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Form</h6>
-                        <a class="collapse-item" href="buttons.html">Bukti Pembayaran</a>
+                        <a class="collapse-item" href="/pembayaran">Bukti Pembayaran</a>
                     </div>
                 </div>
             </li>

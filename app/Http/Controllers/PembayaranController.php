@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
 {
-    public function pembayaran(){
+    public function index(){
         $pembayaran = Pembayaran::all();
+    
+        return view('pembayaran/index', [
+            'title' => 'Pembayaran Barang',
+            'pembayaran' => $pembayaran,
+        ]);
     }
 }

@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class PenerimaanController extends Controller
 {
-    public function penerimaan(){
+    public function index(){
         $penerimaan = Penerimaan::all();
+    
+        return view('penerimaan/index', [
+            'title' => 'Penerimaan Barang',
+            'penerimaan' => $penerimaan,
+        ]);
     }
+
 }
