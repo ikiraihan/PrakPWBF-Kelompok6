@@ -9,6 +9,7 @@ class DetailPemesanan extends Model
 {
     use HasFactory;
     protected $table = 'detail_pemesanan';
+    protected $fillable = ['kode_bar', 'id_pesan', 'jumlah_up', 'harga_up'];
 
     public function Barang()
     {

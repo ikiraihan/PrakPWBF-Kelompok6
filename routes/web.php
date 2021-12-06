@@ -17,6 +17,7 @@ use App\Http\Controllers\TabelUserController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\DetailPemesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,8 +119,13 @@ Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 
 
 Route::get('/pemesanan', [PemesananController::class, 'index']);
+
+Route::get('/detailpemesanan/index', [DetailPemesananController::class, 'index']);
+
 Route::get('/penerimaan', [PenerimaanController::class, 'index']);
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
+
+
 // Route::get('/', function () {
 //     return view('home',[
 //         "title"=>"Home"

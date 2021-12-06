@@ -12,9 +12,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th style="width: 1%;">No</th>
-                            {{-- <th>ID</th> --}}
-                            <th>ID</th>
+                            <th>Kode</th>
                             <th>Pemesan</th>
                             <th>Supplier</th>
                             <th>Tanggal</th>
@@ -27,13 +25,12 @@
                     <tbody>
                         @foreach ($pemesanan as $data=>$v)
                             <tr>
-                                <td class="text-wrap text-center">{{ $data + 1 }}</td>
-                                <td>{{ $v -> id }}</td>
-                                <td>{{ $v -> user_id }}</td>
-                                <td>{{ $v -> sup_id }}</td>
-                                <td>{{ $v -> tgl_pesan }}</td>
-                                <td>{{ $v -> status_pesan }}</td>
-                                <td class="text-wrap"><a href="/pemesanan/show/{{ $v->id }}" class="btn btn-warning">Show</a></td>
+                                <td>{{ $v->id }}</td>
+                                <td>{{ $v->User->name }}</td>
+                                <td>{{ $v->Supplier->nama_sup }}</td>
+                                <td>{{ $v->tgl_pesan }}</td>
+                                <td>{{ $v->status_pesan }}</td>
+                                <td class="text-wrap"><a href="/detailpemesanan/index/{{ $v->id }}" class="btn btn-warning">Show</a></td>
                                 <td class="text-wrap"><a href="/pemesanan/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
                                 <td class="text-wrap"><a href="/pemesanan/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
                             </tr>
