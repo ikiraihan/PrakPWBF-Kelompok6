@@ -28,6 +28,20 @@
             <div class="col-lg-5">
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-body p-5">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                         </div>
+                        @endif
+                        @if(session()->has('loginError'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('loginError') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                </button>
+                            </div>
+                        @endif
                         <!-- Login form-->
                         <div class="text-center">
                             <h1 class="h3 text-gray-900 mt-2 mb-4">Please Login</h1>
@@ -35,14 +49,19 @@
                         <form class="tabel_user" action="/login" method="post">
                             @csrf
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" 
-                                    aria-describedby="email" placeholder="email" autofocus required value="{{ old('email') }}">
+                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" 
+                                 placeholder="email" autofocus required value="{{ old('email') }}">
+                                 @error('email')
+                                 <div class="invalid-feedback">
+                                     {{ $message }}
+                                 </div>
+                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-user " id="password" placeholder="Password" required>
+                                <input type="password" name="password" class="form-control " id="password" placeholder="Password" required>
                             </div>
                             <div class="form-group mb-0">
-                                <button class="btn btn-primary btn-user btn-block"  type="submit">Login</button>
+                                <button class="btn btn-primary btn-user btn-block"  type="submit" id="login">Login</button>
                             </div>
                         </form>
                     </div>

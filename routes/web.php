@@ -34,8 +34,8 @@ Route::get('/signup', [SignUpController::class, 'index']);
 Route::post('/signup', [SignUpController::class, 'store']);
 
 // login //
-Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/login', [LoginController::class, 'index']);
 
 //Route::group(['middleware'=>'auth'],function() {
 // DASHBOARD //
@@ -147,5 +147,4 @@ Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 //         "title"=>"Login"
 //     ]);
 // });
-//}
-//);
+//});
