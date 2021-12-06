@@ -1,85 +1,48 @@
 @extends('layouts.dashboard')
 
 @section('container')
-<!DOCTYPE html>
-	<html lang="en">
-        <head>
-
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <meta name="description" content="">
-            <meta name="author" content="">
-        
-            <title>{{ $title }}</title>
-        
-            <!-- Custom fonts for this template-->
-            <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-            <link
-                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-                rel="stylesheet">
-        
-            <!-- Custom styles for this template-->
-            <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        
-            <!-- Custom styles for this page -->
-            <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-        
-        </head>
-        
-        <body id="page-top">
-            <div class="card mb-4 py-3 border-left-primary">
-                <div class="card-body">
-                    .border-left-primary
-                </div>
+<h1 class="h3 mb-2 text-gray-800">Pemesanan Barang</h1>
+<!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href="/barang/create" class="btn btn-success"> + &nbspPesan</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%;">No</th>
+                            {{-- <th>ID</th> --}}
+                            <th>ID</th>
+                            <th>Pemesan</th>
+                            <th>Supplier</th>
+                            <th>Tanggal</th>
+                            <th>Status</th>
+                            <th style="width: 1%;">Detail</th>
+                            <th style="width: 1%;">Edit</th>
+                            <th style="width: 1%;">Hapus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($pemesanan as $data=>$v)
+                            <tr>
+                                <td class="text-wrap text-center">{{ $data + 1 }}</td>
+                                <td>{{ $v -> id }}</td>
+                                <td>{{ $v -> user_id }}</td>
+                                <td>{{ $v -> sup_id }}</td>
+                                <td>{{ $v -> tgl_pesan }}</td>
+                                <td>{{ $v -> status_pesan }}</td>
+                                <td class="text-wrap"><a href="/pemesanan/show/{{ $v->id }}" class="btn btn-warning">Show</a></td>
+                                <td class="text-wrap"><a href="/pemesanan/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
+                                <td class="text-wrap"><a href="/pemesanan/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-12 col-md-9 mt-4">
-                    <a href="/pemesanan" class="btn btn-primary">Kembali</a>
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h1 class="h3 mb-2 text-gray-800">Tambah Kota Baru</h1>
-                        </div>
-                        <div class="card-body">
-                            <form action="/pemesanan/store" method="post">
-                                {{ csrf_field() }}
-                                <div class="col-md-12 mb-3">
-                                    <label for="nama_kota">Nama Kota</label>
-                                    <input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota">
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <input type="submit" class="btn btn-danger" value="Simpan Data">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </body>
-
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
-        <script src="js/demo/chart-bar-demo.js"></script>
-        <script src="js/demo/datatables-demo.js"></script>
-        
-    </html>
+        </div>
+    </div>
 @endsection
 {{-- <td class="text-wrap"><a href="/ukuran/edit/{{ $v->id }}"  class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="user-management-edit-user.html">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
