@@ -24,7 +24,7 @@ class PenerimaanFactory extends Factory
         return [
             'tgl_terima'=> $this->faker->dateTime(),
             'total_harga'=> $this->faker->numberBetween(0,500000),
-            'status_terima'=> $this->faker->randomElement('Diterima', 'Belum diterima'),
+            'status_terima'=> $this->faker->randomElement(['Diterima', 'Belum diterima']),
             'kode_user'=> $this->faker->numberBetween(1, 10),
             'kode_sup'=> $this->faker->numberBetween(1, 5),
         ];

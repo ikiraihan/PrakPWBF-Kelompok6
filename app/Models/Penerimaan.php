@@ -9,15 +9,17 @@ class Penerimaan extends Model
 {
     use HasFactory;
     protected $table = 'tabel_penerimaan';
+    protected $fillable = ['kode_user', 'kode_sup', 'tgl_terima','total_harga', 'status_terima', 'id_terima'];
+
 
     public function User()
     {
-	return $this->belongsTo('App\Models\TabelUser','id_user','id');
+	return $this->belongsTo('App\Models\TabelUser','kode_user','id');
     }
 
     public function Supplier()
     {
-	return $this->belongsTo('App\Models\Supplier','id_sup','id');
+	return $this->belongsTo('App\Models\Supplier','kode_sup','id');
     }
 
     public function detailPenerimaans()

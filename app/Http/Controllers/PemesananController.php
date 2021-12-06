@@ -36,8 +36,10 @@ class PemesananController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'name' => 'required',
             'nama_sup'  => 'required|max:30',
             'detpesan' => 'required',
+            'status' => 'required',
             'created_at' => date("Y-m-d H:i:s")
         ]);
 

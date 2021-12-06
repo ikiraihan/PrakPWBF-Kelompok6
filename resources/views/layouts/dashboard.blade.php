@@ -116,7 +116,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePendataan"
                     aria-expanded="true" aria-controls="collapsePendataan">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-th-list"></i>
                     <span>Pendataan</span>
                 </a>
                 <div id="collapsePendataan" class="collapse" aria-labelledby="headingPendataan"
@@ -130,7 +130,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePemesanan"
                     aria-expanded="true" aria-controls="collapsePemesanan">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-truck"></i>
                     <span>Pemesanan</span>
                 </a>
                 <div id="collapsePemesanan" class="collapse" aria-labelledby="headingPemesanan" data-parent="#accordionSidebar">
@@ -143,7 +143,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePenerimaan"
                     aria-expanded="true" aria-controls="collapsePenerimaan">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-box"></i>
                     <span>Penerimaan</span>
                 </a>
                 <div id="collapsePenerimaan" class="collapse" aria-labelledby="headingPenerimaan" data-parent="#accordionSidebar">
@@ -156,7 +156,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePembayaran"
                     aria-expanded="true" aria-controls="collapsePembayaran">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-money-bill"></i>
                     <span>Pembayaran</span>
                 </a>
                 <div id="collapsePembayaran" class="collapse" aria-labelledby="headingPembayaran" data-parent="#accordionSidebar">
