@@ -18,6 +18,8 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\DetailPemesananController;
+use App\Http\Controllers\DetailPenerimaanController;
+use App\Http\Controllers\DetailPembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -119,10 +121,16 @@ Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 
 
 Route::get('/pemesanan', [PemesananController::class, 'index']);
-
-Route::get('/detailpemesanan/index', [DetailPemesananController::class, 'index']);
+Route::get('/pemesanan/create', [PemesananController::class, 'create']);
+Route::post('/pemesanan/store', [PemesananController::class, 'store']);
+Route::get('/pemesanan/edit/{id}', [PemesananController::class,'edit']);
+Route::post('/pemesanan/update/{id}', [PemesananController::class,'update']);
+Route::get('/pemesanan/destroy/{id}', [PemesananController::class,'destroy']);
+Route::get('/detailpemesanan/index/{id}', [DetailPemesananController::class,'index']);
 
 Route::get('/penerimaan', [PenerimaanController::class, 'index']);
+Route::get('/detailpenerimaan/index/{id}', [DetailPenerimaanController::class,'index']);
+
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
 
 

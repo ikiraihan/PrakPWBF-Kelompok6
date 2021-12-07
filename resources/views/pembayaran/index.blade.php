@@ -12,11 +12,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Kode Pembayaran</th>
                             <th>Kode Penerimaan</th>
                             <th>Tanggal Pembayaran</th>
                             <th>Total Pembayaran</th>
-                            <th style="width: 1%;">Bukti Pembayaran</th>
                             <th style="width: 1%;">Edit</th>
                             <th style="width: 1%;">Hapus</th>
                         </tr>
@@ -28,7 +27,6 @@
                                 <td>{{ $v -> id_penerimaan }}</td>
                                 <td>{{ $v -> tgl_bayar }}</td>
                                 <td>{{ $v -> total_bayar }}</td>
-                                <td class="text-wrap"><a href="/pembayaran/detail/{{ $v->id }}" class="btn btn-warning">Show</a></td>
                                 <td class="text-wrap"><a href="/pembayaran/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
                                 <td class="text-wrap"><a href="/pembayaran/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
                             </tr>

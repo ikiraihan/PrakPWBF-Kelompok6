@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class DetailPemesananController extends Controller
 {
     public function index(Pemesanan $id){
-        $detpemesanan = DetailPemesanan::with(['Barang','Pemesanan'])->get();
+        $detpemesanan = DetailPemesanan::with('Barang')->get();
 
         return view('detailPemesanan.index', [
             'title' => 'Detail Pemesanan',
@@ -47,4 +47,6 @@ class DetailPemesananController extends Controller
 
         return redirect('/detail-pemesanan');
     }
+
+    
 }

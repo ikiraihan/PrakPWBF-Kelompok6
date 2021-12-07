@@ -32,7 +32,7 @@
                                 <td>{{ $v -> tgl_terima }}</td>
                                 <td>{{ $v -> total_harga }}</td>
                                 <td>{{ $v -> status_terima }}</td>
-                                <td class="text-wrap"><a href="/penerimaan/show/{{ $v->id }}" class="btn btn-warning">Show</a></td>
+                                <td class="text-wrap"><a href="/detailpenerimaan/index/{{ $v->id }}" class="btn btn-warning">Show</a></td>
                                 <td class="text-wrap"><a href="/penerimaan/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
                                 <td class="text-wrap"><a href="/penerimaan/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
                             </tr>

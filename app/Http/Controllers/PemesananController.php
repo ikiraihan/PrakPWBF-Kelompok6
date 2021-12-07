@@ -14,37 +14,79 @@ class PemesananController extends Controller
         $pemesanan = Pemesanan::with(['User','supplier','detailPemesanans'])->get();
 
         return view('pemesanan/index', [
-            'title' => 'Pemesanan Barang',
+            'title'     => 'Pemesanan Pemesanan',
             'pemesanan' => $pemesanan,
         ]);
     }
 
     public function create()
     {
-        $user = TabelUser::all();
-        $supplier = Supplier::all();
-        $detpesan = DetailPemesanan::all();
+        // $user = TabelUser::all();
+        // $supplier = Supplier::all();
         
+        $pemesanan = Pemesanan::with(['User','supplier','detailPemesanans'])->get();
+
         return view('pemesanan.create', [
-            'title' => 'Tambah Pemesanan',
-            'user' => $user,
-            'supplier' => $supplier,
-            'detpesan' => $detpesan,
+            'title'     => 'Tambah Pemesanan',
+            // 'user'      => $user,
+            // 'supplier'  => $supplier,
+            'pemesanan'  => $pemesanan,
         ]);
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'nama_sup'  => 'required|max:30',
-            'detpesan' => 'required',
-            'status' => 'required',
-            'created_at' => date("Y-m-d H:i:s")
+        Pemesanan::create([
+            'tgl_pesan'     => $request->tgl_pesan,
+            'status_pesan'  => $request->status_pesan,
+            'user_id'       => $request->user_id,
+            'sup_id'        => $request->sup_id,
+            'created_at'    => date("Y-m-d H:i:s")
         ]);
 
-        Pemesanan::create($validatedData);
+        $request->session()->flash('successPemesanan','Pemesanan Barang Berhasil');
 
+        return redirect('/pemesanan');
+    }
+
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit($id)
+    {
+        $user       = TabelUser::all();
+        $supplier   = Supplier::all();
+        $detpesan   = DetailPemesanan::all();
+        $pemesanan  = Pemesanan::find($id);
+        
+        return view('pemesanan/edit',[
+            'title'     => 'Edit Data Pemesanan',
+            'pemesanan' => $pemesanan,
+            'user'      => $user,
+            'supplier'  => $supplier,
+            'detpesan'  => $detpesan,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        Pemesanan::where('id', $id)->update([
+            'name'          => 'required',
+            'nama_sup'      => 'required|max:30',
+            'detpesan'      => 'required',
+            'status'        => 'required',
+            'updated_at'        => date("Y-m-d H:i:s")
+        ]);
+        
+        return redirect('/pemesanan');
+    }
+
+    public function destroy($id)
+    {
+        Pemesanan::destroy($id);
+		
         return redirect('/pemesanan');
     }
 }

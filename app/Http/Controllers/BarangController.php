@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\JenisBarang;
+use App\Models\DetailBarang;
+use App\Models\Hs;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
 {
     public function index() { 
-        $barang = Barang::with('jenisBarang')->get();
+        $barang = Barang::with(['jenisBarang','detailBarangs'])->get();
 
         return view('barang/index', [
             'title' => 'Data Barang',
@@ -20,10 +22,14 @@ class BarangController extends Controller
     public function create()
     {
         $jenisbarang = JenisBarang::all();
+        $detailBarang = DetailBarang::all();
+        $hs = Hs::all();
 
         return view('barang/create', [
             'title' => 'Tambah Jenis Barang',
-            'jenisbarang' => $jenisbarang
+            'jenisbarang' => $jenisbarang,
+            'detbar' => $detailBarang,
+            'hs' => $hs,
         ]);
     }
 

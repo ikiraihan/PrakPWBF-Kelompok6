@@ -4,7 +4,7 @@
 <div id="layout_content">
     <main>
         <div class="container">
-            <a href="/user" class="btn btn-primary">Kembali</a>
+            <a href="/user"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h1 class="h3 mt-2 mb-2 text-gray-800">User Baru</h1>

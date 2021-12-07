@@ -4,7 +4,7 @@
 <div id="layout_content">
     <main>
         <div class="container">
-            <a href="/supplier" class="btn btn-primary">Kembali</a>
+            <a href="/supplier"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
             <div class="row justify">
                 <div class="col-xl-8 col-lg-12 col-md-9">
                     <div class="card shadow mb-4">
