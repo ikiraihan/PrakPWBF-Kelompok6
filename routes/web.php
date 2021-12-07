@@ -30,17 +30,19 @@ use App\Http\Controllers\DetailPemesananController;
 |
 */
 
-Route::get('/home', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->middleware('guest');
 
 // sign up //
-Route::get('/signup', [SignUpController::class, 'index']);
-Route::post('/signup', [SignUpController::class, 'store']);
+Route::get('/signup', [SignUpController::class, 'index'])->middleware('guest');
+Route::post('/signup', [SignUpController::class, 'store'])->middleware('guest');
 
 // login //
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::get('/login', [LoginController::class, 'index']);
 
-//Route::group(['middleware'=>'auth'],function() {
+Route::group(['middleware'=>'auth'],function() {
+//LOGOUT
+Route::post('/logout', [LoginController::class, 'logout']);
 // DASHBOARD //
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
@@ -161,4 +163,4 @@ Route::get('/pembayaran', [PembayaranController::class, 'index']);
 //         "title"=>"Login"
 //     ]);
 // });
-//});
+});
