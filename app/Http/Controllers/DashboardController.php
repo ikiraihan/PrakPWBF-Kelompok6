@@ -8,7 +8,13 @@ class DashboardController extends Controller
 {
     public function dashboard(){
         return view('dashboard/index', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard | Pemilik'
+        ]);
+    }
+
+    public function pegawai(){
+        return view('pegawai/index', [
+            'title' => 'Dashboard | Pegawai'
         ]);
     }
 }

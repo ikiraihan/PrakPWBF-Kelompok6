@@ -19,7 +19,8 @@ use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\DetailPemesananController;
 use App\Http\Controllers\DetailPenerimaanController;
-use App\Http\Controllers\DetailPembayaranController;
+use App\Http\Controllers\DetailBarangController;
+use App\Http\Controllers\HsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::group(['middleware'=>'auth'],function() {
 Route::post('/logout', [LoginController::class, 'logout']);
 // DASHBOARD //
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/dashboard-pegawai', [DashboardController::class, 'pegawai']);
 
 // CRUD ROLE //
 Route::get('/role', [RoleController::class, 'index']);
@@ -92,6 +94,14 @@ Route::get('/barang/edit/{id}', [BarangController::class,'edit']);
 Route::post('/barang/update/{id}', [BarangController::class,'update']);
 Route::get('/barang/destroy/{id}', [BarangController::class,'destroy']);
 
+//CRUD HISTORI STOK
+Route::get('/historistok/index/{id}', [HsController::class,'index']);
+Route::get('/historistok/create/{id}', [HsController::class,'create']);
+Route::post('/historistok/store', [HsController::class, 'store']);
+
+
+//CRUD DETAIL BARANG
+Route::get('/detailbarang/index/{id}', [DetailBarangController::class,'index']);
 
 // CRUD UKURAN // 
 Route::get('/ukuran', [UkuranController::class, 'index']);

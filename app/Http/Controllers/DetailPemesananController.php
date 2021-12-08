@@ -21,13 +21,14 @@ class DetailPemesananController extends Controller
         ]);
     }
 
-    public function create()
+    public function create($id)
     {
         $barang = Barang::all();
         $pemesanan = Pemesanan::all();
         
         return view('detailPemesanan.create', [
             'title' => 'Tambah Detail Pemesanan',
+            'barang' => Barang::find($id),
             'barang' => $barang,
             'pemesanan' => $pemesanan,
         ]);

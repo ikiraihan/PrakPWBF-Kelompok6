@@ -19,6 +19,8 @@
                                     <th>Stok</th>
                                     <th>Harga Beli</th>
                                     <th>Harga Jual</th>
+                                    <th>Detail Barang</th>
+                                    <th>Histori Stok</th>
                                     <th style="width: 1%;">Edit</th>
                                     <th style="width: 1%;">Hapus</th>
                                 </tr>
@@ -33,6 +35,8 @@
                                     <td>{{ $b -> stok_barang}}</td>
                                     <td>{{ $b -> harga_beli_barang }}</td>   
                                     <td>{{ $b -> harga_jual_barang }}</td>   
+                                    <td class="text-wrap"><a href="/detailbarang/index/{{ $b->id }}" class="btn btn-warning">Show</a></td>
+                                    <td class="text-wrap"><a href="/historistok/index/{{ $b->id }}" class="btn btn-info">History</a></td>
                                     <td class="text-wrap"><a href="/barang/edit/{{ $b->id }}" class="btn btn-primary">Edit</a></td>
                                     <td class="text-wrap"><a href="/barang/destroy/{{ $b->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                        
                                 </tr>
