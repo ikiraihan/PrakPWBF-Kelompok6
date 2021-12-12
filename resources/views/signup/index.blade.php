@@ -137,42 +137,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- <div class="form-group">
-                                <input type="text" name="telp" class="form-control form-control-user @error('telp')is-invalid @enderror" 
-                                id="telp" placeholder="Telepon" required value="{{ old('telp') }}">
-                                @error('telp')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control form-control-user @error('email')is-invalid @enderror" 
-                                id ="email" placeholder="Email" required value="{{ old('email') }}">
-                                @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="username" name="username" class="form-control form-control-user @error('username')is-invalid @enderror" 
-                                id="username" placeholder="Username" required value="{{ old('username') }}">
-                                @error('username')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input type="password" name="password" class="form-control form-control-user @error('password')is-invalid @enderror"
-                                id="password" placeholder="Password" required>
-                                @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div> --}}
                             <div class="form-group mb-0 mt-4">
                                 <button class="btn btn-primary btn-user btn-block"  type="submit">Sign Up</button>
                             </div>

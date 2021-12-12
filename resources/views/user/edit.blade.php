@@ -15,7 +15,7 @@
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="name">Nama User</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Nama" value="{{ $user->name }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $user->name }}">
                             </div> 
                             <div class="col-sm-6">
                                 <label for="email">Email User</label>
@@ -28,8 +28,8 @@
                                 <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="{{ $user->alamat}}">
                             </div>
                             <div class="col-sm-6">
-                                <label for="email">Email User</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ $user->username }}">
                             </div>
                         </div>
                         <div class="form-group row">

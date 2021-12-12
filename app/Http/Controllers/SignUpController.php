@@ -39,10 +39,6 @@ class SignUpController extends Controller
     
     TabelUser::create($validatedData);
 
-        $validatedData['password'] = bcrypt($validatedData['password']);
-
-        TabelUser::create($validatedData);
-
         $request->session()->flash('success','Registrasi Berhasil! Silahkan Login');
 
         return redirect('/login');

@@ -68,7 +68,7 @@ class TabelUserController extends Controller
     public function update(Request $request, $id)
     {
         TabelUser::where('id', $id)->update([
-            'name' => $request->nama,
+            'name' => $request->name,
             'alamat' => $request->alamat,
             'id_kota' => $request->id_kota,
             'telp' => $request->telp,
