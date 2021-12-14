@@ -9,9 +9,10 @@ class Pembayaran extends Model
 {
     use HasFactory;
     protected $table = 'tabel_pembayaran';
+    protected $fillable = ['id_penerimaan','tgl_bayar','total_bayar'];
     
     public function Penerimaan()
     {
-	return $this->belongsTo('App\Models\Penerimaan','id_terima','id');
+	return $this->belongsTo('App\Models\Penerimaan','id_penerimaan','id');
     }
 }

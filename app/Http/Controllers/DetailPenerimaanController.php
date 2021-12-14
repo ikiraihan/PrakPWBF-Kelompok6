@@ -47,4 +47,11 @@ class DetailPenerimaanController extends Controller
 
         return redirect('/detail-pemesanan');
     }
+
+    public function destroy($id)
+    {
+        DetailPenerimaan::destroy($id);
+		
+        return redirect('/detailpenerimaan')->with('successDelete', 'Detail Penerimaan Barang Berhasil dihapus!');
+    }
 }

@@ -4,7 +4,7 @@
 <div id="layout_content">
     <main>
         <div class="container">
-            <a href="/historistok/index/{id}"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
+            <a href="/historistok/index/{{ $barang->id }}"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
             <div class="row justify">
                 <div class="col-xl-12 col-lg-12 col-md-9">
                     <div class="card shadow mb-4">
@@ -17,11 +17,8 @@
 								<div class="col-md-12 mb-3">
                                     <label for="nama_barang">Nama Barang</label>
                                     <select class="form-control" id="nama_barang" name="nama_barang">
-                                        @if($barangs->count())
-                                            @foreach($barangs as $v)
-                                                <option value="{{ $v->id }}">{{ $v->nama_barang }}</option>
-                                            @endforeach
-                                        @endif
+                                        <option value="" disabled selected hidden>Barang</option>
+                                        <option value={{ $barang->id }}>{{ $barang->nama_barang }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">

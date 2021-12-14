@@ -1,9 +1,25 @@
 @extends('layouts.dashboard')
 
 @section('container')
-<a href="/barang"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
-<h1 class="h3 mb-2 text-gray-800">Histori Barang</h1>
-<!-- DataTales Example -->
+    @if(session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+            <span aria-hidden="true">&times;</span> 
+    </button>
+    </div>
+    @endif
+    @if (session()->has('successDelete'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('successDelete') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+            <span aria-hidden="true">&times;</span> 
+    </button>
+    </div>
+    @endif
+    <a href="/barang"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
+    <h1 class="h3 mb-2 text-gray-800">Histori Barang</h1>
+    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="/historistok/create/{{ $barang->id }}" class="btn btn-success"> 

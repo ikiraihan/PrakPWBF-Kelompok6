@@ -16,7 +16,12 @@
 								{{ csrf_field() }}
 								<div class="form-group">
 									<label for="warna">Warna </label>
-									<input type="text" class="form-control" id="warna" name="warna" placeholder="warna" value="{{ $warna->warna }}">
+									<input type="text" class="form-control @error('warna') is-invalid @enderror" id="warna" name="warna" placeholder="warna" value="{{ $warna->warna }}">
+									@error('warna')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+                            		@enderror
 								</div>
 								<div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-4">
 									<input type="submit" class="btn btn-danger" value="Simpan Data">

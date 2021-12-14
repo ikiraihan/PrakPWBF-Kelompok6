@@ -36,6 +36,9 @@ class SupplierController extends Controller
             'telp_sup' => $request->telp_sup,
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Supplier Baru Berhasil ditambahkan!');
+
         return redirect('/supplier');
     }
 
@@ -65,6 +68,8 @@ class SupplierController extends Controller
             'telp_sup' => $request->telp_sup,
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Data Supplier Berhasil diupdate!');
         
         return redirect('/supplier');
     }
@@ -73,6 +78,6 @@ class SupplierController extends Controller
     {
         Supplier::destroy($id);
 		
-        return redirect('/supplier');
+        return redirect('/supplier')->with('successDelete', 'Data Supplier Berhasil dihapus!');
     }
 }

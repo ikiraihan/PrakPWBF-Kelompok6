@@ -6,6 +6,8 @@ use App\Models\Kota;
 use App\Models\Role;
 use App\Models\TabelUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class TabelUserController extends Controller
 {
@@ -33,16 +35,19 @@ class TabelUserController extends Controller
     public function store(Request $request)
     {
         TabelUser::create([
-            'name' => $request->name,
+            'name'   => $request->name,
             'alamat' => $request->alamat,
             'id_kota' => $request->id_kota,
-            'telp' => $request->telp,
-            'email' => $request->email,
+            'telp'   => $request->telp,
+            'email'  => $request->email,
             'username' => $request->username,
             'password' => $request->password,
-            'id_role' => $request->id_role,
+            'id_role'  => $request->id_role,
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success','User Baru Berhasil ditambahkan!');
+
         return redirect('/user');
     }
 
@@ -68,7 +73,7 @@ class TabelUserController extends Controller
     public function update(Request $request, $id)
     {
         TabelUser::where('id', $id)->update([
-            'name' => $request->nama,
+            'name' => $request->name,
             'alamat' => $request->alamat,
             'id_kota' => $request->id_kota,
             'telp' => $request->telp,
@@ -78,6 +83,8 @@ class TabelUserController extends Controller
             'id_role' => $request->id_role,
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success','Data User Berhasil diupdate!');
         
         return redirect('/user');
     }
@@ -86,6 +93,6 @@ class TabelUserController extends Controller
     {
         TabelUser::destroy($id);
 		
-        return redirect('/user');
+        return redirect('/user')->with('successDelete', 'Data User Berhasil dihapus!');
     }
 }

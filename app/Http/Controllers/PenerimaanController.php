@@ -23,31 +23,71 @@ class PenerimaanController extends Controller
     {
         $user = TabelUser::all();
         $supplier = Supplier::all();
-        $detterima = DetailPenerimaan::all();
         
         return view('penerimaan.create', [
-            'title' => 'Tambah Penerimaan Barang',
-            'user' => $user,
-            'supplier' => $supplier,
-            'detterima' => $detterima,
+            'title'     => 'Tambah Penerimaan Barang',
+            'user'      => $user,
+            'supplier'  => $supplier,
         ]);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name'  => 'required',
-            'nama_sup'  => 'required|max:30',
-            'tgl_terima' => 'required',
-            'total_harga' => 'required',
-            'status_terima' => 'required',
-            'detterima' => 'required',
-            'created_at' => date("Y-m-d H:i:s")
+            'kode_user'     => 'required',
+            'kode_sup'      => 'required',
+            'tgl_terima'    => 'required',
+            'total_harga'   => 'required|max:11',
+            'status_terima' => 'required|max:20',
+            'created_at'    => date("Y-m-d H:i:s"),
         ]);
 
         Penerimaan::create($validatedData);
 
+        $request->session()->flash('success','Penerimaan Barang Berhasil ditambahkan!');
+
         return redirect('/penerimaan');
+    }
+
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit($id)
+    {
+        $user       = TabelUser::all();
+        $supplier   = Supplier::all();
+        $penerimaan  = Penerimaan::find($id);
+        
+        return view('penerimaan/edit',[
+            'title'      => 'Edit Data Penerimaan',
+            'penerimaan' => $penerimaan,
+            'user'       => $user,
+            'supplier'   => $supplier,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        Penerimaan::where('id', $id)->update([
+            'tgl_terima'    => $request->tgl_terima,
+            'total_harga'     => $request->total_harga,
+            'status_terima' => $request->status_terima,
+            'sup_id'     => $request->kode_sup,
+            'updated_at'   => date("Y-m-d H:i:s"),
+        ]);
+
+        $request->session()->flash('success','Penerimaan Barang Berhasil diupdate!');
+        
+        return redirect('/penerimaan');
+    }
+
+    public function destroy($id)
+    {
+        Penerimaan::destroy($id);
+		
+        return redirect('/penerimaan')->with('successDelete', 'Data Penerimaan Barang Berhasil dihapus!');
     }
 
 }

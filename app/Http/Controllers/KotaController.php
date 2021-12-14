@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Kota;
 use Illuminate\Http\Request;
 
+
 class KotaController extends Controller
 {
     public function index(){
 
         $kota = Kota::all();
 
-        return view('kota.index', [
+        return view('kota/index', [
             'title' => 'Kota Supplier',
             'kota' => $kota
         ]);
@@ -19,7 +20,7 @@ class KotaController extends Controller
 
     public function create()
     {
-        return view('kota.create', [
+        return view('kota/create', [
             'title' => 'Tambah Kota'
         ]);
     }
@@ -32,6 +33,8 @@ class KotaController extends Controller
         ]);
 
         Kota::create($validatedData);
+
+        $request->session()->flash('success','Kota Baru Berhasil ditambahkan!');
 
         return redirect('/kota');
     }
@@ -46,7 +49,7 @@ class KotaController extends Controller
     {
         $kota = Kota::find($id);
         
-        return view('kota/edit',[
+        return view('kota.edit',[
             'title' => 'Edit Kota',
             'kota' => $kota
         ]);
@@ -59,6 +62,8 @@ class KotaController extends Controller
             'updated_at' => date("Y-m-d H:i:s")
         ]);
         
+        $request->session()->flash('success', 'Data Kota Berhasil diupdate!');
+
         return redirect('/kota');
     }
 
@@ -66,6 +71,7 @@ class KotaController extends Controller
     {
         Kota::destroy($id);
 		
-        return redirect('/kota');
+        return redirect('/kota')->with('successDelete', 'Kota Berhasil dihapus!');
+        
     }
 }

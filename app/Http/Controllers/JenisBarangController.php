@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JenisBarang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JenisBarangController extends Controller
 {
@@ -25,10 +26,14 @@ class JenisBarangController extends Controller
 
     public function store(Request $request)
     {
-        JenisBarang::create([
-            'jenis_barang' => $request->jenis_barang,
-            'created_at' => date("Y-m-d H:i:s")
+        $validatedData = $request->validate([
+            'jenis_barang'  => 'required|max:20',
         ]);
+
+        JenisBarang::create($validatedData);
+
+        $request->session()->flash('success', 'Jenis Barang Baru Berhasil ditambahkan!');
+
         return redirect('/jenisbarang');
     }
 
@@ -47,13 +52,21 @@ class JenisBarangController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, JenisBarang $jenisBarang)
     {
-        JenisBarang::where('id', $id)->update([
+        $validatedData = $request->validate([
+            'jenis_barang'  => 'required|max:20',
+        ]);
+
+        DB::table('tabel_jb')->where('id', $request->id)->update([
             'jenis_barang' => $request->jenis_barang,
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        JenisBarang::create($validatedData);
         
+        $request->session()->flash('success', 'Jenis Barang Berhasil diupdate!');
+
         return redirect('/jenisbarang');
     }
 
@@ -61,6 +74,6 @@ class JenisBarangController extends Controller
     {
         JenisBarang::destroy($id);
 		
-        return redirect('/jenisbarang');
+        return redirect('/jenisbarang')->with('successDelete', 'Jenis Barang Berhasil dihapus!');
     }
 }

@@ -50,7 +50,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/dashboard-pegawai', [DashboardController::class, 'pegawai']);
 
-// CRUD ROLE //
+// ROLE //
 Route::get('/role', [RoleController::class, 'index']);
 Route::get('/role/create', [RoleController::class, 'create']);
 Route::post('/role/store', [RoleController::class, 'store']);
@@ -59,7 +59,7 @@ Route::post('/role/update/{id}', [RoleController::class,'update']);
 Route::get('/role/destroy/{id}', [RoleController::class,'destroy']);
 
 
-// CRUD USERS //
+// USERS //
 Route::get('/user', [TabelUserController::class, 'index']);
 Route::get('/user/create', [TabelUserController::class, 'create']);
 Route::post('/user/store', [TabelUserController::class, 'store']);
@@ -68,16 +68,16 @@ Route::post('/user/update/{id}', [TabelUserController::class,'update']);
 Route::get('/user/destroy/{id}', [TabelUserController::class,'destroy']);
 
 
-// CRUD KOTA //
+// KOTA //
 Route::get('/kota', [KotaController::class, 'index']);
 Route::get('/kota/create', [KotaController::class, 'create']);
 Route::post('/kota/store', [KotaController::class, 'store']);
 Route::get('/kota/edit/{id}', [KotaController::class,'edit']);
 Route::post('/kota/update/{id}', [KotaController::class,'update']);
-Route::get('/kota/destroy/{id}', [KotaController::class,'destroy']);
+Route::delete('/kota/destroy/{id}', [KotaController::class,'destroy']);
 
 
-// CRUD JENIS BARANG //
+// JENIS BARANG //
 Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
 Route::get('/jenisbarang/create', [JenisBarangController::class, 'create']);
 Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
@@ -86,7 +86,7 @@ Route::post('/jenisbarang/update/{id}', [JenisBarangController::class,'update'])
 Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class,'destroy']);
 
 
-// CRUD BARANG //
+// BARANG //
 Route::get('/barang', [BarangController::class, 'index']);
 Route::get('/barang/create', [BarangController::class, 'create']);
 Route::post('/barang/store', [BarangController::class, 'store']);
@@ -94,16 +94,21 @@ Route::get('/barang/edit/{id}', [BarangController::class,'edit']);
 Route::post('/barang/update/{id}', [BarangController::class,'update']);
 Route::get('/barang/destroy/{id}', [BarangController::class,'destroy']);
 
-//CRUD HISTORI STOK
+
+// HISTORI STOK //
 Route::get('/historistok/index/{id}', [HsController::class,'index']);
 Route::get('/historistok/create/{id}', [HsController::class,'create']);
 Route::post('/historistok/store', [HsController::class, 'store']);
 
 
-//CRUD DETAIL BARANG
+// DETAIL BARANG //
 Route::get('/detailbarang/index/{id}', [DetailBarangController::class,'index']);
+Route::get('/detailbarang/create/{id}', [DetailBarangController::class,'create']);
+Route::post('/detailbarang/store', [DetailBarangController::class,'store']);
+Route::get('/detailbarang/delete/{id}', [DetailBarangController::class,'destroy']);
 
-// CRUD UKURAN // 
+
+// UKURAN // 
 Route::get('/ukuran', [UkuranController::class, 'index']);
 Route::get('/ukuran/create', [UkuranController::class, 'create']);
 Route::post('/ukuran/store', [UkuranController::class, 'store']);
@@ -112,8 +117,7 @@ Route::post('/ukuran/update/{id}', [UkuranController::class,'update']);
 Route::get('/ukuran/destroy/{id}', [UkuranController::class,'destroy']);
 
 
-
-// CRUD WARNA //
+// WARNA //
 Route::get('/warna', [WarnaController::class, 'index']);
 Route::get('/warna/create', [WarnaController::class, 'create']);
 Route::post('/warna/store', [WarnaController::class, 'store']);
@@ -122,7 +126,7 @@ Route::post('/warna/update/{id}', [WarnaController::class,'update']);
 Route::get('/warna/destroy/{id}', [WarnaController::class,'destroy']);
 
 
-// CRUD SUPPLIER //
+// SUPPLIER //
 Route::get('/supplier', [SupplierController::class, 'index']);
 Route::get('/supplier/create', [SupplierController::class, 'create']);
 Route::post('/supplier/store', [SupplierController::class, 'store']);
@@ -131,19 +135,49 @@ Route::post('/supplier/update/{id}', [SupplierController::class,'update']);
 Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 
 
-
+// PEMESANAN //
 Route::get('/pemesanan', [PemesananController::class, 'index']);
 Route::get('/pemesanan/create', [PemesananController::class, 'create']);
 Route::post('/pemesanan/store', [PemesananController::class, 'store']);
 Route::get('/pemesanan/edit/{id}', [PemesananController::class,'edit']);
 Route::post('/pemesanan/update/{id}', [PemesananController::class,'update']);
 Route::get('/pemesanan/destroy/{id}', [PemesananController::class,'destroy']);
+
+// DETAIL PEMESANAN //
 Route::get('/detailpemesanan/index/{id}', [DetailPemesananController::class,'index']);
 
-Route::get('/penerimaan', [PenerimaanController::class, 'index']);
-Route::get('/detailpenerimaan/index/{id}', [DetailPenerimaanController::class,'index']);
 
+// PENERIMAAN //
+Route::get('/penerimaan', [PenerimaanController::class, 'index']);
+Route::get('/penerimaan/create', [PenerimaanController::class, 'create']);
+Route::post('/penerimaan/store', [PenerimaanController::class, 'store']);
+Route::get('/penerimaan/edit/{id}', [PenerimaanController::class, 'edit']);
+Route::post('/penerimaan/update/{id}', [PenerimaanController::class, 'update']);
+Route::get('/penerimaan/delete/{id}', [PenerimaanController::class, 'destroy']);
+
+
+// DETAIL PENERIMAAN //
+Route::get('/detailpenerimaan/index/{id}', [DetailPenerimaanController::class,'index']);
+Route::get('/detailpenerimaan/create/{id}', [DetailPenerimaanController::class,'create']);
+Route::get('/detailpenerimaan/store', [DetailPenerimaanController::class,'store']);
+Route::get('/detailpenerimaan/edit/{id}', [DetailPenerimaanController::class,'edit']);
+Route::get('/detailpenerimaan/update/{id}', [DetailPenerimaanController::class,'update']);
+Route::get('/detailpenerimaan/delete/{id}', [DetailPenerimaanController::class,'destroy']);
+
+
+// PEMBAYARAN //
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
+Route::get('/pembayaran/create', [PembayaranController::class, 'create']);
+Route::post('/pembayaran/store', [PembayaranController::class, 'store']);
+Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
+Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
+Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
+
+
+
+
+
+
 
 
 // Route::get('/', function () {
