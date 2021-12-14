@@ -41,137 +41,148 @@ Route::post('/signup', [SignUpController::class, 'store'])->middleware('guest');
 
 // login //
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 
-Route::group(['middleware'=>'auth'],function() {
-//LOGOUT
-Route::post('/logout', [LoginController::class, 'logout']);
-// DASHBOARD //
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/dashboard-pegawai', [DashboardController::class, 'pegawai']);
+// INI YANG CUMA BISA DITAMPILIN DI ROLE PEMILIK //
+Route::group(['middleware'=>['auth','CekRole:1']],function() {
+    // CRUD USERS //
+    Route::get('/user', [TabelUserController::class, 'index']);
+    Route::get('/user/create', [TabelUserController::class, 'create']);
+    Route::post('/user/store', [TabelUserController::class, 'store']);
+    Route::get('/user/edit/{id}', [TabelUserController::class,'edit']);
+    Route::post('/user/update/{id}', [TabelUserController::class,'update']);
+    Route::get('/user/destroy/{id}', [TabelUserController::class,'destroy']);
 
-// ROLE //
-Route::get('/role', [RoleController::class, 'index']);
-Route::get('/role/create', [RoleController::class, 'create']);
-Route::post('/role/store', [RoleController::class, 'store']);
-Route::get('/role/edit/{id}', [RoleController::class,'edit']);
-Route::post('/role/update/{id}', [RoleController::class,'update']);
-Route::get('/role/destroy/{id}', [RoleController::class,'destroy']);
+    // ROLE //
+    Route::get('/role', [RoleController::class, 'index']);
+    Route::get('/role/create', [RoleController::class, 'create']);
+    Route::post('/role/store', [RoleController::class, 'store']);
+    Route::get('/role/edit/{id}', [RoleController::class,'edit']);
+    Route::post('/role/update/{id}', [RoleController::class,'update']);
+    Route::get('/role/destroy/{id}', [RoleController::class,'destroy']);
 
+    // CRUD PEMBAYARAN YANG MAU DIPINDAH BUAT BISA DILIHAT PEMILIK DOANG PINDAH KESINI JE //
 
-// USERS //
-Route::get('/user', [TabelUserController::class, 'index']);
-Route::get('/user/create', [TabelUserController::class, 'create']);
-Route::post('/user/store', [TabelUserController::class, 'store']);
-Route::get('/user/edit/{id}', [TabelUserController::class,'edit']);
-Route::post('/user/update/{id}', [TabelUserController::class,'update']);
-Route::get('/user/destroy/{id}', [TabelUserController::class,'destroy']);
+});
 
+// INI YANG CUMA BISA DITAMPILIN DI ROLE PEGAWAI //
+Route::group(['middleware'=>['auth','CekRole:2']],function() {
 
-// KOTA //
-Route::get('/kota', [KotaController::class, 'index']);
-Route::get('/kota/create', [KotaController::class, 'create']);
-Route::post('/kota/store', [KotaController::class, 'store']);
-Route::get('/kota/edit/{id}', [KotaController::class,'edit']);
-Route::post('/kota/update/{id}', [KotaController::class,'update']);
-Route::delete('/kota/destroy/{id}', [KotaController::class,'destroy']);
+});
 
+// INI YANG BISA DITAMPILIN DI 2 ROLE
+Route::group(['middleware'=>['auth','CekRole:1,2']],function() {
+    //LOGOUT
+    Route::post('/logout', [LoginController::class, 'logout']);
 
-// JENIS BARANG //
-Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
-Route::get('/jenisbarang/create', [JenisBarangController::class, 'create']);
-Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
-Route::get('/jenisbarang/edit/{id}', [JenisBarangController::class,'edit']);
-Route::post('/jenisbarang/update/{id}', [JenisBarangController::class,'update']);
-Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class,'destroy']);
+    // DASHBOARD //
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/dashboard-pegawai', [DashboardController::class, 'pegawai']);
 
-
-// BARANG //
-Route::get('/barang', [BarangController::class, 'index']);
-Route::get('/barang/create', [BarangController::class, 'create']);
-Route::post('/barang/store', [BarangController::class, 'store']);
-Route::get('/barang/edit/{id}', [BarangController::class,'edit']);
-Route::post('/barang/update/{id}', [BarangController::class,'update']);
-Route::get('/barang/destroy/{id}', [BarangController::class,'destroy']);
+    // KOTA //
+    Route::get('/kota', [KotaController::class, 'index']);
+    Route::get('/kota/create', [KotaController::class, 'create']);
+    Route::post('/kota/store', [KotaController::class, 'store']);
+    Route::get('/kota/edit/{id}', [KotaController::class,'edit']);
+    Route::post('/kota/update/{id}', [KotaController::class,'update']);
+    Route::delete('/kota/destroy/{id}', [KotaController::class,'destroy']);
 
 
-// HISTORI STOK //
-Route::get('/historistok/index/{id}', [HsController::class,'index']);
-Route::get('/historistok/create/{id}', [HsController::class,'create']);
-Route::post('/historistok/store', [HsController::class, 'store']);
+    // JENIS BARANG //
+    Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
+    Route::get('/jenisbarang/create', [JenisBarangController::class, 'create']);
+    Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
+    Route::get('/jenisbarang/edit/{id}', [JenisBarangController::class,'edit']);
+    Route::post('/jenisbarang/update/{id}', [JenisBarangController::class,'update']);
+    Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class,'destroy']);
 
 
-// DETAIL BARANG //
-Route::get('/detailbarang/index/{id}', [DetailBarangController::class,'index']);
-Route::get('/detailbarang/create/{id}', [DetailBarangController::class,'create']);
-Route::post('/detailbarang/store', [DetailBarangController::class,'store']);
-Route::get('/detailbarang/delete/{id}', [DetailBarangController::class,'destroy']);
+    // BARANG //
+    Route::get('/barang', [BarangController::class, 'index']);
+    Route::get('/barang/create', [BarangController::class, 'create']);
+    Route::post('/barang/store', [BarangController::class, 'store']);
+    Route::get('/barang/edit/{id}', [BarangController::class,'edit']);
+    Route::post('/barang/update/{id}', [BarangController::class,'update']);
+    Route::get('/barang/destroy/{id}', [BarangController::class,'destroy']);
 
 
-// UKURAN // 
-Route::get('/ukuran', [UkuranController::class, 'index']);
-Route::get('/ukuran/create', [UkuranController::class, 'create']);
-Route::post('/ukuran/store', [UkuranController::class, 'store']);
-Route::get('/ukuran/edit/{id}', [UkuranController::class,'edit']);
-Route::post('/ukuran/update/{id}', [UkuranController::class,'update']);
-Route::get('/ukuran/destroy/{id}', [UkuranController::class,'destroy']);
+    // HISTORI STOK //
+    Route::get('/historistok/index/{id}', [HsController::class,'index']);
+    Route::get('/historistok/create/{id}', [HsController::class,'create']);
+    Route::post('/historistok/store', [HsController::class, 'store']);
 
 
-// WARNA //
-Route::get('/warna', [WarnaController::class, 'index']);
-Route::get('/warna/create', [WarnaController::class, 'create']);
-Route::post('/warna/store', [WarnaController::class, 'store']);
-Route::get('/warna/edit/{id}', [WarnaController::class,'edit']);
-Route::post('/warna/update/{id}', [WarnaController::class,'update']);
-Route::get('/warna/destroy/{id}', [WarnaController::class,'destroy']);
+    // DETAIL BARANG //
+    Route::get('/detailbarang/index/{id}', [DetailBarangController::class,'index']);
+    Route::get('/detailbarang/create/{id}', [DetailBarangController::class,'create']);
+    Route::post('/detailbarang/store', [DetailBarangController::class,'store']);
+    Route::get('/detailbarang/delete/{id}', [DetailBarangController::class,'destroy']);
 
 
-// SUPPLIER //
-Route::get('/supplier', [SupplierController::class, 'index']);
-Route::get('/supplier/create', [SupplierController::class, 'create']);
-Route::post('/supplier/store', [SupplierController::class, 'store']);
-Route::get('/supplier/edit/{id}', [SupplierController::class,'edit']);
-Route::post('/supplier/update/{id}', [SupplierController::class,'update']);
-Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
+    // UKURAN // 
+    Route::get('/ukuran', [UkuranController::class, 'index']);
+    Route::get('/ukuran/create', [UkuranController::class, 'create']);
+    Route::post('/ukuran/store', [UkuranController::class, 'store']);
+    Route::get('/ukuran/edit/{id}', [UkuranController::class,'edit']);
+    Route::post('/ukuran/update/{id}', [UkuranController::class,'update']);
+    Route::get('/ukuran/destroy/{id}', [UkuranController::class,'destroy']);
 
 
-// PEMESANAN //
-Route::get('/pemesanan', [PemesananController::class, 'index']);
-Route::get('/pemesanan/create', [PemesananController::class, 'create']);
-Route::post('/pemesanan/store', [PemesananController::class, 'store']);
-Route::get('/pemesanan/edit/{id}', [PemesananController::class,'edit']);
-Route::post('/pemesanan/update/{id}', [PemesananController::class,'update']);
-Route::get('/pemesanan/destroy/{id}', [PemesananController::class,'destroy']);
-
-// DETAIL PEMESANAN //
-Route::get('/detailpemesanan/index/{id}', [DetailPemesananController::class,'index']);
+    // WARNA //
+    Route::get('/warna', [WarnaController::class, 'index']);
+    Route::get('/warna/create', [WarnaController::class, 'create']);
+    Route::post('/warna/store', [WarnaController::class, 'store']);
+    Route::get('/warna/edit/{id}', [WarnaController::class,'edit']);
+    Route::post('/warna/update/{id}', [WarnaController::class,'update']);
+    Route::get('/warna/destroy/{id}', [WarnaController::class,'destroy']);
 
 
-// PENERIMAAN //
-Route::get('/penerimaan', [PenerimaanController::class, 'index']);
-Route::get('/penerimaan/create', [PenerimaanController::class, 'create']);
-Route::post('/penerimaan/store', [PenerimaanController::class, 'store']);
-Route::get('/penerimaan/edit/{id}', [PenerimaanController::class, 'edit']);
-Route::post('/penerimaan/update/{id}', [PenerimaanController::class, 'update']);
-Route::get('/penerimaan/delete/{id}', [PenerimaanController::class, 'destroy']);
+    // SUPPLIER //
+    Route::get('/supplier', [SupplierController::class, 'index']);
+    Route::get('/supplier/create', [SupplierController::class, 'create']);
+    Route::post('/supplier/store', [SupplierController::class, 'store']);
+    Route::get('/supplier/edit/{id}', [SupplierController::class,'edit']);
+    Route::post('/supplier/update/{id}', [SupplierController::class,'update']);
+    Route::get('/supplier/destroy/{id}', [SupplierController::class,'destroy']);
 
 
-// DETAIL PENERIMAAN //
-Route::get('/detailpenerimaan/index/{id}', [DetailPenerimaanController::class,'index']);
-Route::get('/detailpenerimaan/create/{id}', [DetailPenerimaanController::class,'create']);
-Route::get('/detailpenerimaan/store', [DetailPenerimaanController::class,'store']);
-Route::get('/detailpenerimaan/edit/{id}', [DetailPenerimaanController::class,'edit']);
-Route::get('/detailpenerimaan/update/{id}', [DetailPenerimaanController::class,'update']);
-Route::get('/detailpenerimaan/delete/{id}', [DetailPenerimaanController::class,'destroy']);
+    // PEMESANAN //
+    Route::get('/pemesanan', [PemesananController::class, 'index']);
+    Route::get('/pemesanan/create', [PemesananController::class, 'create']);
+    Route::post('/pemesanan/store', [PemesananController::class, 'store']);
+    Route::get('/pemesanan/edit/{id}', [PemesananController::class,'edit']);
+    Route::post('/pemesanan/update/{id}', [PemesananController::class,'update']);
+    Route::get('/pemesanan/destroy/{id}', [PemesananController::class,'destroy']);
+
+    // DETAIL PEMESANAN //
+    Route::get('/detailpemesanan/index/{id}', [DetailPemesananController::class,'index']);
 
 
-// PEMBAYARAN //
-Route::get('/pembayaran', [PembayaranController::class, 'index']);
-Route::get('/pembayaran/create', [PembayaranController::class, 'create']);
-Route::post('/pembayaran/store', [PembayaranController::class, 'store']);
-Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
-Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
-Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
+    // PENERIMAAN //
+    Route::get('/penerimaan', [PenerimaanController::class, 'index']);
+    Route::get('/penerimaan/create', [PenerimaanController::class, 'create']);
+    Route::post('/penerimaan/store', [PenerimaanController::class, 'store']);
+    Route::get('/penerimaan/edit/{id}', [PenerimaanController::class, 'edit']);
+    Route::post('/penerimaan/update/{id}', [PenerimaanController::class, 'update']);
+    Route::get('/penerimaan/delete/{id}', [PenerimaanController::class, 'destroy']);
+
+
+    // DETAIL PENERIMAAN //
+    Route::get('/detailpenerimaan/index/{id}', [DetailPenerimaanController::class,'index']);
+    Route::get('/detailpenerimaan/create/{id}', [DetailPenerimaanController::class,'create']);
+    Route::get('/detailpenerimaan/store', [DetailPenerimaanController::class,'store']);
+    Route::get('/detailpenerimaan/edit/{id}', [DetailPenerimaanController::class,'edit']);
+    Route::get('/detailpenerimaan/update/{id}', [DetailPenerimaanController::class,'update']);
+    Route::get('/detailpenerimaan/delete/{id}', [DetailPenerimaanController::class,'destroy']);
+
+
+    // PEMBAYARAN //
+    Route::get('/pembayaran', [PembayaranController::class, 'index']);
+    Route::get('/pembayaran/create', [PembayaranController::class, 'create']);
+    Route::post('/pembayaran/store', [PembayaranController::class, 'store']);
+    Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
+    Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
+    Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
 
 
 
@@ -180,39 +191,39 @@ Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
 
 
 
-// Route::get('/', function () {
-//     return view('home',[
-//         "title"=>"Home"
-//     ]);
-// });
+    // Route::get('/', function () {
+    //     return view('home',[
+    //         "title"=>"Home"
+    //     ]);
+    // });
 
-// Route::get('/data', function () {
-//     return view('data', [
-//         "title"=> "Data"
-//     ]);
-// });
+    // Route::get('/data', function () {
+    //     return view('data', [
+    //         "title"=> "Data"
+    //     ]);
+    // });
 
-// Route::get('/order', function () {
-//     return view('order',[
-//         "title"=>"Order"
-//    ]);
-// });
+    // Route::get('/order', function () {
+    //     return view('order',[
+    //         "title"=>"Order"
+    //    ]);
+    // });
 
-// Route::get('/terima', function () {
-//     return view('terima', [
-//         "title"=>"Penerimaan"
-//     ]);
-// });
+    // Route::get('/terima', function () {
+    //     return view('terima', [
+    //         "title"=>"Penerimaan"
+    //     ]);
+    // });
 
-// Route::get('/bayar', function () {
-//     return view('bayar',[
-//         "title"=>"Pembayaran"
-//     ]);
-// });
+    // Route::get('/bayar', function () {
+    //     return view('bayar',[
+    //         "title"=>"Pembayaran"
+    //     ]);
+    // });
 
-// Route::get('/login', function () {
-//     return view('login',[
-//         "title"=>"Login"
-//     ]);
-// });
+    // Route::get('/login', function () {
+    //     return view('login',[
+    //         "title"=>"Login"
+    //     ]);
+    // });
 });
