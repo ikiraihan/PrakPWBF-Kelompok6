@@ -41,14 +41,17 @@ Route::post('/signup', [SignUpController::class, 'store'])->middleware('guest');
 
 // login //
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');;
 
-Route::group(['middleware'=>'auth'],function() {
-//LOGOUT
-Route::post('/logout', [LoginController::class, 'logout']);
-// DASHBOARD //
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/dashboard-pegawai', [DashboardController::class, 'pegawai']);
+// INI YANG CUMA BISA DITAMPILIN DI ROLE PEMILIK //
+Route::group(['middleware'=>['auth','CekRole:1']],function() {
+// CRUD USERS //
+Route::get('/user', [TabelUserController::class, 'index']);
+Route::get('/user/create', [TabelUserController::class, 'create']);
+Route::post('/user/store', [TabelUserController::class, 'store']);
+Route::get('/user/edit/{id}', [TabelUserController::class,'edit']);
+Route::post('/user/update/{id}', [TabelUserController::class,'update']);
+Route::get('/user/destroy/{id}', [TabelUserController::class,'destroy']);
 
 // CRUD ROLE //
 Route::get('/role', [RoleController::class, 'index']);
@@ -58,15 +61,23 @@ Route::get('/role/edit/{id}', [RoleController::class,'edit']);
 Route::post('/role/update/{id}', [RoleController::class,'update']);
 Route::get('/role/destroy/{id}', [RoleController::class,'destroy']);
 
+// CRUD PEMBAYARAN YANG MAU DIPINDAH BUAT BISA DILIHAT PEMILIK DOANG PINDAH KESINI JE //
 
-// CRUD USERS //
-Route::get('/user', [TabelUserController::class, 'index']);
-Route::get('/user/create', [TabelUserController::class, 'create']);
-Route::post('/user/store', [TabelUserController::class, 'store']);
-Route::get('/user/edit/{id}', [TabelUserController::class,'edit']);
-Route::post('/user/update/{id}', [TabelUserController::class,'update']);
-Route::get('/user/destroy/{id}', [TabelUserController::class,'destroy']);
+});
 
+// INI YANG CUMA BISA DITAMPILIN DI ROLE PEGAWAI //
+Route::group(['middleware'=>['auth','CekRole:2']],function() {
+
+});
+
+// INI YANG BISA DITAMPILIN DI 2 ROLE
+Route::group(['middleware'=>['auth','CekRole:1,2']],function() {
+//LOGOUT
+Route::post('/logout', [LoginController::class, 'logout']);
+
+// DASHBOARD //
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/dashboard-pegawai', [DashboardController::class, 'pegawai']);
 
 // CRUD KOTA //
 Route::get('/kota', [KotaController::class, 'index']);
