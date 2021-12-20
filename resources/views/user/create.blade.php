@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
                                 @error('password')
                                     <div class="invalid-feedback">
                                         {{ $message }}

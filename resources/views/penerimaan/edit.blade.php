@@ -10,7 +10,7 @@
                     <h1 class="h3 mt-2 mb-2 text-gray-800">Edit Penerimaan Barang</h1>
                 </div>
                 <div class="card-body">
-                    <form action="/penerimaan/update{{ $penerimaan->id }}" method="post">
+                    <form action="/penerimaan/update/{{ $penerimaan->id }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group mb-3">
                             <label for="kode_user">Nama Pemesan</label>

@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Username" value="{{ $user->email }}" required>
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Username" value="{{ $user->username }}" required>
                                 @error('username')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" value="{{ $user->password }}" required>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" value="{{ $user->password }}" required>
                                 @error('password')
                                     <div class="invalid-feedback">
                                         {{ $message }}

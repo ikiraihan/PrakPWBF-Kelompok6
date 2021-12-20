@@ -5,26 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Hs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HsController extends Controller
 {
     public function index(Barang $id){
 
         return view('hs.index', [
-            'title' => 'Histori Stok',
-            'hs' => Hs::where('kode_bar', $id->id)->get(),
+            'hs'    => Hs::where('kode_bar', $id->id)->with('Barang')->get(),
             'barang' => $id,
+            'title' => 'Histori Stok',
         ]);
     }
 
     public function create($id)
     {
-        $barangs = Barang::all();
-        
         return view('hs.create', [
-            'title' => 'Tambah Histori Stok',
-            'barangs' => $barangs,
             'barang' => Barang::find($id),
+            'title' => 'Tambah Histori Stok',
         ]);
     }
 
@@ -39,7 +37,7 @@ class HsController extends Controller
 
         Hs::create($validatedData);
 
-        $request->session()->flash('successHistoriStok','Histori Stok Berhasil Ditambahkan');
+        $request->session()->flash('success','Histori Stok Berhasil Ditambahkan');
 
         return redirect('/barang');
     }
@@ -51,32 +49,32 @@ class HsController extends Controller
 
     public function edit($id)
     {
-        $pembayaran = Hs::find($id);
-        
-        return view('pembayaran.edit',[
-            'title'     => 'Edit Histori Stok',
-            'pembayaran' => $pembayaran,
+
+        return view('hs.edit',[
+            'hs'      => Hs::find($id),
+            'barang'  => Barang::all(),
+            'title'   => 'Edit Histori Stok',
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        Hs::where('id', $id)->update([
-            'id_penerimaan' => $request->id_penerimaan,
-            'tgl_bayar'     => $request->tgl_bayar,
-            'total_bayar'   => $request->total_bayar,
-            'updated_at'    => date("Y-m-d H:i:s")
+        DB::table('tabel_hs')->where('id',$request['id'])->update([
+            'kode_bar'          => $request->kode_bar,
+            'tgl_hs'            => $request->tgl_hs,
+            'update_stok_hs'    => $request->update_stok_hs,
+            'status'            => $request->status,
         ]);
         
-        $request->session()->flash('success', 'Data Hs Barang Berhasil diupdate!');
+        $request->session()->flash('success', 'Data Histori Stok Barang Berhasil diupdate!');
 
-        return redirect('/pembayaran');
+        return redirect('/barang');
     }
 
     public function destroy($id)
     {
         Hs::destroy($id);
 		
-        return redirect('/pembayaran')->with('successDelete', 'Data Hs Barang Berhasil dihapus!');
+        return redirect('/barang')->with('successDelete', 'Data Histori Stok Barang Berhasil dihapus!');
     }
 }

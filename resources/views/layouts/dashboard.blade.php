@@ -139,8 +139,8 @@
                 </a>
                 <div id="collapsePemesanan" class="collapse" aria-labelledby="headingPemesanan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Form</h6>
-                        <a class="collapse-item" href="/pemesanan">Order</a>
+                        <h6 class="collapse-header">Tables</h6>
+                        <a class="collapse-item" href="/pemesanan">Pemesanan Barang</a>
                     </div>
                 </div>
             </li>
@@ -152,8 +152,8 @@
                 </a>
                 <div id="collapsePenerimaan" class="collapse" aria-labelledby="headingPenerimaan" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Form</h6>
-                        <a class="collapse-item" href="/penerimaan">Barang diterima</a>
+                        <h6 class="collapse-header">Tables</h6>
+                        <a class="collapse-item" href="/penerimaan">Penerimaan Barang</a>
                     </div>
                 </div>
             </li>
@@ -165,8 +165,8 @@
                 </a>
                 <div id="collapsePembayaran" class="collapse" aria-labelledby="headingPembayaran" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Form</h6>
-                        <a class="collapse-item" href="/pembayaran">Bukti Pembayaran</a>
+                        <h6 class="collapse-header">Tables</h6>
+                        <a class="collapse-item" href="/pembayaran">Pembayaran Barang</a>
                     </div>
                 </div>
             </li>

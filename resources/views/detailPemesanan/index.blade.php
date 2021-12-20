@@ -22,7 +22,7 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="/detailpemesanan/create{{ $pemesanan->id }}" class="btn btn-success"> 
+                <a href="/detailpemesanan/create/{{ $pemesanan->id }}" class="btn btn-success"> 
                     <i class="fas fa-fw fa-plus"></i>
                     Barang
                 </a>
@@ -44,11 +44,11 @@
                             @foreach ($detpesan as $data=>$v)
                                 <tr>
                                     <td class="text-wrap text-center">{{ $data+ 1 }}</td>
-                                    <td>{{ $v-> Barang -> nama_barang }}</td>
+                                    <td>{{ $v->Barang->nama_barang }}</td>
                                     <td>{{ $v->jumlah_up }}</td>
                                     <td>{{ $v->harga_up }}</td>
-                                    <td class="text-wrap"><a href="/detail-pemesanan/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
-                                    <td class="text-wrap"><a href="/detail-pemesanan/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
+                                    <td class="text-wrap"><a href="/detailpemesanan/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
+                                    <td class="text-wrap"><a href="/detailpemesanan/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
                                 </tr>
                             @endforeach
                         </tbody>

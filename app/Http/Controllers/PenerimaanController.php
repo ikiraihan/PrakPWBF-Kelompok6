@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Penerimaan;
 use App\Models\TabelUser;
 use App\Models\Supplier;
-use App\Models\DetailPenerimaan;
 use Illuminate\Http\Request;
 
 class PenerimaanController extends Controller
@@ -72,10 +71,10 @@ class PenerimaanController extends Controller
     {
         Penerimaan::where('id', $id)->update([
             'tgl_terima'    => $request->tgl_terima,
-            'total_harga'     => $request->total_harga,
+            'total_harga'   => $request->total_harga,
             'status_terima' => $request->status_terima,
-            'sup_id'     => $request->kode_sup,
-            'updated_at'   => date("Y-m-d H:i:s"),
+            'kode_sup'        => $request->kode_sup,
+            'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 
         $request->session()->flash('success','Penerimaan Barang Berhasil diupdate!');

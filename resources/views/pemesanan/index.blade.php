@@ -28,10 +28,10 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Kode</th>
-                                <th>Pemesan</th>
+                                <th>No</th>
+                                <th>Tanggal Pemesanan</th>
+                                <th>Nama Pemesan</th>
                                 <th>Supplier</th>
-                                <th>Tanggal</th>
                                 <th>Status</th>
                                 <th style="width: 1%;">Detail</th>
                                 <th style="width: 1%;">Edit</th>
@@ -42,9 +42,9 @@
                             @foreach ($pemesanan as $data=>$v)
                                 <tr>
                                     <td>{{ $v->id }}</td>
+                                    <td>{{ $v->tgl_pesan }}</td>
                                     <td>{{ $v->User->name }}</td>
                                     <td>{{ $v->Supplier->nama_sup }}</td>
-                                    <td>{{ $v->tgl_pesan }}</td>
                                     <td>{{ $v->status_pesan }}</td>
                                     <td class="text-wrap"><a href="/detailpemesanan/index/{{ $v->id }}" class="btn btn-warning">Show</a></td>
                                     <td class="text-wrap"><a href="/pemesanan/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>

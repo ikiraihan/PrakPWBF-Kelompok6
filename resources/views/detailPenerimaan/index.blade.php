@@ -22,7 +22,7 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="/detailpenerimaan/create{{ $penerimaan->id }}" class="btn btn-success"> 
+                <a href="/detailpenerimaan/create/{{ $penerimaan->id }}" class="btn btn-success"> 
                     <i class="fas fa-fw fa-plus"></i>
                     Penerimaan
                 </a>

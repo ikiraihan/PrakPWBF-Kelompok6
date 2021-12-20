@@ -34,17 +34,20 @@ class TabelUserController extends Controller
 
     public function store(Request $request)
     {
-        TabelUser::create([
-            'name'   => $request->name,
-            'alamat' => $request->alamat,
-            'id_kota' => $request->id_kota,
-            'telp'   => $request->telp,
-            'email'  => $request->email,
-            'username' => $request->username,
-            'password' => $request->password,
-            'id_role'  => $request->id_role,
-            'created_at' => date("Y-m-d H:i:s")
+        $validatedData = $request->validate([
+            'name'          => 'required|min:3|max:50',
+            'alamat'        => 'required|max:75',
+            'id_kota'       => 'required',
+            'id_role'       => 'required',
+            'email'         => 'required|email:dns|unique:tabel_user',
+            'telp'          => 'required|max:20',
+            'username'      => 'required|min:3|max:50|unique:tabel_user',
+            'password'      => 'required||min:8|max:32'
         ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+    
+        TabelUser::create($validatedData);
 
         $request->session()->flash('success','User Baru Berhasil ditambahkan!');
 
@@ -73,15 +76,14 @@ class TabelUserController extends Controller
     public function update(Request $request, $id)
     {
         TabelUser::where('id', $id)->update([
-            'name' => $request->name,
-            'alamat' => $request->alamat,
-            'id_kota' => $request->id_kota,
-            'telp' => $request->telp,
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => $request->password,
-            'id_role' => $request->id_role,
-            'updated_at' => date("Y-m-d H:i:s")
+            'name'      => $request->name,
+            'alamat'    => $request->alamat,
+            'id_kota'   => $request->id_kota,
+            'telp'      => $request->telp,
+            'email'     => $request->email,
+            'username'  => $request->username,
+            'password'  => Hash::make($request->password),
+            'id_role'   => $request->id_role,
         ]);
 
         $request->session()->flash('success','Data User Berhasil diupdate!');

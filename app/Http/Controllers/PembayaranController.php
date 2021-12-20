@@ -21,21 +21,48 @@ class PembayaranController extends Controller
     public function create()
     {
         $penerimaan = Penerimaan::all();
+        $pembayaran = Pembayaran::all();
 
         return view('pembayaran.create', [
             'title'     => 'Tambah Pembayaran',
             'penerimaan'  => $penerimaan,
+            'pembayaran' => $pembayaran,
         ]);
     }
 
     public function store(Request $request)
     {
+
+        return $request->file('image')->store('upload');
+
         $validatedData = $request->validate([
             'id_penerimaan' => 'required',
             'tgl_bayar'     => 'required',
             'total_bayar'   => 'required|max:225',
+            'image'         => 'image|file|max:1024',
             'created_at'    => date("Y-m-d H:i:s")
         ]);
+
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('upload');
+        }
+
+        // $target_dir = "upload/";
+        // $target_file = $target_dir . basename($_FILES["image"]["name"]);
+        // $uploadOk = 1;
+        // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+        // // Check if image file is a actual image or fake image
+        // if(isset($_POST["submit"])) {
+        // $check = getimagesize($_FILES["image"]["buktipembayaran"]);
+        //     if($check !== false) {
+        //         echo "File is an image - " . $check["mime"] . ".";
+        //         $uploadOk = 1;
+        //     } else {
+        //         echo "File is not an image.";
+        //         $uploadOk = 0;
+        //     }
+        // }
 
         Pembayaran::create($validatedData);
 
@@ -46,7 +73,12 @@ class PembayaranController extends Controller
 
     public function show($id)
     {
-        //
+        $pembayaran = Pembayaran::all();
+
+        return view('pembayaran.show', [
+            'title'     => 'Bukti Pembayaran',
+            'pembayaran' => $pembayaran,
+        ]);
     }
 
     public function edit($id)

@@ -17,6 +17,7 @@ class CreateTabelPembayaran extends Migration
             $table->id();
             $table->date('tgl_bayar');
             $table->string('total_bayar');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
 

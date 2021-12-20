@@ -36,11 +36,9 @@ class SignUpController extends Controller
             'password'      => 'required||min:8|max:32'
         ]);
 
-    $validatedData['password'] = bcrypt($validatedData['password']);
+        $validatedData['password'] = bcrypt($validatedData['password']);
     
         TabelUser::create($validatedData);
-
-        $validatedData['password'] = bcrypt($validatedData['password']);
 
         $request->session()->flash('success','Registrasi Berhasil! Silahkan Login');
 

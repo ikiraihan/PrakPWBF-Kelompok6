@@ -11,47 +11,74 @@ use Illuminate\Support\Facades\DB;
 class DetailPenerimaanController extends Controller
 {
     public function index(Penerimaan $id){
-        $detpenerimaan = DetailPenerimaan::with('Barang')->get();
 
         return view('detailPenerimaan.index', [
             'title' => 'Detail Penerimaan',
-            'detpenerimaan' => $detpenerimaan ,
-            'detterima' => DetailPenerimaan::where('id_terima', $id->id)->get(),
+            'detterima' => DetailPenerimaan::where('id_terima', $id->id)->with('Penerimaan')->get(),
             'penerimaan' => $id,
         ]);
     }
 
-    public function create()
+    public function create($id)
     {
-        $barang = Barang::all();
-        $pemesanan = Penerimaan::all();
-        
-        return view('detailPemesanan.create', [
+        return view('detailPenerimaan.create', [
             'title' => 'Tambah Detail Penerimaan',
-            'barang' => $barang,
-            'pemesanan' => $pemesanan,
+            'penerimaan' => Penerimaan::find($id),
+            'barang' => Barang::all(),
         ]);
     }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'id_pesan' => 'required',
-            'kode_bar'  => 'required',
-            'jumlah_up' => 'required',
-            'harga_up' => 'required',
-            'created_at' => date("Y-m-d H:i:s")
+            'id_terima' => 'required',
+            'kode_barang'  => 'required',
+            'jumlah_his' => 'required',
+            'harga_his' => 'required',
+            'sub_total' => 'required',
         ]);
 
         DetailPenerimaan::create($validatedData);
 
-        return redirect('/detail-pemesanan');
+        $request->session()->flash('success', 'Detail Penerimaan Barang Berhasil ditambahkan!');
+
+        return redirect('/penerimaan');
+    }
+    
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit($id)
+    {
+
+        return view('detailPenerimaan.edit',[
+            'detterima' => DetailPenerimaan::find($id),
+            'barang'  => Barang::all(),
+            'title'   => 'Edit Detail Penerimaan',
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        DB::table('detail_penerimaan')->where('id',$request['id'])->update([
+            'id_terima'  => $request->id_terima,
+            'kode_barang'  => $request->kode_barang,
+            'jumlah_his'=> $request->jumlah_his,
+            'harga_his' => $request->harga_his,
+            'sub_total' => $request->sub_total,
+        ]);
+        
+        $request->session()->flash('success', 'Detail Penerimaan Barang Berhasil diupdate!');
+
+        return redirect('/penerimaan');
     }
 
     public function destroy($id)
     {
         DetailPenerimaan::destroy($id);
 		
-        return redirect('/detailpenerimaan')->with('successDelete', 'Detail Penerimaan Barang Berhasil dihapus!');
+        return redirect('/penerimaan')->with('successDelete', 'Detail Penerimaan Barang Berhasil dihapus!');
     }
 }

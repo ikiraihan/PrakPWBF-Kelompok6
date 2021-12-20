@@ -22,7 +22,7 @@
     <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="/detailbarang/create{{ $barang->id }}" class="btn btn-success"> 
+                <a href="/detailbarang/create/{{ $barang->id }}" class="btn btn-success"> 
                     <i class="fas fa-fw fa-plus"></i>
                     Detail Barang
                 </a>
@@ -47,8 +47,8 @@
                                     <td>{{ $v->Barang->nama_barang }}</td>
                                     <td>{{ $v->Ukuran->id }}</td>
                                     <td>{{ $v->Warna->warna }}</td>
-                                    <td class="text-wrap"><a href="/histori-stok/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
-                                    <td class="text-wrap"><a href="/histori-stok/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
+                                    <td class="text-wrap"><a href="/detailbarang/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
+                                    <td class="text-wrap"><a href="/detailbarang/destroy/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            
                                 </tr>
                             @endforeach
                         </tbody>

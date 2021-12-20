@@ -21,6 +21,7 @@ use App\Http\Controllers\DetailPemesananController;
 use App\Http\Controllers\DetailPenerimaanController;
 use App\Http\Controllers\DetailBarangController;
 use App\Http\Controllers\HsController;
+use App\Http\Controllers\BuktiPembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,13 +62,18 @@ Route::group(['middleware'=>['auth','CekRole:1']],function() {
     Route::post('/role/update/{id}', [RoleController::class,'update']);
     Route::get('/role/destroy/{id}', [RoleController::class,'destroy']);
 
-    // CRUD PEMBAYARAN YANG MAU DIPINDAH BUAT BISA DILIHAT PEMILIK DOANG PINDAH KESINI JE //
 
+    // CRUD PEMBAYARAN YANG MAU DIPINDAH BUAT BISA DILIHAT PEMILIK DOANG PINDAH KESINI JE //
+    Route::get('/pembayaran/create', [PembayaranController::class, 'create']);
+    Route::post('/pembayaran/store', [PembayaranController::class, 'store']);
+    Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
+    Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
+    Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
 });
 
 // INI YANG CUMA BISA DITAMPILIN DI ROLE PEGAWAI //
 Route::group(['middleware'=>['auth','CekRole:2']],function() {
-
+    
 });
 
 // INI YANG BISA DITAMPILIN DI 2 ROLE
@@ -110,13 +116,18 @@ Route::group(['middleware'=>['auth','CekRole:1,2']],function() {
     Route::get('/historistok/index/{id}', [HsController::class,'index']);
     Route::get('/historistok/create/{id}', [HsController::class,'create']);
     Route::post('/historistok/store', [HsController::class, 'store']);
+    Route::get('/historistok/edit/{id}', [HsController::class,'edit']);
+    Route::post('/historistok/update/{id}', [HsController::class, 'update']);
+    Route::get('/historistok/destroy/{id}', [HsController::class, 'destroy']);
 
 
     // DETAIL BARANG //
     Route::get('/detailbarang/index/{id}', [DetailBarangController::class,'index']);
     Route::get('/detailbarang/create/{id}', [DetailBarangController::class,'create']);
     Route::post('/detailbarang/store', [DetailBarangController::class,'store']);
-    Route::get('/detailbarang/delete/{id}', [DetailBarangController::class,'destroy']);
+    Route::get('/detailbarang/edit/{id}', [DetailBarangController::class,'edit']);
+    Route::post('/detailbarang/update/{id}', [DetailBarangController::class,'update']);
+    Route::get('/detailbarang/destroy/{id}', [DetailBarangController::class,'destroy']);
 
 
     // UKURAN // 
@@ -154,8 +165,14 @@ Route::group(['middleware'=>['auth','CekRole:1,2']],function() {
     Route::post('/pemesanan/update/{id}', [PemesananController::class,'update']);
     Route::get('/pemesanan/destroy/{id}', [PemesananController::class,'destroy']);
 
+
     // DETAIL PEMESANAN //
     Route::get('/detailpemesanan/index/{id}', [DetailPemesananController::class,'index']);
+    Route::get('/detailpemesanan/create/{id}', [DetailPemesananController::class,'create']);
+    Route::post('/detailpemesanan/store', [DetailPemesananController::class,'store']);
+    Route::get('/detailpemesanan/edit/{id}', [DetailPemesananController::class,'edit']);
+    Route::post('/detailpemesanan/update/{id}', [DetailPemesananController::class,'update']);
+    Route::get('/detailpemesanan/destroy/{id}', [DetailPemesananController::class,'destroy']);
 
 
     // PENERIMAAN //
@@ -164,16 +181,16 @@ Route::group(['middleware'=>['auth','CekRole:1,2']],function() {
     Route::post('/penerimaan/store', [PenerimaanController::class, 'store']);
     Route::get('/penerimaan/edit/{id}', [PenerimaanController::class, 'edit']);
     Route::post('/penerimaan/update/{id}', [PenerimaanController::class, 'update']);
-    Route::get('/penerimaan/delete/{id}', [PenerimaanController::class, 'destroy']);
+    Route::get('/penerimaan/destroy/{id}', [PenerimaanController::class, 'destroy']);
 
 
     // DETAIL PENERIMAAN //
     Route::get('/detailpenerimaan/index/{id}', [DetailPenerimaanController::class,'index']);
     Route::get('/detailpenerimaan/create/{id}', [DetailPenerimaanController::class,'create']);
-    Route::get('/detailpenerimaan/store', [DetailPenerimaanController::class,'store']);
+    Route::post('/detailpenerimaan/store', [DetailPenerimaanController::class,'store']);
     Route::get('/detailpenerimaan/edit/{id}', [DetailPenerimaanController::class,'edit']);
-    Route::get('/detailpenerimaan/update/{id}', [DetailPenerimaanController::class,'update']);
-    Route::get('/detailpenerimaan/delete/{id}', [DetailPenerimaanController::class,'destroy']);
+    Route::post('/detailpenerimaan/update/{id}', [DetailPenerimaanController::class,'update']);
+    Route::get('/detailpenerimaan/destroy/{id}', [DetailPenerimaanController::class,'destroy']);
 
 
     // PEMBAYARAN //
@@ -183,7 +200,13 @@ Route::group(['middleware'=>['auth','CekRole:1,2']],function() {
     Route::get('/pembayaran/edit/{id}', [PembayaranController::class, 'edit']);
     Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update']);
     Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy']);
+    Route::get('/pembayaran/show/{id}', [PembayaranController::class, 'show']);
 
+
+    // BUKTI PEMBAYARAN //
+    Route::get('/bukti', [BuktiPembayaranController::class, 'index']);
+    Route::get('/bukti/create', [BuktiPembayaranController::class, 'create']);
+    Route::post('/bukti/store', [PembayaranController::class, 'store']);
 
 
 
