@@ -9,6 +9,7 @@ class Hs extends Model
 {   
     use HasFactory;
     protected $table = 'tabel_hs';
+    protected $fillable = ['kode_bar','tgl_hs','update_stok_hs','status'];
 
     public function Barang()
     {

@@ -7,18 +7,17 @@
             <a href="/penerimaan"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h1 class="h3 mt-2 mb-2 text-gray-800">Penerimaan Barang</h1>
+                    <h1 class="h3 mt-2 mb-2 text-gray-800">Edit Penerimaan Barang</h1>
                 </div>
                 <div class="card-body">
-                    <form action="/penerimaan/store" method="post">
+                    <form action="/penerimaan/update/{{ $penerimaan->id }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group mb-3">
                             <label for="kode_user">Nama Pemesan</label>
                             <select class="form-control @error('kode_user') is-invalid @enderror" id="kode_user" name="kode_user" required>
                                 @if($user->count())
                                     @foreach($user as $v)
-                                        <option value="" disabled selected hidden> Pemesan </option>
-                                        <option value="{{ $v->id }}">{{ $v->name }}</option>
+                                        <option value="{{ $v->id }}" {{ $penerimaan->kode_user == $v->id ? 'selected="selected"' : '' }}>{{ $v->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -31,10 +30,9 @@
                         <div class="form-group mb-3">
                             <label for="kode_sup">Nama Supplier</label>
                             <select class="form-control @error('kode_sup') is-invalid @enderror" id="kode_sup" name="kode_sup" required>
-                                @if($user->count())
+                                @if($supplier->count())
                                     @foreach($supplier as $v)
-                                        <option value="" disabled selected hidden> Supplier </option>
-                                        <option value="{{ $v->id }}">{{ $v->nama_sup }}</option>
+                                        <option value="{{ $v->id }}" {{ $penerimaan->kode_sup == $v->id ? 'selected="selected"' : '' }}>{{ $v->nama_sup }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -46,7 +44,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="tgl_terima">Tanggal Penerimaan</label>
-                            <input type="date" class="form-control @error('tgl_terima') is-invalid @enderror" id="tgl_terima" name="tgl_terima" placeholder="Tanggal Penerimaan" required>
+                            <input type="date" class="form-control @error('tgl_terima') is-invalid @enderror" id="tgl_terima" name="tgl_terima" placeholder="Tanggal Penerimaan" value="{{ $penerimaan->tgl_terima}}" required>
                             @error('tgl_terima')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -55,7 +53,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="total_harga">Total Harga</label>
-                            <input type="text" class="form-control @error('total_harga') is-invalid @enderror" id="total_harga" name="total_harga" placeholder="Total Harga" required>
+                            <input type="text" class="form-control @error('total_harga') is-invalid @enderror" id="total_harga" name="total_harga" placeholder="Total Harga" value="{{ $penerimaan->total_harga}}" required>
                             @error('total_harga')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -64,7 +62,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="status_terima">Status Penerimaan</label>
-                            <input type="text" class="form-control @error('status_terima') is-invalid @enderror" id="status_terima" name="status_terima" placeholder="Status Penerimaan" required>
+                            <input type="text" class="form-control @error('status_terima') is-invalid @enderror" id="status_terima" name="status_terima" placeholder="Status Penerimaan" value="{{ $penerimaan->status_terima}}" required>
                             @error('status_terima')
                                 <div class="invalid-feedback">
                                     {{ $message }}

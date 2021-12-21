@@ -9,7 +9,7 @@ class DetailPenerimaan extends Model
 {
     use HasFactory;
     protected $table = 'detail_penerimaan';
-    protected $fillable = ['kode_barang', 'id_terima', 'jumlah_up', 'harga_up'];
+    protected $fillable = ['kode_barang', 'id_terima', 'jumlah_his', 'harga_his', 'sub_total'];
 
     public function Barang()
     {

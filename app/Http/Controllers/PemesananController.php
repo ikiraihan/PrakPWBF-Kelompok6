@@ -21,30 +21,31 @@ class PemesananController extends Controller
 
     public function create()
     {
-        // $user = TabelUser::all();
-        // $supplier = Supplier::all();
-        
-        $pemesanan = Pemesanan::with(['User','supplier','detailPemesanans'])->get();
+        $user = TabelUser::all();
+        $supplier = Supplier::all();
+        $pemesanan = Pemesanan::with(['User','Supplier','detailPemesanans'])->get();
 
         return view('pemesanan.create', [
             'title'     => 'Tambah Pemesanan',
-            // 'user'      => $user,
-            // 'supplier'  => $supplier,
+            'user'      => $user,
+            'supplier'  => $supplier,
             'pemesanan'  => $pemesanan,
         ]);
     }
 
     public function store(Request $request)
     {
-        Pemesanan::create([
-            'tgl_pesan'     => $request->tgl_pesan,
-            'status_pesan'  => $request->status_pesan,
-            'user_id'       => $request->user_id,
-            'sup_id'        => $request->sup_id,
+        $validatedData = $request->validate([
+            'tgl_pesan'     => 'required',
+            'status_pesan'  => 'required|max:10',
+            'user_id'       => 'required',
+            'sup_id'        => 'required',
             'created_at'    => date("Y-m-d H:i:s")
         ]);
 
-        $request->session()->flash('successPemesanan','Pemesanan Barang Berhasil');
+        Pemesanan::create($validatedData);
+
+        $request->session()->flash('success','Pemesanan Barang Berhasil ditambahkan!');
 
         return redirect('/pemesanan');
     }
@@ -58,7 +59,6 @@ class PemesananController extends Controller
     {
         $user       = TabelUser::all();
         $supplier   = Supplier::all();
-        $detpesan   = DetailPemesanan::all();
         $pemesanan  = Pemesanan::find($id);
         
         return view('pemesanan/edit',[
@@ -66,19 +66,20 @@ class PemesananController extends Controller
             'pemesanan' => $pemesanan,
             'user'      => $user,
             'supplier'  => $supplier,
-            'detpesan'  => $detpesan,
         ]);
     }
 
     public function update(Request $request, $id)
     {
         Pemesanan::where('id', $id)->update([
-            'name'          => 'required',
-            'nama_sup'      => 'required|max:30',
-            'detpesan'      => 'required',
-            'status'        => 'required',
-            'updated_at'        => date("Y-m-d H:i:s")
+            'tgl_pesan'    => $request->tgl_pesan,
+            'status_pesan' => $request->status_pesan,
+            'user_id'    => $request->user_id,
+            'sup_id'    => $request->sup_id,
+            'updated_at'   => date("Y-m-d H:i:s"),
         ]);
+
+        $request->session()->flash('success','Pemesanan Barang Berhasil diupdate!');
         
         return redirect('/pemesanan');
     }
@@ -87,6 +88,6 @@ class PemesananController extends Controller
     {
         Pemesanan::destroy($id);
 		
-        return redirect('/pemesanan');
+        return redirect('/pemesanan')->with('successDelete', 'Data Pemesanan Barang Berhasil dihapus!');
     }
 }

@@ -23,10 +23,15 @@ class UkuranController extends Controller
 
     public function store(Request $request)
     {
-        Ukuran::create([
-            'ukuran' => $request->ukuran,
+        $validatedData = $request->validate([
+            'ukuran'  => 'required|max:3',
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        Ukuran::create($validatedData);
+
+        $request->session()->flash('success', 'Data Ukuran Berhasil ditambahkan!');
+
         return redirect('/ukuran');
     }
 
@@ -51,6 +56,8 @@ class UkuranController extends Controller
             'ukuran' => $request->ukuran,
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Data Ukuran Berhasil diupdate!');
         
         return redirect('/ukuran');
     }
@@ -59,6 +66,6 @@ class UkuranController extends Controller
     {
         Ukuran::destroy($id);
 		
-        return redirect('/ukuran');
+        return redirect('/ukuran')->with('successDelete', 'Data Ukuran Berhasil dihapus!');
     }
 }

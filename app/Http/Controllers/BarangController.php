@@ -81,6 +81,6 @@ class BarangController extends Controller
     {
         Barang::destroy($id);
 		
-        return redirect('/barang');
+        return redirect('/barang')->with('successDelete', 'Data Barang Berhasil dihapus!');
     }
 }

@@ -24,7 +24,7 @@ class HsFactory extends Factory
         return [
             'tgl_hs'=> $this->faker->dateTime(),
             'update_stok_hs'=> $this->faker->numberBetween(0,50),
-            'status'=> $this->faker->boolean(),
+            'status'=> $this->faker->randomElement(['Bertambah','Berkurang']),
             'kode_bar'=>$this->faker->numberBetween(1, 10),
         ];
     }

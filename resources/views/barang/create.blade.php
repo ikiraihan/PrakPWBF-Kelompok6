@@ -15,11 +15,21 @@
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="nama_barang">Nama Barang</label>
-                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Nama Barang">
+                                <input type="text" class="form-control @error('nama_barang') is-invalid @enderror" id="nama_barang" name="nama_barang" placeholder="Nama Barang" required>
+                                @error('nama_barang')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="harga_beli_barang">Harga Beli</label>
-                                <input type="text" class="form-control" id="harga_beli_barang" name="harga_beli_barang" placeholder="Harga Beli">
+                                <input type="text" class="form-control @error('harga_beli_barang') is-invalid @enderror" id="harga_beli_barang" name="harga_beli_barang" placeholder="Harga Beli" required>
+                                @error('harga_beli_barang')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -35,13 +45,23 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="harga_jual_barang">Harga Jual</label>
-                                <input type="text" class="form-control" id="harga_jual_barang" name="harga_jual_barang" placeholder="Harga Jual">
+                                <input type="text" class="form-control @error('harga_jual_barang') is-invalid @enderror" id="harga_jual_barang" name="harga_jual_barang" placeholder="Harga Jual" required>
+                                @error('harga_jual_barang')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="stok_barang">Stok Barang</label>
-                            <input type="text" class="form-control" id="stok_barang" name="stok_barang" placeholder="Jumlah Stok">
+                            <input type="text" class="form-control @error('stok_barang') is-invalid @enderror" id="stok_barang" name="stok_barang" placeholder="Jumlah Stok" required>
+                            @error('stok_barang')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="formFile">Upload Foto Barang</label>

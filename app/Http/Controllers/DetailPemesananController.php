@@ -11,26 +11,21 @@ use Illuminate\Support\Facades\DB;
 class DetailPemesananController extends Controller
 {
     public function index(Pemesanan $id){
-        $detpemesanan = DetailPemesanan::with('Barang')->get();
 
         return view('detailPemesanan.index', [
             'title' => 'Detail Pemesanan',
-            'detpemesanan' => $detpemesanan,
-            'detpesan' => DetailPemesanan::where('id_pesan', $id->id)->get(),
+            'detpesan' => DetailPemesanan::where('id_pesan', $id->id)->with('Pemesanan')->get(),
             'pemesanan' => $id,
         ]);
     }
 
     public function create($id)
     {
-        $barang = Barang::all();
-        $pemesanan = Pemesanan::all();
         
         return view('detailPemesanan.create', [
             'title' => 'Tambah Detail Pemesanan',
-            'barang' => Barang::find($id),
-            'barang' => $barang,
-            'pemesanan' => $pemesanan,
+            'pemesanan' => Pemesanan::find($id),
+            'barang' => Barang::all(),
         ]);
     }
 
@@ -41,13 +36,49 @@ class DetailPemesananController extends Controller
             'kode_bar'  => 'required',
             'jumlah_up' => 'required',
             'harga_up' => 'required',
-            'created_at' => date("Y-m-d H:i:s")
         ]);
 
         DetailPemesanan::create($validatedData);
 
-        return redirect('/detail-pemesanan');
+        $request->session()->flash('success','Detail Pemesanan Berhasil Ditambahkan');
+
+        return redirect('/pemesanan');
     }
 
-    
+
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit($id)
+    {
+
+        return view('detailPemesanan.edit',[
+            'detpesan' => DetailPemesanan::find($id),
+            'barang'  => Barang::all(),
+            'title'   => 'Edit Detail Pemesanan',
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        DB::table('detail_pemesanan')->where('id',$request['id'])->update([
+            'id_pesan'     => $request->id_pesan,
+            'kode_bar'     => $request->kode_bar,
+            'jumlah_up'    => $request->jumlah_up,
+            'harga_up'     => $request->harga_up,
+        ]);
+        
+        $request->session()->flash('success', 'Detail Pemesanan Barang Berhasil diupdate!');
+
+        return redirect('/pemesanan');
+    }
+
+    public function destroy($id)
+    {
+        DetailPemesanan::destroy($id);
+		
+        return redirect('/pemesanan')->with('successDelete', 'Detail Pemesanan Barang Berhasil dihapus!');
+    }
 }

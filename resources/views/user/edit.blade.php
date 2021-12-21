@@ -15,21 +15,41 @@
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="name">Nama User</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $user->name }}">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Nama" value="{{ old('name', $user->name) }}">
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div> 
                             <div class="col-sm-6">
                                 <label for="email">Email User</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ $user->email }}" required>
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="alamat">Alamat User</label>
-                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" value="{{ $user->alamat}}">
+                                <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" placeholder="Alamat" value="{{ $user->alamat}}" required>
+                                @error('alamat')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ $user->username }}">
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Username" value="{{ $user->username }}" required>
+                                @error('username')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                         </div>
                         <div class="form-group row">
@@ -47,13 +67,23 @@
                             </div>
                             <div class="col-sm-6">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" value="{{ $user->password }}">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" value="{{ $user->password }}" required>
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="telp">No. Telepon</label>
-                                <input type="text" class="form-control" id="telp" name="telp" placeholder="No. Telepon" value="{{ $user->telp }}">
+                                <input type="text" class="form-control @error('telp') is-invalid @enderror" id="telp" name="telp" placeholder="No. Telepon" value="{{ $user->telp }}" required>
+                                @error('telp')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                            	@enderror
                             </div>
                             <div class="col-sm-6">
                                 <label for="id_role">Role User</label>

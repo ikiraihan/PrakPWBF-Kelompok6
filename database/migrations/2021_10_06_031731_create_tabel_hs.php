@@ -17,7 +17,7 @@ class CreateTabelHs extends Migration
             $table->id();
             $table->date('tgl_hs');
             $table->integer('update_stok_hs');
-            $table->boolean('status');
+            $table->string('status', 20);
             $table->timestamps();
         });
 

@@ -26,10 +26,15 @@ class WarnaController extends Controller
 
     public function store(Request $request)
     {
-        Warna::create([
-            'warna' => $request->warna,
+        $validatedData = $request->validate([
+            'warna'  => 'required|max:15',
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        Warna::create($validatedData);
+
+        $request->session()->flash('success', 'Warna Baru Berhasil ditambahkan!');
+
         return redirect('/warna');
     }
 
@@ -54,6 +59,8 @@ class WarnaController extends Controller
             'warna' => $request->warna,
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Data Warna Berhasil diupdate!');
         
         return redirect('/warna');
     }
@@ -62,6 +69,6 @@ class WarnaController extends Controller
     {
         Warna::destroy($id);
 		
-        return redirect('/warna');
+        return redirect('/warna')->with('successDelete', 'Data Warna Berhasil dihapus!');
     }
 }

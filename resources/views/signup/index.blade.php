@@ -32,9 +32,11 @@
                 <div class="card shadow-lg border-0 rounded-lg mt-0">
                     <div class="card-body p-4">
                         @if(session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                         {{ session('success') }}
-                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+                                <span aria-hidden="true">&times;</span> 
+                           </button>
                         </div>
                         @endif
                         <!-- Sign Up form-->
@@ -46,7 +48,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <input type="text" name="name" class="form-control form-control-user @error('name')is-invalid @enderror" 
-                                    id="name" placeholder="Name" required value="{{ old('name') }}">
+                                    id="name" placeholder="Name" required>
                                     @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -55,7 +57,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="email" name="email" class="form-control form-control-user @error('email')is-invalid @enderror" 
-                                    id ="email" placeholder="Email" required value="{{ old('email') }}">
+                                    id ="email" placeholder="Email" required>
                                     @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -66,7 +68,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <input type="text" name="alamat" class="form-control form-control-user @error('alamat')is-invalid @enderror" 
-                                    id="alamat" placeholder="Alamat" required value="{{ old('alamat') }}">
+                                    id="alamat" placeholder="Alamat" required>
                                     @error('alamat')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -75,7 +77,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="username" name="username" class="form-control form-control-user @error('username')is-invalid @enderror" 
-                                    id="username" placeholder="Username" required value="{{ old('username') }}">
+                                    id="username" placeholder="Username" required>
                                     @error('username')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -113,7 +115,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <input type="text" name="telp" class="form-control form-control-user @error('telp')is-invalid @enderror" 
-                                    id="telp" placeholder="Telepon" required value="{{ old('telp') }}">
+                                    id="telp" placeholder="Telepon" required>
                                     @error('telp')
                                     <div class="invalid-feedback">
                                         {{ $message }}

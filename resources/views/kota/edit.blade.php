@@ -16,10 +16,15 @@
 								{{ csrf_field() }}
 								<div class="form-group">
 									<label for="nama_kota">Nama Kota</label>
-									<input type="text" class="form-control" id="nama_kota" name="nama_kota" placeholder="Nama Kota" value="{{ $kota->nama_kota }}">
+									<input type="text" class="form-control @error('nama_kota') is-invalid @enderror" id="nama_kota" name="nama_kota" placeholder="Nama Kota" value="{{ $kota->nama_kota }}" required>
+									@error('nama_kota')
+										<div class="invalid-feedback">
+											{{ $message }}
+										</div>
+                            		@enderror
 								</div>
 								<div class="col-md-12 justify-content-center mb-2 mt-4 ">
-									<input type="submit" class="btn btn-danger" value="Simpan Data">
+									<input type="submit" class="btn btn-danger" value="Simpan Data" required>
 								</div>
 							</form>
 						</div>

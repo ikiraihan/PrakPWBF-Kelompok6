@@ -28,6 +28,9 @@ class RoleController extends Controller
             'jenis_role' => $request->jenis_role,
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Role User Baru Berhasil ditambahkan!');
+
         return redirect('/role');
     }
 
@@ -51,9 +54,11 @@ class RoleController extends Controller
     {
         Role::where('id', $id)->update([
             'jenis_role' => $request->jenis_role,
-            'updated_at' => date("Y-m-d H:i:s")
+            'updated_at' => date("Y-m-d H:i:s"),
         ]);
-        
+
+        $request->session()->flash('success', 'Role User Berhasil diupdate!');
+
         return redirect('/role');
     }
 
@@ -61,6 +66,6 @@ class RoleController extends Controller
     {
         Role::destroy($id);
 		
-        return redirect('/role');
+        return redirect('/role')->with('successDelete', 'Role User Berhasil dihapus!');
     }
 }

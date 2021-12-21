@@ -1,14 +1,31 @@
 @extends('layouts.dashboard')
 
 @section('container')
-<a href="/barang"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
-<h1 class="h3 mb-2 text-gray-800">Histori Barang</h1>
-<!-- DataTales Example -->
+    @if(session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+            <span aria-hidden="true">&times;</span> 
+    </button>
+    </div>
+    @endif
+    @if (session()->has('successDelete'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('successDelete') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+            <span aria-hidden="true">&times;</span> 
+    </button>
+    </div>
+    @endif
+    <a href="/barang"><i class="fas fa-fw fa-arrow-left mb-3"></i><strong>Back</strong></a>
+    <h1 class="h3 mb-2 text-gray-800">Histori Barang</h1>
+    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="/historistok/create/{{ $barang->id }}" class="btn btn-success"> 
+            <a href="/historistok/create/{{ $barang->id }}"><button class="btn btn-success" type="submit">
                 <i class="fas fa-fw fa-plus"></i>
                 Histori Stok
+            </button> 
             </a>
         </div>
         <div class="card-body">
@@ -29,7 +46,7 @@
                         @foreach ($hs as $data=>$v)
                             <tr>
                                 <td class="text-wrap text-center">{{ $data+ 1 }}</td>
-                                <td>{{ $v-> Barang -> nama_barang }}</td>
+                                <td>{{ $v->Barang->nama_barang }}</td>
                                 <td>{{ $v->tgl_hs }}</td>
                                 <td>{{ $v->update_stok_hs }}</td>
                                 <td>{{ $v->status }}</td>
