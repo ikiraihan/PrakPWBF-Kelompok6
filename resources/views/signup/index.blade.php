@@ -19,10 +19,10 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="{{ asset('vendor/homeassets/css/bg.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-primary">
+<body class="d-flex h-100 text-center text-white bg-home">
     <div class="container">
         <div class="text-center">
             <h1 class="h3 text-gray-100 mt-5 mb-0">Welcome to RK Boutique!</h1>
