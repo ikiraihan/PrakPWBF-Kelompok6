@@ -22,13 +22,62 @@
     <link href="{{ asset('vendor/homeassets/css/bg.css') }}" rel="stylesheet">
 </head>
 
+<!--template navbar-->
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
+
+<!-- Bootstrap core CSS -->
+<link href="{{ asset('vendor/homeassets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+<!-- Custom styles for this template -->
+<link href="{{ asset('vendor/homeassets/css/bg.css') }}" rel="stylesheet">
+</head>
+<body class="d-flex h-100 text-center text-white bg-home">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<header class="mb-auto">
+<div>
+  <h3 class="float-md-start mb-0">RK Boutique</h3>
+  <nav class="nav nav-masthead justify-content-center float-md-end">
+    <li class="nav-item">
+              <a class="nav-link" href="/">
+                  <i class="fa"></i>
+                  Home 
+              </a>
+    </li>
+    <li class="nav-item">
+              <a class="nav-link" href="/login">
+                  <i class="fa"></i>
+                  Login 
+              </a>
+    </li>
+    <a class="nav-link active" aria-current="page" href="#">Sign Up</a>
+  </nav>
+</div>
+</header>
+
 <body class="d-flex h-100 text-center text-white bg-home">
     <div class="container">
         <div class="text-center">
             <h1 class="h3 text-gray-100 mt-5 mb-0">Welcome to RK Boutique!</h1>
         </div>
         <div class="row justify-content-center">
-            <div class="col-lg-8 mt-3">
+            <div class="col-lg-13 mt-3">
                 <div class="card shadow-lg border-0 rounded-lg mt-0">
                     <div class="card-body p-4">
                         @if(session()->has('success'))
