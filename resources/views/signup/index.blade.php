@@ -1,80 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Sign Up</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="{{ asset('vendor/homeassets/css/bg.css') }}" rel="stylesheet">
-</head>
-
-<!--template navbar-->
-<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/cover/">
-
-<!-- Bootstrap core CSS -->
-<link href="{{ asset('vendor/homeassets/css/bootstrap.min.css') }}" rel="stylesheet">
-
-<style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
-</style>
-
-<!-- Custom styles for this template -->
-<link href="{{ asset('vendor/homeassets/css/bg.css') }}" rel="stylesheet">
-</head>
-<body class="d-flex h-100 text-center text-white bg-home">
-
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<header class="mb-auto">
-<div>
-  <h3 class="float-md-start mb-0">RK Boutique</h3>
-  <nav class="nav nav-masthead justify-content-center float-md-end">
-    <li class="nav-item">
-              <a class="nav-link" href="/">
-                  <i class="fa"></i>
-                  Home 
-              </a>
-    </li>
-    <li class="nav-item">
-              <a class="nav-link" href="/login">
-                  <i class="fa"></i>
-                  Login 
-              </a>
-    </li>
-    <a class="nav-link active" aria-current="page" href="#">Sign Up</a>
-  </nav>
-</div>
-</header>
-
-<body class="d-flex h-100 text-center text-white bg-home">
+@extends('layouts.home')
+@section('container')
+<body class="d-flex h-100 text-center text-gray bg-home">
     <div class="container">
         <div class="text-center">
-            <h1 class="h3 text-gray-100 mt-5 mb-0">Welcome to RK Boutique!</h1>
+            {{-- <h1 class="h3 text-gray-100 mt-5 mb-0">Welcome to RK Boutique</h1> --}}
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-13 mt-3">
@@ -90,11 +19,11 @@
                         @endif
                         <!-- Sign Up form-->
                         <div class="text-center">
-                            <h1 class="h3 text-gray-900 mt-2 mb-4">Please Sign Up</h1>
+                            <h1 class="h3 text-black mt-2 mb-4">Please Sign up</h1>
                         </div>
                         <form class="tabel_user" action="/signup" method="post">
                             @csrf
-                            <div class="form-group row">
+                            <div class="form-group row mb-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="name" class="form-control form-control-user @error('name')is-invalid @enderror" 
                                     id="name" placeholder="Name" required>
@@ -114,7 +43,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row mb-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="alamat" class="form-control form-control-user @error('alamat')is-invalid @enderror" 
                                     id="alamat" placeholder="Alamat" required>
@@ -134,7 +63,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row mb-3">
                                 <div class="col-sm-6">
                                 {{-- <input type="text" name="id_kota" class="form-control form-control-user @error('id_kota')is-invalid @enderror" 
                                 id="id_kota" placeholder="Kota Tinggal" required value="{{ old('id_kota') }}"> --}}
@@ -161,7 +90,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row mb-3">
                                 <div class="col-sm-6">
                                     <input type="text" name="telp" class="form-control form-control-user @error('telp')is-invalid @enderror" 
                                     id="telp" placeholder="Telepon" required>
@@ -194,33 +123,22 @@
                         </form>
                     </div>
                     <div class="card-footer text-center">
-                        <div class="small text-gray-800">Already have an account?&nbsp<a href="/login">Login</a></div>
+                        <div class="small text-secondary">Already have an account?&nbsp<a href="/login">Login</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+<link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-bar-demo.js"></script>
-    <script src="js/demo/datatables-demo.js"></script>
-    
-</body>
-</html>
+<!-- Custom styles for this template-->
+<link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+<link href="{{ asset('vendor/homeassets/css/bg.css') }}" rel="stylesheet">
