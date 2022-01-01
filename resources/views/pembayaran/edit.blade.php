@@ -12,7 +12,7 @@
                             <h1 class="h3 mt-2 mb-2 text-gray-800">Edit Pembayaran</h1>
                         </div>
                         <div class="card-body">
-                            <form action="/pembayaran/update/{{ $pembayaran->id }}" method="post">
+                            <form action="/pembayaran/update/{{ $pembayaran->id }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group mb-3">
                                     <label for="id_penerimaan">ID Penerimaan</label>
@@ -40,6 +40,18 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="image" class="form-label">Upload Bukti Pembayaran</label>
+                                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                                    @error('image')
+                                        <div class="invalid-feedback text-danger">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <img src="{{ asset('img/uploads/'.$pembayaran->image) }}" height="10%" width=50% alt="" srcset="">
                                 </div>
                                 <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-4">
                                     <input type="submit" class="btn btn-danger" value="Simpan Data">
