@@ -29,7 +29,7 @@ class DetailBarangController extends Controller
         $warna = Warna::all();
 
         return view('detailBarang.create', [
-            'title' => 'Tambah Detail Pemesanan',
+            'title' => 'Tambah Detail Barang',
             'barang' => Barang::find($id),
             'ukuran' => $ukuran,
             'warna' => $warna,

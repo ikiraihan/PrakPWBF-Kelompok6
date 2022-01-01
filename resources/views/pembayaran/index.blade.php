@@ -48,8 +48,8 @@
                                     <td>{{ $v -> id_penerimaan }}</td>
                                     <td>{{ $v -> tgl_bayar }}</td>
                                     <td>{{ $v -> total_bayar }}</td>
-                                    <td class="text-wrap"><a href="/pembayaran/show/{{ $v->id }}" class="btn btn-warning">Show</a></td>
-                                    {{-- <td><img src="{{ $v -> image }}"></td> --}}
+                                    {{-- <td><img src="{{ asset('img/uploads/'.$v->image) }}" height="10%" width=50% alt="" srcset=""></td> --}}
+                                    <td><a href="{{ asset('img/uploads/'.$v->image) }}" target="blank" rel="noopener noreferrer">Lihat Bukti Bayar</a></td>
                                     @if (auth()->User()->id_role=="1")
                                     <td class="text-wrap"><a href="/pembayaran/edit/{{ $v->id }}" class="btn btn-primary">Edit</a></td>
                                     <td class="text-wrap"><a href="/pembayaran/delete/{{ $v->id }}" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Hapus</a></td>                                            

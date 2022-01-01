@@ -41,15 +41,15 @@
                                         </div>
                                     @enderror
                                 </div>
-                                    Bukti Pembayaran:
-                                    <div class="form-group mb-3">
-                                        <input class="from-control @error('image') is-invalid @enderror" type="file" name="image" id="image">
-                                        @error('image')
-                                        <div class="invalid-feedback">
+                                <div class="form-group">
+                                    <label for="image" class="form-label">Upload Bukti Pembayaran</label>
+                                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
+                                    @error('image')
+                                        <div class="invalid-feedback text-danger">
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                    </div>
+                                </div>
                                 <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-4">
                                     <input type="submit" class="btn btn-danger" value="Simpan Data">
                                 </div>
