@@ -10,7 +10,7 @@
                     <h1 class="h3 mt-2 mb-2 text-gray-800">Barang Baru</h1>
                 </div>
                 <div class="card-body">
-                    <form action="/barang/store" method="post">
+                    <form action="/barang/store" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <div class="col-sm-6">
@@ -62,6 +62,10 @@
                                     {{ $message }}
                                 </div>
                             @enderror
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="formFile">Upload Foto Barang</label>
+                                <input type="file" class="form-control" id="formFile">
                             </div>
                         </div>
                         <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-3 ">

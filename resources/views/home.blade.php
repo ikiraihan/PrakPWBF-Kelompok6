@@ -49,6 +49,12 @@
                       Login 
                   </a>
         </li>
+        <li class="nav-item">
+                  <a class="nav-link" href="/signup">
+                      <i class="fa fa-sign-in-alt"></i>
+                      Sign Up 
+                  </a>
+        </li>
       </nav>
     </div>
   </header>
