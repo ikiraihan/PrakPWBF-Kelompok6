@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TabelUser;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class LoginController extends Controller
