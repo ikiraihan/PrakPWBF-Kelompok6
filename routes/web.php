@@ -21,7 +21,6 @@ use App\Http\Controllers\DetailPemesananController;
 use App\Http\Controllers\DetailPenerimaanController;
 use App\Http\Controllers\DetailBarangController;
 use App\Http\Controllers\HsController;
-use App\Http\Controllers\BuktiPembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -198,9 +197,3 @@ Route::group(['middleware'=>['auth','CekRole:2']],function() {
     Route::post('/pembayaran/update/{id}', [PembayaranController::class, 'update'])->middleware(['auth','CekRole:1,2']);
     Route::get('/pembayaran/delete/{id}', [PembayaranController::class, 'destroy'])->middleware(['auth','CekRole:1,2']);
     Route::get('/pembayaran/show/{id}', [PembayaranController::class, 'show'])->middleware(['auth','CekRole:1,2']);
-
-
-    // BUKTI PEMBAYARAN //
-    Route::get('/bukti', [BuktiPembayaranController::class, 'index'])->middleware(['auth','CekRole:1,2']);
-    Route::get('/bukti/create', [BuktiPembayaranController::class, 'create'])->middleware(['auth','CekRole:1,2']);
-    Route::post('/bukti/store', [PembayaranController::class, 'store'])->middleware(['auth','CekRole:1,2']);
