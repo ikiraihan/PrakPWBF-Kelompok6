@@ -101,7 +101,7 @@
                         <div class="text-center">
                             <h1 class="h3 text-gray-900 mt-2 mb-4">Login</h1>
                         </div>
-                        <form action="/login" method="post">
+                        <form class="tabel_user" action="/login" method="post">
                             @csrf
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" 
@@ -115,7 +115,7 @@
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control " id="password" placeholder="Password" required>
                             </div>
-                            <div class="mb-0">
+                            <div class="form-group mb-0">
                                 <button class="btn btn-primary btn-user btn-block"  type="submit" id="login">Login</button>
                             </div>
                         </form>
