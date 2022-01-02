@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class BarangController extends Controller
 {
     public function index() { 
-        $barang = Barang::with(['jenisBarang','detailBarangs'])->get();
+        $barang = Barang::with(['jenisBarang','detailBarangs','hss'])->get();
 
         return view('barang/index', [
             'title' => 'Data Barang',

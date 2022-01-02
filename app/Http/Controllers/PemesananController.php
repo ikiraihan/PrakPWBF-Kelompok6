@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Pemesanan;
 use App\Models\TabelUser;
 use App\Models\Supplier;
+use App\Models\DetailPemesanan;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
 {
     public function index(){
-        $pemesanan = Pemesanan::with(['User','supplier'])->get();
+        $pemesanan = Pemesanan::with(['User','supplier','detailPemesanans'])->get();
 
         return view('pemesanan/index', [
             'title'     => 'Pemesanan Pemesanan',
@@ -22,7 +23,7 @@ class PemesananController extends Controller
     {
         $user = TabelUser::all();
         $supplier = Supplier::all();
-        $pemesanan = Pemesanan::with(['User','Supplier'])->get();
+        $pemesanan = Pemesanan::with(['User','Supplier','detailPemesanans'])->get();
 
         return view('pemesanan.create', [
             'title'     => 'Tambah Pemesanan',

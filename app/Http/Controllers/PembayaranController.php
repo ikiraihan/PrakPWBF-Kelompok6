@@ -6,6 +6,7 @@ use App\Models\Pembayaran;
 use App\Models\Penerimaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use illuminate\Support\Facades\Storage;
 
 class PembayaranController extends Controller
 {
@@ -21,13 +22,8 @@ class PembayaranController extends Controller
 
     public function create()
     {
-        $penerimaan = Penerimaan::all();
-        $pembayaran = Pembayaran::all();
-
         return view('pembayaran.create', [
             'title'     => 'Tambah Pembayaran',
-            'penerimaan'  => $penerimaan,
-            'pembayaran' => $pembayaran,
         ]);
     }
 
@@ -36,31 +32,6 @@ class PembayaranController extends Controller
 
         $bukti = $request->image;
         $namafile = time().rand(100,999).".".$bukti->getClientOriginalExtension();
-        // $validatedData = $request->validate([
-        //     'id_penerimaan' => 'required',
-        //     'tgl_bayar'     => 'required',
-        //     'total_bayar'   => 'required|max:225',
-        //     'image'         => 'image|file|max:5024',$namafile,
-        // ]);
-
-        // $file = $request->file('image');
-        // $target_dir = "img/uploads/"; //lokasi
-        // $target_file = $target_dir . basename($_FILES["image"]["name"]); //tempat lokasi
-
-        // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        // //function pemindahan file
-        // $file->move($target_dir,$file->getClientOriginalName());
-
-        // if($request->file('image')){
-        //     $validatedData['image'] = $request->file('image')->store('upload');
-        // }
-
-        // DB::table('tabel_pembayaran')([
-        //     'id_penerimaan' => $request->name,
-        //     'tgl_bayar'     => $request->tgl_lhr,
-        //     'total_bayar'   => $request->kota_lhr,
-        //     'image'         => $namafile,
-        // ]);
         
         $pembayaran = new Pembayaran;
         $pembayaran->id_penerimaan = $request->id_penerimaan;
@@ -100,8 +71,6 @@ class PembayaranController extends Controller
         $namafilebaru = time().rand(100,999).".".$file->getClientOriginalExtension(); //nama file baru
         $target_file = $target_dir . basename($_FILES["image"]["name"]);  
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        //untuk mindah lokasi file
-        $file->move($target_dir,$namafilebaru);
         
         Pembayaran::where('id', $id)->update([
             'id_penerimaan' => $request->id_penerimaan,
@@ -112,6 +81,13 @@ class PembayaranController extends Controller
 
         if ($_FILES["image"]["size"] > 5000) {
             echo "Sorry, your file is too large.";
+        }
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $file->move($target_dir,$namafilebaru); //untuk mindah lokasi file
         }
         
         $request->session()->flash('success', 'Data Pembayaran Barang Berhasil diupdate!');
