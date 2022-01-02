@@ -63,10 +63,6 @@
                                 </div>
                             @enderror
                             </div>
-                            <div class="col-sm-6">
-                                <label for="formFile">Upload Foto Barang</label>
-                                <input type="file" class="form-control" id="formFile">
-                            </div>
                         </div>
                         <div class="col-md-12 d-flex align-items-center justify-content-center mb-2 mt-3 ">
                             <input type="submit" class="btn btn-danger" value="Simpan Data">
