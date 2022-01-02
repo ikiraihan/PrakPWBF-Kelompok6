@@ -10,7 +10,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h4 class="h6 mt-2 mb-2 text-gray-800">No. Penerimaan : {{ $detterima->id_terima }}</h4>
-                            <h1 class="h3 mt-2 mb-2 text-gray-800">Penerimaan Barang</h1>
+                            <h1 class="h3 mt-2 mb-2 text-gray-800">Detail Penerimaan Barang</h1>
                         </div>
 						<div class="card-body">
 							<form action="/detailpenerimaan/update/{{ $detterima->id }}" method="post">

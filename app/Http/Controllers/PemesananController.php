@@ -5,31 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Pemesanan;
 use App\Models\TabelUser;
 use App\Models\Supplier;
-use App\Models\DetailPemesanan;
 use Illuminate\Http\Request;
 
 class PemesananController extends Controller
 {
     public function index(){
-        $pemesanan = Pemesanan::with(['User','supplier','detailPemesanans'])->get();
+        $pemesanan = Pemesanan::with(['User','supplier'])->get();
 
         return view('pemesanan/index', [
-            'title'     => 'Pemesanan Pemesanan',
+            'title'     => 'Pemesanan Barang',
             'pemesanan' => $pemesanan,
         ]);
     }
 
     public function create()
     {
-        $user = TabelUser::all();
-        $supplier = Supplier::all();
-        $pemesanan = Pemesanan::with(['User','Supplier','detailPemesanans'])->get();
 
         return view('pemesanan.create', [
-            'title'     => 'Tambah Pemesanan',
-            'user'      => $user,
-            'supplier'  => $supplier,
-            'pemesanan'  => $pemesanan,
+            'title'     => 'Tambah Pemesanan Barang',
+            'user'      => TabelUser::all(),
+            'supplier'  => Supplier::all(),
         ]);
     }
 
@@ -40,7 +35,7 @@ class PemesananController extends Controller
             'status_pesan'  => 'required|max:10',
             'user_id'       => 'required',
             'sup_id'        => 'required',
-            'created_at'    => date("Y-m-d H:i:s")
+            'created_at'    => date("Y-m-d H:i:s"),
         ]);
 
         Pemesanan::create($validatedData);
@@ -62,7 +57,7 @@ class PemesananController extends Controller
         $pemesanan  = Pemesanan::find($id);
         
         return view('pemesanan/edit',[
-            'title'     => 'Edit Data Pemesanan',
+            'title'     => 'Edit Pemesanan Barang',
             'pemesanan' => $pemesanan,
             'user'      => $user,
             'supplier'  => $supplier,

@@ -44,8 +44,8 @@
 								</select>
 							</div>
 							<div class="col-sm-6">
-								<label for="harga_beli_barang">Harga Beli</label>
-								<input type="text" class="form-control @error('harga_beli_barang') is-invalid @enderror" id="nama_barang" name="harga_beli_barang" placeholder="Harga Beli" value="{{ $barang->harga_beli_barang }}" required>
+								<label for="harga_jual_barang">Harga Jual</label>
+								<input type="text" class="form-control @error('harga_jual_barang') is-invalid @enderror" id="harga_jual_barang" name="harga_jual_barang" placeholder="Harga Jual" value="{{ $barang->harga_jual_barang }}" required>
 								@error('harga_jual_barang')
                                     <div class="invalid-feedback">
                                         {{ $message }}

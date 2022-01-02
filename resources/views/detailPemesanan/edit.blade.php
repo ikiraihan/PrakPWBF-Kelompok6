@@ -9,7 +9,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-9">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h1 class="h3 mt-2 mb-2 text-gray-800">Pemesanan Barang</h1>
+                            <h1 class="h3 mt-2 mb-2 text-gray-800">Detail Pemesanan Barang</h1>
                         </div>
 						<div class="card-body">
 							<form action="/detailpemesanan/update/{{ $detpesan->id }}" method="post">

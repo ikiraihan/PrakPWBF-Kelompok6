@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class BarangController extends Controller
 {
     public function index() { 
-        $barang = Barang::with(['jenisBarang','detailBarangs','hss'])->get();
+        $barang = Barang::with(['jenisBarang'])->get();
 
         return view('barang/index', [
             'title' => 'Data Barang',
@@ -26,7 +26,7 @@ class BarangController extends Controller
         $hs = Hs::all();
 
         return view('barang/create', [
-            'title' => 'Tambah Jenis Barang',
+            'title' => 'Tambah Barang',
             'jenisbarang' => $jenisbarang,
             'detbar' => $detailBarang,
             'hs' => $hs,
@@ -43,6 +43,9 @@ class BarangController extends Controller
             'harga_jual_barang' => $request->harga_jual_barang,
             'created_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Data Barang Berhasil ditambahkan!');
+
         return redirect('/barang');
     }
 
@@ -57,7 +60,7 @@ class BarangController extends Controller
         $barang = Barang::find($id);
         
         return view('barang/edit',[
-            'title' => 'Edit Data Barang',
+            'title' => 'Edit Barang',
             'barang' => $barang,
             'jenisbarang' => $jenisbarang
         ]);
@@ -73,6 +76,8 @@ class BarangController extends Controller
             'harga_jual_barang' => $request->harga_jual_barang,
             'updated_at' => date("Y-m-d H:i:s")
         ]);
+
+        $request->session()->flash('success', 'Data Barang Berhasil diupdate!');
         
         return redirect('/barang');
     }

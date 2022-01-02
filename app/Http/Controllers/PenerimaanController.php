@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PenerimaanController extends Controller
 {
     public function index(){
-        $penerimaan = Penerimaan::with(['User','Supplier','detailPenerimaans'])->get();
+        $penerimaan = Penerimaan::with(['User','Supplier'])->get();
     
         return view('penerimaan/index', [
             'title' => 'Penerimaan Barang',
@@ -60,7 +60,7 @@ class PenerimaanController extends Controller
         $penerimaan  = Penerimaan::find($id);
         
         return view('penerimaan/edit',[
-            'title'      => 'Edit Data Penerimaan',
+            'title'      => 'Edit Penerimaan Barang',
             'penerimaan' => $penerimaan,
             'user'       => $user,
             'supplier'   => $supplier,
@@ -73,7 +73,7 @@ class PenerimaanController extends Controller
             'tgl_terima'    => $request->tgl_terima,
             'total_harga'   => $request->total_harga,
             'status_terima' => $request->status_terima,
-            'kode_sup'        => $request->kode_sup,
+            'kode_sup'      => $request->kode_sup,
             'updated_at'    => date("Y-m-d H:i:s"),
         ]);
 

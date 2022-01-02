@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\detailPemesanan;
 use App\Models\Barang;
 use App\Models\Pemesanan;
-use App\Models\DetailPemesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,9 +13,10 @@ class DetailPemesananController extends Controller
     public function index(Pemesanan $id){
 
         return view('detailPemesanan.index', [
-            'title' => 'Detail Pemesanan',
-            'detpesan' => DetailPemesanan::where('id_pesan', $id->id)->with('Pemesanan')->get(),
+            'detpesan' => detailPemesanan::where('id_pesan', $id->id)->with('Pemesanan')->get(),
             'pemesanan' => $id,
+            'title' => 'Detail Pemesanan',
+
         ]);
     }
 
@@ -38,9 +39,9 @@ class DetailPemesananController extends Controller
             'harga_up' => 'required',
         ]);
 
-        DetailPemesanan::create($validatedData);
+        detailPemesanan::create($validatedData);
 
-        $request->session()->flash('success','Detail Pemesanan Berhasil Ditambahkan');
+        $request->session()->flash('success','Detail Pemesanan Barang Berhasil Ditambahkan');
 
         return redirect('/pemesanan');
     }
@@ -55,7 +56,7 @@ class DetailPemesananController extends Controller
     {
 
         return view('detailPemesanan.edit',[
-            'detpesan' => DetailPemesanan::find($id),
+            'detpesan' => detailPemesanan::find($id),
             'barang'  => Barang::all(),
             'title'   => 'Edit Detail Pemesanan',
         ]);
@@ -77,7 +78,7 @@ class DetailPemesananController extends Controller
 
     public function destroy($id)
     {
-        DetailPemesanan::destroy($id);
+        detailPemesanan::destroy($id);
 		
         return redirect('/pemesanan')->with('successDelete', 'Detail Pemesanan Barang Berhasil dihapus!');
     }

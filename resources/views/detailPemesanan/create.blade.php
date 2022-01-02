@@ -10,7 +10,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h4 class="h6 mt-2 mb-2 text-gray-800">No. Pemesanan : {{ $pemesanan->id }}</h4>
-                            <h1 class="h3 mt-2 mb-2 text-gray-800">Pemesanan Barang</h1>
+                            <h1 class="h3 mt-2 mb-2 text-gray-800">Detail Pemesanan Barang</h1>
                         </div>
 						<div class="card-body">
 							<form action="{{ url('/detailpemesanan/store') }}" method="post">

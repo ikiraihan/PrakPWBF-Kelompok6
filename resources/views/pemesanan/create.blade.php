@@ -31,7 +31,7 @@
                         <div class="form-group mb-3">
                             <label for="sup_id">Nama Supplier</label>
                             <select class="form-control @error('sup_id') is-invalid @enderror" id="sup_id" name="sup_id" required>
-                                @if($user->count())
+                                @if($supplier->count())
                                     @foreach($supplier as $v)
                                         <option value="" disabled selected hidden> Supplier </option>
                                         <option value="{{ $v->id }}">{{ $v->nama_sup }}</option>

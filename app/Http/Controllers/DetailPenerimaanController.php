@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\Penerimaan;
-use App\Models\DetailPenerimaan;
+use App\Models\detailPenerimaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +14,7 @@ class DetailPenerimaanController extends Controller
 
         return view('detailPenerimaan.index', [
             'title' => 'Detail Penerimaan',
-            'detterima' => DetailPenerimaan::where('id_terima', $id->id)->with('Penerimaan')->get(),
+            'detterima' => detailPenerimaan::where('id_terima', $id->id)->with('Penerimaan')->get(),
             'penerimaan' => $id,
         ]);
     }
@@ -38,7 +38,7 @@ class DetailPenerimaanController extends Controller
             'sub_total' => 'required',
         ]);
 
-        DetailPenerimaan::create($validatedData);
+        detailPenerimaan::create($validatedData);
 
         $request->session()->flash('success', 'Detail Penerimaan Barang Berhasil ditambahkan!');
 
@@ -54,7 +54,7 @@ class DetailPenerimaanController extends Controller
     {
 
         return view('detailPenerimaan.edit',[
-            'detterima' => DetailPenerimaan::find($id),
+            'detterima' => detailPenerimaan::find($id),
             'barang'  => Barang::all(),
             'title'   => 'Edit Detail Penerimaan',
         ]);
@@ -77,7 +77,7 @@ class DetailPenerimaanController extends Controller
 
     public function destroy($id)
     {
-        DetailPenerimaan::destroy($id);
+        detailPenerimaan::destroy($id);
 		
         return redirect('/penerimaan')->with('successDelete', 'Detail Penerimaan Barang Berhasil dihapus!');
     }

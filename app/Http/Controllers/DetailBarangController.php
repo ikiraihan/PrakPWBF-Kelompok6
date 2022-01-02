@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ukuran;
 use App\Models\Warna;
 use App\Models\Barang;
-use App\Models\DetailBarang;
+use App\Models\detailBarang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,13 +13,11 @@ class DetailBarangController extends Controller
 {
     public function index(Barang $id)
     {
-        $detbar = DetailBarang::with(['Barang', 'Warna', 'Ukuran'])->get();
     
         return view('detailBarang.index', [
-            'title' => 'Detail Barang',
-            'detbar' => $detbar,
-            'detailbar' => DetailBarang::where('kode_bar', $id->id)->with('Barang')->get(),
+            'detailbar' => detailBarang::where('kode_bar', $id->id)->with('Barang')->get(),
             'barang' => $id,
+            'title' => 'Detail Barang',
         ]);
     }
 
@@ -44,7 +42,7 @@ class DetailBarangController extends Controller
             'id_ukuran' => 'required',
         ]);
 
-        DetailBarang::create($validatedData);
+        detailBarang::create($validatedData);
 
         $request->session()->flash('success','Detail Barang Berhasil Ditambahkan');
 
@@ -61,8 +59,8 @@ class DetailBarangController extends Controller
         $ukuran = Ukuran::all();
         $warna = Warna::all();
 
-        return view('detailbarang.edit',[
-            'detbar'    => DetailBarang::find($id),
+        return view('detailBarang.edit',[
+            'detbar'    => detailBarang::find($id),
             'barang'    => Barang::all(),
             'ukuran'    => $ukuran,
             'warna'     => $warna,
@@ -85,7 +83,7 @@ class DetailBarangController extends Controller
 
     public function destroy($id)
     {
-        DetailBarang::destroy($id);
+        detailBarang::destroy($id);
 		
         return redirect('/barang')->with('successDelete', 'Detail Barang Berhasil dihapus!');
     }
