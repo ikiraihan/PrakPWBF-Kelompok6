@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\JenisBarang;
-use App\Models\DetailBarang;
+use App\Models\detailBarang;
 use App\Models\Hs;
 use Illuminate\Http\Request;
 
@@ -22,7 +22,7 @@ class BarangController extends Controller
     public function create()
     {
         $jenisbarang = JenisBarang::all();
-        $detailBarang = DetailBarang::all();
+        $detailBarang = detailBarang::all();
         $hs = Hs::all();
 
         return view('barang/create', [

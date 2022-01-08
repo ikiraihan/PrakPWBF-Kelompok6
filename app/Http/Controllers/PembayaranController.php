@@ -30,17 +30,24 @@ class PembayaranController extends Controller
     public function store(Request $request)
     {
 
-        $bukti = $request->image;
-        $namafile = time().rand(100,999).".".$bukti->getClientOriginalExtension();
+        $file = $request->file('image');
+        $target_dir = "img/uploads/";     //lokasi
+        $namafilebaru = time().rand(100,999).".".$file->getClientOriginalExtension(); //nama file baru
+        $target_file = $target_dir . basename($_FILES["image"]["name"]);  
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         
         $pembayaran = new Pembayaran;
         $pembayaran->id_penerimaan = $request->id_penerimaan;
         $pembayaran->tgl_bayar = $request->tgl_bayar;
         $pembayaran->total_bayar = $request->total_bayar;
-        $pembayaran->image = $namafile;
+        $pembayaran->image = $namafilebaru;
         $pembayaran->save();
 
-        $bukti->move(public_path().'/img/uploads', $namafile);
+        if ($_FILES["image"]["size"] > 5000) {
+            echo "Sorry, your file is too large.";
+        }
+
+        $file->move($target_dir,$namafilebaru);
 
         // Pembayaran::create($validatedData);
 
